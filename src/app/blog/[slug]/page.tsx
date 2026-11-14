@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (category) {
     return pageMeta({
       title: category.name,
-      description: `${category.name} articles and tips from Aziz Afridi Rent A Car.`,
+      description: `${category.name} articles and tips from Best Rent a Car.`,
       path: `/blog/${category.slug}`,
       keywords: [category.name.toLowerCase(), "car rental blog"],
     });

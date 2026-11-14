@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return pageMeta({
     title: `${car.name} Rental`,
-    description: `Rent a ${car.name} (${car.brand}) with Aziz Afridi Rent A Car. From ${formatPrice(car.priceDay)}/day. Professional chauffeur included.`,
+    description: `Rent a ${car.name} (${car.brand}) with Best Rent a Car. From ${formatPrice(car.priceDay)}/day. Professional chauffeur included.`,
     path: `/cars/${car.slug}`,
     keywords: [`${car.name} rental`, `${car.brand} rent a car`, `${car.category} car rental`],
     image: car.image,
@@ -44,7 +44,7 @@ export default async function CarModelPage({ params }: Props) {
         badge={car.badge ?? car.brand}
         title={car.name}
         accent="Rental"
-        description={`Book the ${car.name} for daily, weekly, or monthly hire — comfortable travel with Aziz Afridi Rent A Car across Pakistan.`}
+        description={`Book the ${car.name} for daily, weekly, or monthly hire — comfortable travel with Best Rent a Car across Pakistan.`}
         image={car.image}
         imageAlt={`${car.name} rental`}
         primaryCta={{ label: "Inquire Now", href: "/contact" }}

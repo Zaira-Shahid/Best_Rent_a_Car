@@ -15,7 +15,7 @@ function toCarModel(item: ServiceFleetItem): CarModel {
   return {
     slug: item.name.toLowerCase().replace(/\s+/g, "-"),
     name: item.name,
-    brand: "Aziz Afridi",
+    brand: "Best Rent a Car",
     category: "luxury",
     seats: item.seats,
     transmission: item.transmission === "Manual" ? "Manual" : "Automatic",

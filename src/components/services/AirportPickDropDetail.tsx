@@ -102,7 +102,7 @@ export function AirportPickDropDetail({ data }: AirportPickDropDetailProps) {
                     <select className="w-full rounded-xl border border-white/15 bg-white/95 px-3 py-3 text-sm text-primary outline-none">
                       <option>Executive Sedan</option>
                       <option>Luxury SUV</option>
-                      <option>Aziz Afridi Fleet</option>
+                      <option>Best Rent a Car Fleet</option>
                       <option>Van / Hiace</option>
                     </select>
                   </div>

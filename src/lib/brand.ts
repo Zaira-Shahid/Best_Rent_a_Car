@@ -1,6 +1,6 @@
 export const brand = {
-  name: "Aziz Afridi Rent A Car",
-  shortName: "Aziz Afridi",
+  name: "Best Rent a Car",
+  shortName: "Best",
   tagline: "Premium car rental across Pakistan",
   // Demo contact details. Replace these before accepting real bookings.
   phone: "03000000000",
@@ -8,8 +8,8 @@ export const brand = {
   email: "info@example.com",
   currency: "PKR",
   location: {
-    label: "Aziz Afridi Rent A Car, Islamabad",
-    address: "Aziz Afridi Rent A Car, Islamabad, Pakistan",
+    label: "Best Rent a Car, Islamabad",
+    address: "Best Rent a Car, Islamabad, Pakistan",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Islamabad+Pakistan",
   },
   social: {

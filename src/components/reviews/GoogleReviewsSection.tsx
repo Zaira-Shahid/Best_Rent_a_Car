@@ -10,7 +10,7 @@ const GOOGLE_REVIEWS = [
     initials: "AK",
     color: "#4285F4",
     rating: 5,
-    text: "Excellent service from Aziz Afridi. Booked a Fortuner for Murree and the car was spotless, delivered on time, and the WhatsApp support was very helpful throughout.",
+    text: "Excellent service from Best Rent a Car. Booked a Fortuner for Murree and the car was spotless, delivered on time, and the WhatsApp support was very helpful throughout.",
   },
   {
     name: "Sara Malik",
@@ -34,7 +34,7 @@ const GOOGLE_REVIEWS = [
     initials: "AT",
     color: "#FBBC05",
     rating: 5,
-    text: "The level of service provided by Aziz Afridi is unparalleled. From the seamless booking process to the pristine condition of the Lamborghini Urus, every detail was handled with absolute precision.",
+    text: "The level of service provided by Best Rent a Car is unparalleled. From the seamless booking process to the pristine condition of the Lamborghini Urus, every detail was handled with absolute precision.",
   },
 ];
 
@@ -100,7 +100,7 @@ export function GoogleReviewsSection() {
           Google Reviews
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-sm text-muted sm:mx-0 sm:text-base">
-          Real Google reviews from customers who booked with Aziz Afridi — same style as our homepage.
+          Real Google reviews from customers who booked with Best Rent a Car — same style as our homepage.
         </p>
       </motion.div>
 

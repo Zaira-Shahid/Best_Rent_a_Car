@@ -230,7 +230,7 @@ export function CityDetailContent({ city }: CityDetailContentProps) {
           <Reveal>
             <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-16">
               <h2 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
-                Why Choose Aziz Afridi in {city.name}?
+                Why Choose Best Rent a Car in {city.name}?
               </h2>
               <p className="mt-4 text-sm text-primary/65 sm:text-base">
                 Experience unmatched professionalism, pristine vehicles, and seamless service tailored for

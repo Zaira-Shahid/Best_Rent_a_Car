@@ -15,7 +15,7 @@ type PromoBannerProps = {
 export function PromoBanner({
   eyebrow = "Serving Islamabad",
   title = "Best Rent a Car with Driver in Islamabad",
-  description = "Aziz Afridi Rent A Car specializes in car rental with driver in Islamabad for airport transfers, corporate travel, official visits, weddings, city tours, and family trips. Choose from a wide range of clean, insured, and professionally maintained vehicles driven by experienced chauffeurs, available 24/7 at competitive rates.",
+  description = "Best Rent a Car specializes in car rental with driver in Islamabad for airport transfers, corporate travel, official visits, weddings, city tours, and family trips. Choose from a wide range of clean, insured, and professionally maintained vehicles driven by experienced chauffeurs, available 24/7 at competitive rates.",
   href = "/rent-a-car/islamabad",
   ctaLabel = "Rent a Car in Islamabad",
   imageSrc = "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80",

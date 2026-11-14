@@ -251,7 +251,7 @@ export function CityServicesContent() {
                   Discover Excellence in Every Destination
                 </h2>
                 <p className="mt-5 text-base text-muted sm:text-lg">
-                  From the modern boulevards of Islamabad to the rugged beauty of Hunza, Aziz Afridi provides
+                  From the modern boulevards of Islamabad to the rugged beauty of Hunza, Best Rent a Car provides
                   seamless luxury car rentals tailored to each city&apos;s unique terrain and lifestyle. Every
                   location is served by a dedicated local team, so whether you&apos;re navigating Karachi&apos;s
                   coastal traffic or climbing into the Karakoram, your vehicle and driver are matched to the
@@ -379,7 +379,7 @@ export function CityServicesContent() {
             </h2>
             <p className="text-base text-white/55 sm:text-lg">
               Our strategic hubs are positioned to provide 24/7 assistance and delivery services. No matter
-              where your journey begins or ends, the Aziz Afridi standard follows you.
+              where your journey begins or ends, the Best Rent a Car standard follows you.
             </p>
             <div className="grid grid-cols-2 gap-6 pt-2">
               {STATS.map((item) => (

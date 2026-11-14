@@ -37,7 +37,7 @@ export function BlogCategoryContent({ category, posts }: BlogCategoryContentProp
 
       <BlogFilters
         activeSlug={category.slug}
-        intro={`${posts.length} curated ${posts.length === 1 ? "article" : "articles"} in ${category.name} — tips and guides from Aziz Afridi.`}
+        intro={`${posts.length} curated ${posts.length === 1 ? "article" : "articles"} in ${category.name} — tips and guides from Best Rent a Car.`}
       />
 
       <section className="bg-[#f8f9fa] py-14 sm:py-20">

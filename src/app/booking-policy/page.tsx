@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Booking Policy",
-  description: "Booking, cancellation, and payment policy for Aziz Afridi Rent A Car.",
+  description: "Booking, cancellation, and payment policy for Best Rent a Car.",
   path: "/booking-policy",
 });
 

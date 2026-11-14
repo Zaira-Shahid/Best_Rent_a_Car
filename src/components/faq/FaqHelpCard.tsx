@@ -42,7 +42,7 @@ export function FaqHelpCard({ className }: FaqHelpCardProps) {
         </div>
         <h3 className="font-heading text-lg font-semibold text-white sm:text-xl">Need immediate help?</h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/75">
-          Talk to a live Aziz Afridi agent for bookings, changes, and roadside support — available 24/7.
+          Talk to a live Best Rent a Car agent for bookings, changes, and roadside support — available 24/7.
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-stretch xl:flex-row xl:items-center">
           <a

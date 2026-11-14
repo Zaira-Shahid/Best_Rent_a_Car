@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Blog",
-  description: "Car rental tips, travel guides, and company updates from Aziz Afridi Rent A Car.",
+  description: "Car rental tips, travel guides, and company updates from Best Rent a Car.",
   path: "/blog",
   keywords: ["car rental tips", "Pakistan travel guide"],
 });

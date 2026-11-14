@@ -3,7 +3,7 @@ import { blogCategories, blogPosts, carCategories, carModels, cities, services }
 
 export const dynamic = "force-static";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://signaturerentacar.com";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://best-rent-a-car.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

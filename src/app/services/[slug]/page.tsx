@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: service.name,
     description:
       detail?.metaDescription ??
-      `${service.name} with Aziz Afridi Rent A Car — professional and on-time service across Pakistan.`,
+      `${service.name} with Best Rent a Car — professional and on-time service across Pakistan.`,
     path: `/services/${service.slug}`,
     keywords: [service.name.toLowerCase(), "car rental service Pakistan"],
   });
@@ -65,7 +65,7 @@ export default async function ServicePage({ params }: Props) {
   return (
     <ContentPage
       title={service.name}
-      description={`Book ${service.name.toLowerCase()} with Aziz Afridi Rent A Car.`}
+      description={`Book ${service.name.toLowerCase()} with Best Rent a Car.`}
       body={[
         `Our ${service.name.toLowerCase()} service is designed for comfort, reliability, and clear pricing.`,
         "Contact us with your schedule and preferred vehicle to confirm availability.",

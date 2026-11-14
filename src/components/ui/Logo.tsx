@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import logo from "../../../public/images/best-carz-logo.png";
 import { cn } from "@/lib/utils";
 
 type LogoProps = {
@@ -6,17 +8,20 @@ type LogoProps = {
   priority?: boolean;
 };
 
-export function Logo({ className }: LogoProps) {
+export function Logo({ className, priority = false }: LogoProps) {
   return (
     <Link
       href="/"
       className={cn("inline-flex shrink-0 items-center", className)}
-      aria-label="Aziz Afridi Rent A Car"
+      aria-label="Best Rent a Car"
     >
-      <span className="site-brand-wordmark flex flex-col leading-none whitespace-nowrap">
-        <span className="text-[19px] font-black italic tracking-tight sm:text-[25px]"><span className="text-secondary">AZIZ</span> <span>AFRIDI</span></span>
-        <span className="mt-1 text-center text-[9px] font-bold tracking-[0.28em] sm:text-[11px]">RENT A CAR</span>
-      </span>
+      <Image
+        src={logo}
+        alt="Best Rent a Car"
+        priority={priority}
+        className="site-brand-logo h-full w-auto max-w-full object-contain object-left"
+        sizes="(max-width: 640px) 160px, (max-width: 1024px) 200px, 220px"
+      />
     </Link>
   );
 }

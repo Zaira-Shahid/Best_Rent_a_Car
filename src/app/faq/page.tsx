@@ -14,7 +14,7 @@ const HERO_IMAGE =
 export const metadata: Metadata = pageMeta({
   title: "FAQ",
   description:
-    "Frequently asked questions about booking, payments, drivers, and airport pickups with Aziz Afridi Rent A Car.",
+    "Frequently asked questions about booking, payments, drivers, and airport pickups with Best Rent a Car.",
   path: "/faq",
   keywords: ["car rental FAQ", "booking questions"],
 });
@@ -82,13 +82,13 @@ const FAQS = [
     category: "general",
     question: "Can I smoke inside the vehicle?",
     answer:
-      "No. All Aziz Afridi vehicles are strictly non-smoking. A cleaning fee may apply if this policy is violated.",
+      "No. All Best Rent a Car vehicles are strictly non-smoking. A cleaning fee may apply if this policy is violated.",
   },
   {
     category: "booking",
     question: "How can I book a car?",
     answer:
-      "Booking your Aziz Afridi vehicle is effortless. Browse our fleet online, select your desired dates and location, and confirm through our secure form. Alternatively, contact our agent via WhatsApp or phone for a personalized booking experience.",
+      "Booking your Best Rent a Car vehicle is effortless. Browse our fleet online, select your desired dates and location, and confirm through our secure form. Alternatively, contact our agent via WhatsApp or phone for a personalized booking experience.",
   },
   {
     category: "booking",
@@ -337,7 +337,7 @@ const FAQS = [
     category: "policies",
     question: "Who is allowed to drive the vehicle?",
     answer:
-      "Aziz Afridi rentals are chauffeur-driven. Only our assigned professional driver operates the vehicle for safety and insurance compliance.",
+      "Best Rent a Car rentals are chauffeur-driven. Only our assigned professional driver operates the vehicle for safety and insurance compliance.",
   },
   {
     category: "policies",
@@ -411,7 +411,7 @@ const BOOKING_STEPS = [
     step: "04",
     icon: "airport_shuttle",
     title: "Ride in Comfort",
-    text: "Your chauffeur arrives on time with a clean, inspected Aziz Afridi vehicle.",
+    text: "Your chauffeur arrives on time with a clean, inspected Best Rent a Car vehicle.",
   },
 ];
 
@@ -467,7 +467,7 @@ export default function FaqPage() {
                 Frequently Asked <span className="text-accent">Questions</span>
               </h1>
               <p className="animate-fade-up-delay mt-5 max-w-xl text-sm text-white/60 sm:mt-6 sm:text-base lg:text-lg">
-                Everything you need to know about renting a luxury vehicle with Aziz Afridi. Find answers on booking,
+                Everything you need to know about renting a luxury vehicle with Best Rent a Car. Find answers on booking,
                 payments, chauffeurs, and airport transfers — or call an agent anytime.
               </p>
               <div className="animate-fade-up-delay-2 mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -492,7 +492,7 @@ export default function FaqPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl sm:aspect-[5/6] lg:aspect-[4/5]">
                 <Image
                   src={HERO_IMAGE}
-                  alt="Aziz Afridi call agent ready to answer your questions"
+                  alt="Best Rent a Car call agent ready to answer your questions"
                   fill
                   priority
                   className="object-cover object-[center_20%]"
@@ -555,7 +555,7 @@ export default function FaqPage() {
                 How Booking Works
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-sm text-muted sm:text-base">
-                From first inquiry to doorstep delivery, your Aziz Afridi agent keeps every step clear and quick.
+                From first inquiry to doorstep delivery, your Best Rent a Car agent keeps every step clear and quick.
               </p>
             </div>
           </AnimateIn>

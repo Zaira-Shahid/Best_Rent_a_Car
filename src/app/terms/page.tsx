@@ -7,7 +7,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Terms & Conditions",
-  description: "Terms and conditions for Aziz Afridi Rent A Car bookings and rentals.",
+  description: "Terms and conditions for Best Rent a Car bookings and rentals.",
   path: "/terms",
 });
 

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: category.name,
     description:
       category.description ??
-      `Browse ${category.name.toLowerCase()} available for rent with Aziz Afridi Rent A Car.`,
+      `Browse ${category.name.toLowerCase()} available for rent with Best Rent a Car.`,
     path: `/categories/${category.slug}`,
     keywords: [`${category.name} rental`, `${category.name} Pakistan`],
   });

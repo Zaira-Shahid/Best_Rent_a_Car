@@ -9,7 +9,7 @@ const GOOGLE_REVIEWS = [
     initials: "AK",
     color: "#4285F4",
     rating: 5,
-    text: "Excellent service from Aziz Afridi. Booked a Fortuner for Murree and the car was spotless, delivered on time, and the WhatsApp support was very helpful throughout.",
+    text: "Excellent service from Best Rent a Car. Booked a Fortuner for Murree and the car was spotless, delivered on time, and the WhatsApp support was very helpful throughout.",
   },
   {
     name: "Sara Malik",
@@ -78,7 +78,7 @@ export function HomeReviews() {
               What Our Clients Say
             </h2>
             <p className="mt-2 text-sm text-muted sm:text-base">
-              Real Google reviews from customers who booked with Aziz Afridi.
+              Real Google reviews from customers who booked with Best Rent a Car.
             </p>
           </div>
         </Reveal>

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return pageMeta({
     title: `Rent a Car in ${city.name}`,
-    description: `Affordable and premium car rental in ${city.name}. Chauffeur-driven cars for business, tourism, and family travel with Aziz Afridi Rent A Car.`,
+    description: `Affordable and premium car rental in ${city.name}. Chauffeur-driven cars for business, tourism, and family travel with Best Rent a Car.`,
     path: `/rent-a-car/${city.slug}`,
     keywords: [`rent a car ${city.name}`, `${city.name} car rental`, `car hire ${city.name}`],
   });

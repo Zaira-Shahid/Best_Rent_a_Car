@@ -11,7 +11,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Contact Us",
   description:
-    "Contact Aziz Afridi Rent A Car for bookings, quotes, and trip planning. Call, WhatsApp, or send an inquiry online.",
+    "Contact Best Rent a Car for bookings, quotes, and trip planning. Call, WhatsApp, or send an inquiry online.",
   path: "/contact",
   keywords: ["car rental contact", "book rent a car Pakistan"],
 });
@@ -88,7 +88,7 @@ export default function ContactPage() {
       <header className="relative min-h-[320px] overflow-hidden sm:min-h-[440px] lg:min-h-[560px]">
         <Image
           src={HERO}
-          alt="Aziz Afridi Rent A Car luxury sedan overlooking Faisal Mosque, Islamabad"
+          alt="Best Rent a Car luxury sedan overlooking Faisal Mosque, Islamabad"
           fill
           priority
           className="object-cover object-[70%_center] sm:object-center"
@@ -315,7 +315,7 @@ export default function ContactPage() {
       </section>
 
       <section className="relative h-[360px] w-full sm:h-[440px]">
-        <Image src={OFFICE_MAP} alt="Map to Aziz Afridi Rent A Car office in Islamabad" fill className="object-cover" sizes="100vw" />
+        <Image src={OFFICE_MAP} alt="Map to Best Rent a Car office in Islamabad" fill className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-primary/20" />
         <div className="absolute inset-0 flex items-center justify-center px-4">
           <a

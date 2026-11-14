@@ -1,6 +1,6 @@
-# Aziz Afridi Rent A Car
+# Best Rent a Car
 
-Premium car rental website for Aziz Afridi Rent A Car — built with Next.js App Router, TypeScript, and Tailwind CSS. Designs converted from Google Stitch into responsive production pages.
+Premium car rental website for Best Rent a Car — built with Next.js App Router, TypeScript, and Tailwind CSS. Designs converted from Google Stitch into responsive production pages.
 
 ## Stack
 

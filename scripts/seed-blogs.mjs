@@ -72,7 +72,7 @@ const blogPosts = [
     readTime: "8 min read",
     content: [
       "Corporate mobility in Pakistan is rarely a single car problem. Sales teams need reliable sedans, visiting executives expect punctual airport pickups, and finance wants one clean monthly invoice — not a stack of receipts.",
-      "A Aziz Afridi corporate account starts with your cities, headcount, and preferred vehicle classes. We set approved bookers, rate cards, and billing cycles so operations can request cars without renegotiating every trip.",
+      "A Best Rent a Car corporate account starts with your cities, headcount, and preferred vehicle classes. We set approved bookers, rate cards, and billing cycles so operations can request cars without renegotiating every trip.",
       "Monthly and weekly packages usually beat day-by-day hire for teams on the road more than a few times a week. Replacement vehicles during service windows keep schedules intact, and priority allocation helps when conferences or board visits land on the same dates.",
       "Executive chauffeured cars remain the right choice for client entertainment, airport corridors, and field teams who need reliable transport across the day.",
       "Ask for trip logs with your invoice. Clear reporting makes expense approvals faster and helps you right-size the fleet after the first month.",
@@ -167,7 +167,7 @@ const blogPosts = [
     author: "Omar Farooq",
     readTime: "5 min read",
     content: [
-      "Aziz Afridi Rent A Car focuses on chauffeur-driven rentals so you can travel without navigation stress, parking hunts, or unfamiliar city roads.",
+      "Best Rent a Car focuses on chauffeur-driven rentals so you can travel without navigation stress, parking hunts, or unfamiliar city roads.",
       "A professional driver shines for airport days, client meetings, wedding schedules, and northern highways where you would rather enjoy the scenery than manage the wheel.",
       "Confirm overtime and overnight rules upfront for multi-day trips. Clear quotes keep car rate, chauffeur hours, and fuel policy transparent before you book.",
       "Many clients use the same chauffeured car for airport pickup and city meetings in one coordinated plan — ask us to align both legs when you inquire.",

@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Our Cars",
   description:
-    "Browse economy, sedan, SUV, luxury, and Hiace rental cars. Transparent daily and monthly rates with Aziz Afridi Rent A Car.",
+    "Browse economy, sedan, SUV, luxury, and Hiace rental cars. Transparent daily and monthly rates with Best Rent a Car.",
   path: "/cars",
   keywords: ["car fleet Pakistan", "SUV rental", "luxury car hire"],
 });
@@ -34,12 +34,12 @@ export default async function CarsPage({ searchParams }: {
         </div>
       )}
       <CarsHero
-        badge="Aziz Afridi Fleet"
+        badge="Best Rent a Car Fleet"
         title="Our"
         accent="Cars"
         description="Explore economy to luxury — sedans, SUVs, executive rides, and group travel vehicles for every journey across Pakistan."
         image={heroImage}
-        imageAlt="Aziz Afridi Rent A Car fleet"
+        imageAlt="Best Rent a Car fleet"
         primaryCta={{ label: "Browse All Models", href: "#all-models" }}
         secondaryCta={{ label: "WhatsApp Booking", href: `https://wa.me/${brand.whatsapp}` }}
         stats={[

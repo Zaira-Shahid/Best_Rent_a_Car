@@ -252,7 +252,7 @@ export function BlogAdminPanel({ open, onClose, onPostsChange }: BlogAdminPanelP
   function buildPostFromForm(slug: string): BlogPost | null {
     const title = form.title.trim();
     const excerpt = form.excerpt.trim();
-    const author = form.author.trim() || "Aziz Afridi Team";
+    const author = form.author.trim() || "Best Rent a Car Team";
     const image = form.image.trim();
     const content = form.content
       .split(/\n+/)
@@ -485,7 +485,7 @@ export function BlogAdminPanel({ open, onClose, onPostsChange }: BlogAdminPanelP
                       value={form.author}
                       onChange={(e) => update("author", e.target.value)}
                       className="w-full rounded-xl border border-primary/10 bg-[#f8f9fa] px-4 py-3 text-sm outline-none focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20"
-                      placeholder="Aziz Afridi Team"
+                      placeholder="Best Rent a Car Team"
                     />
                   </label>
                 </div>

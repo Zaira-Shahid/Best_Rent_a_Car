@@ -14,7 +14,7 @@ function get(url) {
 }
 
 (async () => {
-  const html = await get("https://signaturesrentacar.com/");
+  const html = await get("https://best-rent-a-car.vercel.app/");
   const encoded = [...html.matchAll(/\/images\/[^\s"'<>]*%20[^\s"'<>]*/g)].map((m) => m[0]);
   console.log("encoded image urls:", [...new Set(encoded)]);
   console.log("%20 count:", (html.match(/%20/g) || []).length);

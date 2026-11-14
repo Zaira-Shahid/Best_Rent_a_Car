@@ -283,7 +283,7 @@ export const carModels: CarModel[] = [
     imageAlt: carImage("prado-black.png"),
     colors: ["White", "Black"],
     featured: true,
-    badge: "Aziz Afridi",
+    badge: "Best Rent a Car",
   },
   {
     slug: "toyota-fortuner",
@@ -527,7 +527,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "Do you offer car rental with a driver?",
     answer:
-      "Yes. Aziz Afridi Rent A Car provides chauffeur-driven vehicles for city travel, airport transfers, corporate trips, weddings, and outstation journeys.",
+      "Yes. Best Rent a Car provides chauffeur-driven vehicles for city travel, airport transfers, corporate trips, weddings, and outstation journeys.",
   },
   {
     question: "Which cities do you cover?",

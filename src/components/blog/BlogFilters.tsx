@@ -36,7 +36,7 @@ export function BlogFilters({ activeSlug = null, intro }: BlogFiltersProps) {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
           <div className="max-w-2xl">
             <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary sm:text-xs">
-              Aziz Afridi Journal
+              Best Rent a Car Journal
             </span>
             <h2 className="font-heading text-2xl font-semibold tracking-tight text-primary sm:text-3xl">
               {allActive ? "Travel Insights & Guides" : blogCategories.find((c) => c.slug === activeSlug)?.name}

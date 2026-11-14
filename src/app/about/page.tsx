@@ -9,9 +9,9 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "About Us",
   description:
-    "Learn about Aziz Afridi Rent A Car — premium chauffeur-driven car rental across Pakistan since 2010.",
+    "Learn about Best Rent a Car — premium chauffeur-driven car rental across Pakistan since 2010.",
   path: "/about",
-  keywords: ["about Aziz Afridi Rent A Car", "car rental company Pakistan"],
+  keywords: ["about Best Rent a Car", "car rental company Pakistan"],
 });
 
 
@@ -142,7 +142,7 @@ export default function AboutPage() {
       <header className="relative min-h-[320px] overflow-hidden sm:min-h-[440px] lg:min-h-[560px]">
         <Image
           src={HERO}
-          alt="Aziz Afridi Rent A Car premium SUV fleet with Faisal Mosque at dusk"
+          alt="Best Rent a Car premium SUV fleet with Faisal Mosque at dusk"
           fill
           priority
           className="object-cover object-[75%_center] sm:object-right"
@@ -162,7 +162,7 @@ export default function AboutPage() {
               From Islamabad and Rawalpindi to Lahore, Karachi, and the northern routes, we deliver polished vehicles with professional drivers.
             </p>
             <p>
-              Whether it is an airport transfer, corporate day, wedding, or a mountain weekend — Aziz Afridi keeps every journey smooth and on time.
+              Whether it is an airport transfer, corporate day, wedding, or a mountain weekend — Best Rent a Car keeps every journey smooth and on time.
             </p>
           </div>
         </Container>
@@ -178,7 +178,7 @@ export default function AboutPage() {
               Redefining Luxury Mobility Since 2010
             </h2>
             <p className="text-base leading-relaxed text-muted sm:text-lg">
-              Aziz Afridi Rent A Car was born from a simple vision: to provide more than just transportation.
+              Best Rent a Car was born from a simple vision: to provide more than just transportation.
               We set out to offer an experience of unparalleled luxury, where every drive becomes a statement
               of success and refinement.
             </p>
@@ -212,7 +212,7 @@ export default function AboutPage() {
             <div className="relative h-[380px] overflow-hidden rounded-xl shadow-2xl sm:h-[520px]">
               <Image
                 src={FOUNDER}
-                alt="Umar Saeed, Founder & CEO of Aziz Afridi Rent A Car"
+                alt="Umar Saeed, Founder & CEO of Best Rent a Car"
                 fill
                 className="object-cover object-[center_20%]"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -228,11 +228,11 @@ export default function AboutPage() {
             </h2>
             <p className="font-heading text-2xl font-semibold text-secondary sm:text-3xl">Umar Saeed</p>
             <p className="text-base leading-relaxed text-muted sm:text-lg">
-              Umar Saeed founded Aziz Afridi Rent A Car with a clear goal: deliver premium, reliable
+              Umar Saeed founded Best Rent a Car with a clear goal: deliver premium, reliable
               chauffeur-driven travel across Pakistan — starting from Islamabad and expanding nationwide.
             </p>
             <p className="text-sm leading-relaxed text-muted sm:text-base">
-              Under his leadership, Aziz Afridi has grown into a trusted mobility partner for families,
+              Under his leadership, Best Rent a Car has grown into a trusted mobility partner for families,
               corporate clients, and travelers who expect punctual service, a polished fleet, and support
               they can count on every mile of the journey.
             </p>
@@ -419,7 +419,7 @@ export default function AboutPage() {
           <AnimateIn>
             <div>
               <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-                The Aziz Afridi Experience
+                The Best Rent a Car Experience
               </h2>
               <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
                 {STEPS.map((step, index) => (

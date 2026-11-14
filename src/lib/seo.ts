@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { brand } from "@/lib/brand";
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://signaturerentacar.com";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://best-rent-a-car.vercel.app";
 
 export const defaultKeywords = [
   "rent a car Pakistan",
   "car rental Islamabad",
   "car rental Rawalpindi",
-  "Aziz Afridi Rent A Car",
+  "Best Rent a Car",
   "SUV rental Pakistan",
   "luxury car rental",
   "airport car rental",
