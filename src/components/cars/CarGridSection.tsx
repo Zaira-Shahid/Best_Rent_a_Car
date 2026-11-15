@@ -78,7 +78,7 @@ export function CarGridSection({
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.08 }}
+        viewport={{ once: true, amount: "some" }}
         variants={{
           hidden: {},
           show: { transition: { staggerChildren: 0.07 } },
