@@ -164,7 +164,8 @@ export type CarModel = {
   transmission: "Automatic" | "Manual";
   fuel: string;
   priceDay: number;
-  priceMonth: number;
+  /** Monthly price. Optional: not every car has a confirmed monthly rate, and the UI does not show it. */
+  priceMonth?: number;
   image: string;
   /** Second color/angle — shown on hover or touch */
   imageAlt?: string;

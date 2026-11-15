@@ -19,7 +19,7 @@ export const metadata: Metadata = pageMeta({
 const heroImage =
   carModels.find((car) => car.slug === "mercedes-s500")?.image ??
   carModels[0]?.image ??
-  "/images/fleet/s500-white.png";
+  "/images/fleet/s500-white.webp";
 
 export default function CarsPage() {
   return (

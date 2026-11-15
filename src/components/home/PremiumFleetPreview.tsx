@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 
 const categories = [
-  { label: "Luxury", href: "/categories/luxury", image: "/images/s500-white.png", alt: "White Mercedes luxury sedan" },
-  { label: "SUV", href: "/categories/suv-hybrid", image: "/images/sportage-black.png", alt: "Black Kia Sportage SUV" },
-  { label: "Economy", href: "/categories/economy", image: "/images/yaris-white.png", alt: "White Toyota Yaris economy sedan" },
-  { label: "4x4", href: "/categories/executive-suv", image: "/images/prado-white.png", alt: "White Toyota Prado 4x4" },
+  { label: "Luxury", href: "/categories/luxury", image: "/images/fleet/s500-white.webp", alt: "White Mercedes luxury sedan" },
+  { label: "SUV", href: "/categories/suv-hybrid", image: "/images/fleet/sportage-black.webp", alt: "Black Kia Sportage SUV" },
+  { label: "Economy", href: "/categories/economy", image: "/images/fleet/yaris-white.webp", alt: "White Toyota Yaris economy sedan" },
+  { label: "4x4", href: "/categories/executive-suv", image: "/images/fleet/prado-white.webp", alt: "White Toyota Prado 4x4" },
 ] as const;
 
 export function PremiumFleetPreview() {

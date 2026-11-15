@@ -47,6 +47,7 @@ export default async function CarModelPage({ params }: Props) {
         description={`Book the ${car.name} for daily, weekly, or monthly hire — comfortable travel with ${brand.name} across Pakistan.`}
         image={car.image}
         imageAlt={`${car.name} rental`}
+        imageFit="natural"
         primaryCta={{ label: "Inquire Now", href: "/contact" }}
         secondaryCta={{
           label: "Call Us",

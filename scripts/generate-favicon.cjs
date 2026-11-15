@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const fs = require('node:fs/promises');
 
 async function generate() {
-  const source = 'public/images/best-carz-logo.png';
+  const source = 'public/images/best-carz-logo.webp';
   for (const [size, path] of [[512, 'src/app/icon.png'], [180, 'src/app/apple-icon.png']]) {
     await sharp(source).resize(size, size, { fit: 'contain', background: '#ffffff' }).flatten({ background: '#ffffff' }).png().toFile(path);
   }
