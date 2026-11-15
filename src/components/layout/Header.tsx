@@ -4,13 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { mainNav } from "@/data/navigation";
 import { TopInfoBar } from "@/components/layout/TopInfoBar";
-import { brand, formatPhone, telLink, whatsappLink } from "@/lib/brand";
+import { fleetSections, getCarsForCategory } from "@/data/cars";
+import { cities } from "@/data/cities";
+import { brand, formatPhone, formatPrice, telLink, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
-import type { NavItem, NavLink } from "@/types";
+import type { CityPage, NavItem, NavLink } from "@/types";
 
 function isActive(pathname: string, item: NavItem) {
   if (item.href === "/") return pathname === "/";
@@ -24,16 +27,6 @@ function hasMenu(item: NavItem) {
   return Boolean(item.children?.length || item.groups?.length);
 }
 
-function hexToRgba(hex: string, alpha: number) {
-  const clean = hex.replace("#", "");
-  const full = clean.length === 3 ? clean.split("").map((c) => c + c).join("") : clean;
-  const num = Number.parseInt(full, 16);
-  const r = (num >> 16) & 255;
-  const g = (num >> 8) & 255;
-  const b = num & 255;
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}
-
 function NavIcon({
   item,
   tone = "light",
@@ -45,40 +38,29 @@ function NavIcon({
     return (
       <span
         className={cn(
-          "relative isolate flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md border bg-white",
-          tone === "dark" ? "border-white/15" : "border-primary/10",
+          "relative isolate flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-white",
+          tone === "dark" ? "border-white/15" : "border-brand-black/10",
         )}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={item.logo} alt="" className="h-[18px] w-[18px] object-contain" />
+        <img src={item.logo} alt="" className="h-[20px] w-[20px] object-contain" />
       </span>
     );
   }
 
   if (!item.icon) return null;
 
-  const color = item.iconColor ?? "#278a08";
-
   return (
     <span
       className={cn(
-        "inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md",
-        tone === "dark" && "ring-1 ring-white/10",
+        "inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg",
+        tone === "dark" ? "bg-white/10 text-white" : "bg-brand-red/10 text-brand-red",
       )}
-      style={{
-        color,
-        backgroundColor: tone === "dark" ? hexToRgba(color, 0.22) : hexToRgba(color, 0.14),
-      }}
       aria-hidden="true"
     >
       <span
-        className="material-symbols-outlined block overflow-hidden text-[18px] leading-none"
-        style={{
-          fontFamily: '"Material Symbols Outlined", sans-serif',
-          fontVariationSettings: "'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24",
-          width: 18,
-          height: 18,
-        }}
+        className="material-symbols-outlined block overflow-hidden text-[19px] leading-none"
+        style={{ fontVariationSettings: "'FILL' 1, 'wght' 400", width: 19, height: 19 }}
       >
         {item.icon}
       </span>
@@ -128,14 +110,48 @@ function submenuSections(item: NavItem): { label?: string; items: NavLink[] }[] 
   return sections;
 }
 
+/** One-line description for a menu link, only where the site already has copy for it. */
+function describe(item: NavLink) {
+  if (item.href.startsWith("/categories/")) {
+    const slug = item.href.split("/").pop();
+    return fleetSections.find((section) => section.slug === slug)?.description;
+  }
+  return undefined;
+}
+
+const CITY_COLUMNS: { type: CityPage["type"]; label: string }[] = [
+  { type: "primary", label: "Primary" },
+  { type: "tourist", label: "Tourist" },
+  { type: "local", label: "Local" },
+];
+
+const menuLinkClass =
+  "group/link flex w-full min-w-0 items-center gap-3 rounded-xl px-2.5 py-2 text-brand-black transition hover:bg-brand-black/[0.05] focus-visible:bg-brand-black/[0.05]";
+
+function MenuLink({ item, onClick, onActive }: { item: NavLink; onClick?: () => void; onActive?: () => void }) {
+  const description = describe(item);
+  return (
+    <Link href={item.href} onClick={onClick} onMouseEnter={onActive} onFocus={onActive} className={menuLinkClass}>
+      <NavIcon item={item} />
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-[14px] font-semibold leading-tight !text-brand-black">{item.label}</span>
+        {description ? <span className="mt-0.5 block truncate text-xs leading-tight text-brand-black/60">{description}</span> : null}
+      </span>
+    </Link>
+  );
+}
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [mobilePanel, setMobilePanel] = useState<string | null>(null);
   const [desktopMenu, setDesktopMenu] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hoverCategory, setHoverCategory] = useState<string>(fleetSections[0]?.slug ?? "");
+  const [tipLeft, setTipLeft] = useState<Record<string, number>>({});
   const pathname = usePathname();
   const closeMenuTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const suppressFocus = useRef(false);
   const phone = brand.phones[0];
 
   useEffect(() => {
@@ -154,7 +170,7 @@ export function Header() {
     };
   }, []);
 
-  // The info bar collapses once the visitor scrolls away from the top.
+  // The info bar collapses and the main bar tightens once the visitor scrolls away from the top.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -162,10 +178,16 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const openDesktopMenu = (href: string) => {
+  const openDesktopMenu = (href: string, wide?: { center: number; container: number }) => {
     if (closeMenuTimer.current) {
       clearTimeout(closeMenuTimer.current);
       closeMenuTimer.current = null;
+    }
+    if (wide) {
+      // Arrow tip of a mega menu points at its nav item.
+      const panel = Math.min(1024, window.innerWidth - 32);
+      const left = Math.min(Math.max(wide.center - (wide.container - panel) / 2, 28), panel - 28);
+      setTipLeft((prev) => (prev[href] === left ? prev : { ...prev, [href]: left }));
     }
     setDesktopMenu(href);
   };
@@ -329,7 +351,7 @@ export function Header() {
                   <Link
                     href="/contact"
                     onClick={closeAll}
-                    className="inline-flex h-12 items-center justify-center rounded-full bg-accent text-[15px] font-semibold !text-white"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-brand-red text-[15px] font-semibold !text-white"
                   >
                     Book Now
                   </Link>
@@ -341,28 +363,52 @@ export function Header() {
         )
       : null;
 
-  const navLinkClass = (active: boolean) =>
+  const navLinkClass = (active: boolean, menuOpen = false) =>
     cn(
-      "relative inline-flex h-full items-center whitespace-nowrap px-3 text-[15px] font-medium transition-colors",
-      "after:absolute after:inset-x-3 after:bottom-3 after:h-0.5 after:origin-left after:rounded-full after:bg-brand-red after:transition-transform",
+      "inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 text-[15px] transition-colors",
+      "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black",
       active
-        ? "!text-brand-black after:scale-x-100"
-        : "!text-brand-black/70 hover:!text-brand-black after:scale-x-0 hover:after:scale-x-100",
+        ? "bg-brand-black/[0.07] font-semibold !text-brand-black"
+        : cn("font-medium !text-brand-black/75 hover:bg-brand-black/[0.04] hover:!text-brand-black", menuOpen && "bg-brand-black/[0.04] !text-brand-black"),
     );
+
+  const panelBase =
+    "rounded-2xl border border-brand-black/[0.06] bg-white text-brand-black shadow-[0_20px_60px_rgba(21,24,29,0.16)]";
+  const arrowTip =
+    "pointer-events-none absolute top-1 z-10 h-3 w-3 -translate-x-1/2 rotate-45 rounded-[2px] border-l border-t border-brand-black/[0.06] bg-white";
+
+  const activeCategoryCars = getCarsForCategory(hoverCategory).slice(0, 3);
+  const activeCategory = fleetSections.find((section) => section.slug === hoverCategory);
 
   return (
     <>
-      <header className="site-header sticky top-0 z-50 bg-white text-brand-black shadow-[0_1px_0_rgba(21,24,29,0.08)]">
+      <header
+        className={cn(
+          "site-header sticky top-0 z-50 text-brand-black transition-[background-color,box-shadow,backdrop-filter] duration-300",
+          scrolled ? "bg-white/92 shadow-[0_6px_24px_rgba(21,24,29,0.08)] backdrop-blur-xl" : "bg-white shadow-[0_1px_0_rgba(21,24,29,0.08)]",
+        )}
+      >
         <div className={cn("grid transition-[grid-template-rows] duration-300 ease-out", scrolled ? "grid-rows-[0fr]" : "grid-rows-[1fr]")}>
           <div className="overflow-hidden" aria-hidden={scrolled ? true : undefined}>
             <TopInfoBar />
           </div>
         </div>
 
-        <Container className="relative flex h-16 items-center justify-between gap-3 xl:grid xl:h-[76px] xl:grid-cols-[auto_1fr_auto] xl:gap-6">
-          <Logo priority className="h-11 w-[88px] xl:h-12 xl:w-[96px]" />
+        <Container
+          className={cn(
+            "relative flex items-center justify-between gap-3 transition-[height] duration-300 xl:grid xl:grid-cols-[auto_1fr_auto] xl:gap-4",
+            scrolled ? "h-14 xl:h-16" : "h-16 xl:h-[76px]",
+          )}
+        >
+          <Logo
+            priority
+            className={cn(
+              "transition-[height,width] duration-300",
+              scrolled ? "h-10 w-[80px] xl:h-10 xl:w-[80px]" : "h-11 w-[88px] xl:h-12 xl:w-[96px]",
+            )}
+          />
 
-          <nav className="hidden h-full items-stretch justify-self-center xl:flex" aria-label="Main">
+          <nav className="hidden h-full items-center justify-self-center xl:flex" aria-label="Main">
             {mainNav.map((item) => {
               const active = isActive(pathname, item);
               const menu = hasMenu(item);
@@ -370,24 +416,65 @@ export function Header() {
               if (!menu) {
                 return (
                   <Link key={item.href} href={item.href} className={navLinkClass(active)}>
+                    {active ? <span className="h-1.5 w-1.5 rounded-full bg-brand-red" aria-hidden="true" /> : null}
                     {item.label}
                   </Link>
                 );
               }
 
-              const wide = Boolean(item.groups?.length);
+              const wide = item.href === "/cars" || item.href === "/city-services";
+              const isOpen = desktopMenu === item.href;
 
               return (
                 <div
                   key={item.href}
-                  className={cn("flex items-stretch", !wide && "relative")}
-                  onMouseEnter={() => openDesktopMenu(item.href)}
+                  className={cn("flex h-full items-center", !wide && "relative")}
+                  onMouseEnter={(e) =>
+                    openDesktopMenu(
+                      item.href,
+                      wide
+                        ? {
+                            center: e.currentTarget.offsetLeft + e.currentTarget.offsetWidth / 2,
+                            container: (e.currentTarget.offsetParent as HTMLElement | null)?.clientWidth ?? window.innerWidth,
+                          }
+                        : undefined,
+                    )
+                  }
                   onMouseLeave={() => scheduleCloseDesktopMenu(item.href)}
+                  onFocus={(e) => {
+                    if (suppressFocus.current) return;
+                    openDesktopMenu(
+                      item.href,
+                      wide
+                        ? {
+                            center: e.currentTarget.offsetLeft + e.currentTarget.offsetWidth / 2,
+                            container: (e.currentTarget.offsetParent as HTMLElement | null)?.clientWidth ?? window.innerWidth,
+                          }
+                        : undefined,
+                    );
+                  }}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                      setDesktopMenu((current) => (current === item.href ? null : current));
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key !== "Escape" || !isOpen) return;
+                    e.stopPropagation();
+                    suppressFocus.current = true;
+                    setDesktopMenu(null);
+                    (e.currentTarget.querySelector("a") as HTMLElement | null)?.focus();
+                    setTimeout(() => {
+                      suppressFocus.current = false;
+                    }, 0);
+                  }}
                 >
-                  <Link href={item.href} className={cn(navLinkClass(active), "gap-0.5")} aria-expanded={desktopMenu === item.href}>
+                  <Link href={item.href} className={navLinkClass(active, isOpen)} aria-expanded={isOpen} aria-haspopup="true">
+                    {active ? <span className="h-1.5 w-1.5 rounded-full bg-brand-red" aria-hidden="true" /> : null}
                     {item.label}
                     <span
-                      className={cn("material-symbols-outlined text-[16px] opacity-70 transition", desktopMenu === item.href && "rotate-180")}
+                      className={cn("material-symbols-outlined -ml-0.5 text-[15px] font-light opacity-60 transition-transform duration-200", isOpen && "rotate-180")}
+                      style={{ fontVariationSettings: "'wght' 300" }}
                       aria-hidden="true"
                     >
                       expand_more
@@ -396,142 +483,172 @@ export function Header() {
 
                   <div
                     className={cn(
-                      "absolute top-full z-50 transition",
-                      desktopMenu === item.href ? "visible opacity-100 pointer-events-auto" : "invisible opacity-0 pointer-events-none",
-                      wide
-                        ? "left-1/2 w-[min(72rem,calc(100vw-2rem))] -translate-x-1/2 pt-0"
-                        : "left-1/2 -translate-x-1/2",
+                      "absolute top-full z-50 pt-2.5 transition duration-200",
+                      isOpen ? "visible translate-y-0 opacity-100 pointer-events-auto" : "invisible -translate-y-1 opacity-0 pointer-events-none",
+                      wide ? "left-1/2 w-[min(64rem,calc(100vw-2rem))] -translate-x-1/2" : "left-1/2 -translate-x-1/2",
                     )}
                   >
-                    <div
-                      className={cn(
-                        "rounded-[14px] border border-primary/10 bg-white p-5 text-primary shadow-[0_18px_50px_rgba(0,11,29,0.12)]",
-                        !wide ? "min-w-[280px]" : undefined,
-                        wide ? "max-h-[min(70vh,560px)] overflow-y-auto p-6" : undefined,
-                      )}
-                    >
-                      {item.children?.length ? (
-                        <ul className={cn("space-y-1", wide ? "mb-5 border-b border-primary/8 pb-4" : undefined)}>
-                          {item.children.map((child) => (
+                    {item.href === "/cars" ? (
+                      <div className={cn(panelBase, "relative grid max-h-[min(78vh,600px)] grid-cols-[320px_minmax(0,1fr)] overflow-hidden")}>
+                        <div className="overflow-y-auto border-r border-brand-black/[0.06] p-4">
+                          <p className="mb-2 px-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-black/55">
+                            {item.groups?.[0]?.label}
+                          </p>
+                          <ul>
+                            {item.groups?.[0]?.items.map((child) => (
+                              <li key={child.href}>
+                                <MenuLink
+                                  item={child}
+                                  onActive={() => setHoverCategory(child.href.split("/").pop() ?? "")}
+                                />
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="min-w-0 bg-brand-black/[0.025] p-5">
+                          <div className="mb-3 flex items-center justify-between gap-3">
+                            <p className="truncate font-heading text-base font-bold text-brand-black">{activeCategory?.name}</p>
+                            <Link href="/cars" className="shrink-0 text-xs font-semibold !text-brand-red hover:underline">
+                              View all
+                            </Link>
+                          </div>
+                          <ul className="grid grid-cols-3 gap-3">
+                            {activeCategoryCars.map((car) => (
+                              <li key={car.slug} className="min-w-0">
+                                <Link
+                                  href={`/cars/${car.slug}`}
+                                  className="group/car block overflow-hidden rounded-xl bg-white shadow-[0_2px_10px_rgba(21,24,29,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(21,24,29,0.12)]"
+                                >
+                                  <span className="relative block aspect-[4/3] overflow-hidden bg-background">
+                                    <Image src={car.image} alt={car.name} fill unoptimized sizes="200px" className="object-cover transition duration-300 group-hover/car:scale-105" />
+                                  </span>
+                                  <span className="block p-3">
+                                    <span className="block truncate text-[13px] font-semibold !text-brand-black">{car.name}</span>
+                                    <span className="mt-0.5 block text-xs font-bold text-brand-red">
+                                      {formatPrice(car.priceDay)}
+                                      <span className="font-medium text-brand-black/55"> / day</span>
+                                    </span>
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ) : item.href === "/city-services" ? (
+                      <div className={cn(panelBase, "relative max-h-[min(78vh,600px)] overflow-y-auto p-5")}>
+                        <div className="grid grid-cols-4 gap-6">
+                          {CITY_COLUMNS.map((column) => (
+                            <div key={column.type} className={cn("min-w-0", column.type === "local" && "col-span-2")}>
+                              <p className="mb-2 px-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-black/55">{column.label}</p>
+                              <ul className={column.type === "local" ? "grid grid-cols-2" : undefined}>
+                                {cities
+                                  .filter((city) => city.type === column.type)
+                                  .map((city) => (
+                                    <li key={city.slug}>
+                                      <Link
+                                        href={`/rent-a-car/${city.slug}`}
+                                        className="flex min-h-9 items-center gap-2 rounded-lg px-2.5 text-[14px] font-medium !text-brand-black/80 transition hover:bg-brand-black/[0.05] hover:!text-brand-black focus-visible:bg-brand-black/[0.05]"
+                                      >
+                                        <span className="h-1 w-1 shrink-0 rounded-full bg-brand-red" aria-hidden="true" />
+                                        <span className="truncate">{city.name}</span>
+                                      </Link>
+                                    </li>
+                                  ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-brand-black/[0.06] pt-4">
+                          {[...(item.children ?? []), ...(item.groups?.[0]?.items ?? [])].map((link) => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className="inline-flex h-9 items-center rounded-full bg-brand-black/[0.05] px-4 text-[13px] font-semibold !text-brand-black transition hover:bg-brand-black hover:!text-white"
+                            >
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={cn(panelBase, "relative w-[340px] p-2.5")}>
+                        <ul>
+                          {[...(item.children ?? []), ...(item.groups?.flatMap((group) => group.items) ?? [])].map((child) => (
                             <li key={`${child.href}-${child.label}`}>
-                              <DropdownLink
-                                item={child}
-                                className="w-full rounded-lg px-3 py-2.5 text-sm text-primary/80 hover:bg-background hover:text-primary"
-                              />
+                              <MenuLink item={child} />
                             </li>
                           ))}
                         </ul>
-                      ) : null}
-
-                      {item.groups?.length ? (
-                        item.href === "/cars" || item.href === "/city-services" ? (
-                          <div className="flex flex-col gap-8 xl:flex-row xl:gap-0">
-                            {item.groups.map((group) => {
-                              const isWideList = group.label === "All Cars" || group.label === "All Cities";
-                              return (
-                                <div
-                                  key={group.label}
-                                  className={cn(
-                                    isWideList ? "min-w-0 flex-1 xl:pl-8" : "w-full shrink-0 xl:w-[250px] xl:border-r xl:border-primary/10 xl:pr-8",
-                                  )}
-                                >
-                                  <div className="mb-3 flex items-center justify-between gap-3 px-1">
-                                    <p className="text-[11px] font-semibold uppercase tracking-wider text-muted">{group.label}</p>
-                                    {group.label === "All Cars" ? (
-                                      <Link href="/cars" className="text-[11px] font-semibold text-secondary hover:underline">
-                                        View all
-                                      </Link>
-                                    ) : null}
-                                  </div>
-                                  <ul className={cn(isWideList ? "grid grid-cols-1 gap-1 sm:grid-cols-2 xl:grid-cols-3" : "space-y-1")}>
-                                    {group.items.map((child) => (
-                                      <li key={`${child.href}-${child.label}`} className="min-w-0">
-                                        <DropdownLink
-                                          item={child}
-                                          className="w-full min-w-0 rounded-lg px-3 py-2.5 text-sm text-primary/80 hover:bg-background hover:text-primary"
-                                        />
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        ) : (
-                          <div
-                            className={cn(
-                              "grid gap-6",
-                              item.groups.length === 2 && "grid-cols-[240px_minmax(0,1fr)]",
-                              item.groups.length >= 3 ? "grid-cols-2 xl:grid-cols-3" : undefined,
-                            )}
-                          >
-                            {item.groups.map((group) => (
-                              <div key={group.label} className="min-w-0">
-                                <p className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-wider text-muted">{group.label}</p>
-                                <ul className="space-y-1">
-                                  {group.items.map((child) => (
-                                    <li key={`${child.href}-${child.label}`} className="min-w-0">
-                                      <DropdownLink
-                                        item={child}
-                                        className="w-full min-w-0 rounded-lg px-3 py-2.5 text-sm text-primary/80 hover:bg-background hover:text-primary"
-                                      />
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        )
-                      ) : null}
-                    </div>
+                      </div>
+                    )}
+                    <span className={arrowTip} style={{ left: wide ? (tipLeft[item.href] ?? 160) : "50%" }} aria-hidden="true" />
                   </div>
                 </div>
               );
             })}
           </nav>
 
-          {/* One combined call-to-action group (desktop). */}
-          <div className="hidden items-center gap-1 justify-self-end rounded-full border border-brand-black/12 p-1 xl:flex">
+          {/* Action group (desktop): divider, call block, WhatsApp, Book Now. */}
+          <div className="hidden items-center gap-2.5 justify-self-end xl:flex">
+            <span className="h-8 w-px bg-brand-black/15" aria-hidden="true" />
             <a
               href={telLink(phone.number)}
               aria-label={`Call ${formatPhone(phone.number)}`}
-              className="inline-flex h-11 items-center gap-2 rounded-full px-3 text-sm font-semibold !text-brand-black transition hover:bg-brand-black/5 min-[1400px]:pr-4"
+              className="group/call flex items-center gap-2.5 rounded-full pr-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
             >
-              <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
-                call
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-red text-white transition group-hover/call:bg-brand-red-dark">
+                <span className="material-symbols-outlined text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }} aria-hidden="true">
+                  call
+                </span>
               </span>
-              <span className="hidden min-[1400px]:inline">{formatPhone(phone.number)}</span>
+              <span className="leading-tight">
+                <span className="block whitespace-nowrap text-[11px] font-medium text-brand-black/60">Call 24/7</span>
+                <span className="block whitespace-nowrap text-[15px] font-bold !text-brand-black">{formatPhone(phone.number)}</span>
+              </span>
             </a>
-            <a
-              href={whatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full"
-            >
-              <WhatsAppIcon className="h-5 w-5" />
-            </a>
+            <span className="group/wa relative">
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat on WhatsApp"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+              </a>
+              <span
+                role="tooltip"
+                className="pointer-events-none absolute left-1/2 top-[calc(100%+8px)] z-10 -translate-x-1/2 whitespace-nowrap rounded-md bg-brand-black px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg transition group-focus-within/wa:opacity-100 group-hover/wa:opacity-100"
+              >
+                Chat on WhatsApp
+              </span>
+            </span>
             <Link
               href="/contact"
-              className="inline-flex h-11 items-center rounded-full bg-accent px-6 text-sm font-semibold !text-white transition hover:brightness-110"
+              className="group/book inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-full bg-brand-red pl-5 pr-4 text-sm font-semibold !text-white transition hover:bg-brand-red-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
             >
               Book Now
+              <span
+                className="material-symbols-outlined text-[18px] transition-transform duration-200 group-hover/book:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover/book:translate-x-0"
+                aria-hidden="true"
+              >
+                arrow_forward
+              </span>
             </Link>
           </div>
 
+          {/* Tablet / mobile: phone icon + menu button only. */}
           <div className="flex shrink-0 items-center gap-2 xl:hidden">
             <a
               href={telLink(phone.number)}
               aria-label={`Call ${formatPhone(phone.number)}`}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-black/15 !text-brand-black"
+              className="grid h-11 w-11 place-items-center rounded-full bg-brand-red text-white"
             >
-              <span className="material-symbols-outlined text-[22px]" aria-hidden="true">
+              <span className="material-symbols-outlined text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }} aria-hidden="true">
                 call
               </span>
             </a>
-            <Link href="/contact" className="inline-flex h-11 items-center rounded-full bg-accent px-4 text-sm font-semibold !text-white">
-              Book Now
-            </Link>
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}

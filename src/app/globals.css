@@ -291,3 +291,11 @@ header:not(.site-header) .site-brand-logo, footer .site-brand-logo, [role="dialo
 :root a.wa-text-dark[href^="https://wa.me/"] { color: rgba(255, 255, 255, 0.85) !important; }
 :root a.wa-text-light[href^="https://wa.me/"] { color: var(--color-brand-black) !important; }
 :root a.wa-text[href^="https://wa.me/"]:hover { color: #278a08 !important; }
+
+@keyframes phone-wiggle {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-16deg); }
+  40% { transform: rotate(14deg); }
+  60% { transform: rotate(-10deg); }
+  80% { transform: rotate(6deg); }
+}
