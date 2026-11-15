@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CarDetailBody, CarsHero } from "@/components/cars";
 import { CtaBanner } from "@/components/shared";
-import { brand, formatPrice } from "@/lib/brand";
+import { brand, formatPrice, telLink } from "@/lib/brand";
 import { carCategories, carModels } from "@/data";
 import { pageMeta } from "@/lib/seo";
 
@@ -51,7 +51,7 @@ export default async function CarModelPage({ params }: Props) {
         primaryCta={{ label: "Inquire Now", href: "/contact" }}
         secondaryCta={{
           label: "Call Us",
-          href: `tel:${brand.phone}`,
+          href: telLink(),
         }}
         stats={[
           { value: formatPrice(car.priceDay), label: "Per Day" },

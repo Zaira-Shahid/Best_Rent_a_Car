@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     date: "Jul 18, 2026",
     excerpt: "Scenic routes, picnic spots, and the ideal rental cars for short getaways.",
     image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80",
-    author: "Ahmed Malik",
+    author: "Best Carz Team",
     readTime: "6 min read",
     content: [
       "Islamabad is built for weekend escapes. Within one to two hours you can swap city boulevards for pine forests, lakeside picnic spots, and quiet hill roads — if you have the right car and a simple plan.",
@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
     date: "Jul 10, 2026",
     excerpt: "What to book, what to avoid, and how to plan a smooth mountain drive.",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80",
-    author: "Sara Khan",
+    author: "Best Carz Team",
     readTime: "7 min read",
     content: [
       "Murree rewards planning. Fog, weekend congestion on the main Mall Road corridor, and steep approaches mean the car you choose matters as much as the hotel you book.",
@@ -62,7 +62,7 @@ export const blogPosts: BlogPost[] = [
     date: "Jun 28, 2026",
     excerpt: "How businesses save time with monthly and executive car rental plans.",
     image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
-    author: "Imran Qureshi",
+    author: "Best Carz Team",
     readTime: "8 min read",
     content: [
       "Corporate mobility in Pakistan is rarely a single car problem. Sales teams need reliable sedans, visiting executives expect punctual airport pickups, and finance wants one clean monthly invoice — not a stack of receipts.",
@@ -85,7 +85,7 @@ export const blogPosts: BlogPost[] = [
     date: "Jun 15, 2026",
     excerpt: "Best routes, parking tips, and which car size works best for Lahore traffic.",
     image: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
-    author: "Ayesha Noor",
+    author: "Best Carz Team",
     readTime: "6 min read",
     content: [
       "Lahore rewards a calm driver and a car that fits the day. Canal Road, MM Alam, and the DHA corridors move differently at rush hour than a quiet Sunday around the Walled City — so match the vehicle to your itinerary.",
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
     date: "Jun 02, 2026",
     excerpt: "Hunza, Skardu, and Naran trips — what to expect and which SUVs perform best.",
     image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
-    author: "Hassan Ali",
+    author: "Best Carz Team",
     readTime: "9 min read",
     content: [
       "Northern Pakistan is spectacular and demanding. Long highway stretches, unpaved approaches to viewpoints, sudden weather changes, and altitude mean a city sedan is the wrong tool for Hunza, Skardu, or Naran itineraries.",
@@ -131,7 +131,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 20, 2026",
     excerpt: "Flight delays, meet-and-greet, and how to book a reliable airport pickup.",
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
-    author: "Nadia Shah",
+    author: "Best Carz Team",
     readTime: "5 min read",
     content: [
       "A good airport transfer starts before you land. Share your flight number, passenger count, and drop address when you book so the chauffeur can monitor delays and wait at the right arrivals door.",
@@ -154,7 +154,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 08, 2026",
     excerpt: "How professional drivers make airport days, meetings, and outstation travel easier.",
     image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80",
-    author: "Omar Farooq",
+    author: "Best Carz Team",
     readTime: "5 min read",
     content: [
       "Best Carz Rent a Car focuses on chauffeur-driven rentals so you can travel without navigation stress, parking hunts, or unfamiliar city roads.",
@@ -176,8 +176,8 @@ export const blogPosts: BlogPost[] = [
     category: "rawalpindi-travel-guide",
     date: "Apr 22, 2026",
     excerpt: "Saddar bazaar, Ayub National Park, and the best compact SUV for the twin city's busy streets.",
-    image: "https://images.unsplash.com/photo-1616422285623-13ff0162193b?auto=format&fit=crop&w=1200&q=80",
-    author: "Bilal Aslam",
+    image: "/images/site/islamabad-hazy-faisal.webp",
+    author: "Best Carz Team",
     readTime: "6 min read",
     content: [
       "Rawalpindi is denser and more bazaar-driven than Islamabad. A day trip here is about markets, parks, and food — with traffic patterns that favor a smaller, agile car.",

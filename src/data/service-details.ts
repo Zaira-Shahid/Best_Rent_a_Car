@@ -1,5 +1,17 @@
-import type { ServiceDetail } from "@/types";
-import { formatPhoneDisplay } from "@/lib/brand";
+import type { ServiceDetail, ServiceTestimonial } from "@/types";
+import { brand, formatPhone, telLink, whatsappLink } from "@/lib/brand";
+import { googleReviews, reviewMeta } from "./reviews";
+
+/** Service pages show the same real Google reviews (the only reviews there are), never invented ones. */
+const googleReviewItems: ServiceTestimonial[] = googleReviews.map((review) => ({
+  quote: review.text,
+  name: review.name,
+  role: reviewMeta(review),
+}));
+const googleRatingSummary = {
+  value: `${brand.rating.toFixed(1)}/5 on Google`,
+  label: `Based on ${brand.reviewCount} Google reviews`,
+};
 
 const hotelTransfer: ServiceDetail = {
   slug: "hotel-transfer",
@@ -12,7 +24,7 @@ const hotelTransfer: ServiceDetail = {
     description:
       "Experience seamless door-to-door luxury travel with our professional chauffeur service. We bridge the gap between your arrival and your destination with uncompromising elegance. Every transfer is pre-scheduled, fixed-price, and tracked end-to-end, so there are no surprises at either end of your journey.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBVVaQAWZFJ0YCSkQ1uJZwiYmBS9MMFnSJNttOQMUhdXkmsLJh8CDvnNUKInESgnr8hxNnYRIEBAzHB5UOFoi4-TX4WatCkThIWjZmo2ihJtaynQN_gYMpeFmYqGPXGQxkHwfy2rTKHZgB4icjlWxvHwgHLnw-1V3lN17U5BKPbpqA8byOBPo3dAOC_bX-88VIE3e1p5YqUbNwm7n1mIb-eaZ-2USjZM4LlzXp0uciPK1Hi3zU4bBKT",
+      "/images/site/hotel-chauffeur-van.webp",
     primaryCta: { label: "Reserve Transfer", href: "/contact" },
     secondaryCta: { label: "Explore Fleet", href: "#fleet" },
   },
@@ -102,7 +114,7 @@ const hotelTransfer: ServiceDetail = {
         seats: 5,
         transmission: "Automatic",
         image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuBQpYu3onFZyjQJ9dC_b9w1SdoBPXJtp0iBEOfN-3s-VlIUP2iMYMXswA4sgY2oFaam7m3tNj2NXvqUQ3p7xAMMAcwiZwwgQJQ5kNBj8qDno3KmB1t3NWbmi8FYrQN3uY_poeKnw74oITVdEx7RMJtzx4UmvB2Alp677m-2Tyg9dySMPvX6rsRuVvR3idcGDwUuNKQO8YM1epYyZmLkHqbov8CWZEHeFP-IsHXKBfYvQIkm8cZpoJIo",
+          "/images/fleet/lx-mockup.webp",
         priceDay: 38000,
       },
       {
@@ -111,7 +123,7 @@ const hotelTransfer: ServiceDetail = {
         seats: 7,
         transmission: "Automatic",
         image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDhnGMFWj4w1_ItWViPEd0sqK8vIx-AvGiXvtAdTV8vXraov31OmtiTXkTNI0LTwIvlpwy3CPgqSjjKGkZjRnnb1LdNvu0NiWXZ4krNQi5QGW5I3vikKBfz_6zUJIJ60SZBqbEtfKOYuaU-SQCHUUdz-GjyHyrXM2YoZ8VLr5IvLdtqPs0yCWy0JSM814ACQ8i9TnhP6GVgbtPGWSnZDmtaiobl5VUkK7pz-gFcBQviqu98Q9HJ4U4U",
+          "/images/fleet/grand-cabin-grey.webp",
         priceDay: 28000,
       },
     ],
@@ -197,7 +209,7 @@ const executiveCarRental: ServiceDetail = {
         seats: 4,
         transmission: "Automatic",
         image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDRNpKn2dSR_BZtlgLJflMI3WLS3g0yKN0rM7j_hYRi0Jjlu-tRAKxwDnOW2uXQ1DXJdmLCESbGHacruNEJgeyVeoDqonuaBdMvYDL1bBfVksiAAsGbIP8FfM_5FMLUr0teyvPPdVFDUkke1dMK2BY-53HrsoQqGlM7ZmAk-q4NhfEtd-sZoYP9eBSKMBUFz_ctlhVCB5BpB01tr-takOFVa11Xnemhbze-FSX_s3wKVSEmrZsanXKv",
+          "/images/fleet/s500-white.webp",
         priceDay: 65000,
       },
       {
@@ -224,7 +236,7 @@ const executiveCarRental: ServiceDetail = {
         seats: 7,
         transmission: "Automatic",
         image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuA00v0p_QuJU2LFknjEzdWtWgmyEGyZD8ZS_O4BLwfG42sH1FZ3oYoSdvaZosAzZkGOmuOPhphhmWuruhNBKshsmWipIs0wOybaFklc7dV-zbK_e2l4AJO_CZKCKHTBi_FXpxzJWSM4rbSPWYwGwvjjpbjKQgGHIhRMasgsGhm7foAN3iHwBQRzgbtM3mFrSZ-SRra74-xFD9QLVSdPfuJmeTR68Ex6eTzqPlXWjQg5jg0B_C27Sdzu",
+          "/images/fleet/fortuner-white.webp",
         priceDay: 25000,
       },
     ],
@@ -261,7 +273,7 @@ const executiveCarRental: ServiceDetail = {
     description:
       "Our chauffeurs are more than just drivers; they are expertly trained logistics specialists and local guides committed to your safety and schedule.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCGa-vGukjgP8fGr7vX34p5XKOeXU-NPCsxWd74FvO-GAtO_owb_LmaSmfCPbNoozVrkhaDWctD3CNPrlN9dibkNRl5ES-EAjw8wvk78xHYNXMQIpN9ir2twigOcmIGNAIrKm5ysLedyv-_kLo4t9yQ8t3tMPumQSQrZoyW53-t1DCL7_3zgStGQEcm5QG74lBtz7ppDdDGS3xbF_lG9TCIs4XK5OfY4wcfEXbs1LrKFZs2iy1tBpo7",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuA2cP6lh8z8yLUyvfAS2r5Kyu0c2myayXrEh3Tqte9GAzqwXkZEqJwAF8FLPzpBDlejLFxqcK39gyEJY3xGwD2WPQdVxW-96QI_vkw1LPOQP5Djf4DqLUm4c96I8VJnurZE8uEgbeowL3JmC3k54rEtgS_FWgb3uyZ8oKvA5VYVQBqTGvkFHShX583W7gfpzW-JwSoOXMpnA5J45sfEONUI3iTcqPnmu0QLVRu4yCCvXX6_N-uuPvCw",
     stat: { value: "15+", label: "Years of Average Experience" },
     points: [
       {
@@ -296,20 +308,7 @@ const executiveCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Voices of Excellence",
-    items: [
-      {
-        quote:
-          "Best Rent a Car has become our exclusive partner for all executive travel. Their attention to detail and the professionalism of their chauffeurs are unmatched in the industry.",
-        name: "Haris Ahmed",
-        role: "CEO, TechFlow",
-      },
-      {
-        quote:
-          "The airport transfer service was flawless. My flight was delayed, but the chauffeur was waiting at the terminal when I landed. Exceptionally reliable.",
-        name: "Elena Vance",
-        role: "Global Logistics Director",
-      },
-    ],
+    items: googleReviewItems,
   },
   included: {
     title: "What's Included",
@@ -383,7 +382,7 @@ const weddingCarRental: ServiceDetail = {
     description:
       "Experience unparalleled luxury on your special day. From executive sedans to grand SUVs, we provide the perfect chariot for your once-in-a-lifetime celebration. Our wedding concierge coordinates every vehicle in your convoy — bride, groom, and family — so timings stay perfectly in sync from baraat to reception.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBJJHBE-bmZHercJDx_Uq8yAQGd519l2l3SfHdJPoEx6mb-fWl7IPlGEGMU1Sd0oCAKwBuRY2VKEJPqZDUag3ipyIPVH0koJipFZKr1UhAL4H504Zb_6gSqmydhrIPeCfDGKI-Za7Qwaobdt5NH6aHFIddN7RaUpgsEq0HbPv3g8he9vbblpfSeNNTzT9rKcOQimfTETxqd1rAtBbwc6CzVcVJdCgS8tOrJekEAuC4DrT0d468CbGCd",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDXqik-wRX7WtXJLneIcUXCKNAqtBcIVXhktuJKQDZd-NIK6kKfttaGwp5FC0ZzUXfg6aCV7gjo0s6bkWDkJQg-t6goUYT5ih_c9_gueGD_Wnh_rwiDLaXOwueRDiFUDKJveYCAak_1wG0Yp91eQGuqyPeDcaOKwxsiRYL9Jj3UxGlSavJXVhhiZJr8FP292NNS5FK5PMejDKS5TsCCfVM0S-77Qx0kG47SXdwfyL5yFe6-pVXf_K40",
     primaryCta: { label: "Reserve Your Car", href: "#booking" },
     secondaryCta: { label: "View Our Fleet", href: "#fleet" },
   },
@@ -424,7 +423,7 @@ const weddingCarRental: ServiceDetail = {
         seats: 7,
         transmission: "Automatic",
         image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuCPY5_PMYGQYo0Waqtr0gQOWBLGeG3Abd006l8T-3Jg0-nWsm2E1pwkrKBBOrnZhn94JsjI7SBVHQUxQ6xsZaHOFw8dZocQClcp6GSlKQEKFQS6JpspWNd-UdG088WEA4bPnpQKaAUOoHy0zPNuBTxMHjiQWQX-5UlzJQzYJS49TJeb0odAj05Hwe1_V-3SF07KqxH-w1QDYuD2oH5mIIVpKIht00JUkq7HOrsetbuLSKPulT-Bh0h0",
+          "/images/fleet/prado-mockup.webp",
         priceDay: 35000,
       },
       {
@@ -433,7 +432,7 @@ const weddingCarRental: ServiceDetail = {
         seats: 7,
         transmission: "Automatic",
         image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuBzADb0DK4icmYnocK74sO8pHPCYx9c5wxy32-q5HddPova4FmP7EEHgIbVsrqgEgEpeJzce4c5xrP4J8T-z6KhGT0iuGHYc6FWq23zFhdDxwFtdQ0MVlNDQ-YOkI4pKqoFuPtNdVZZp7pS3nrgLBn-UU23IPZdx9Pk-15zL2dgA5Wq2rLivIQj2_myHQUbVIuk93LQbHfs0wYudTt9QvlH5sFASUhbrc3Wc8WB7dzQ5S9aP2wUV_cJ",
+          "/images/fleet/fortuner-mockup.webp",
         priceDay: 28000,
       },
       {
@@ -442,7 +441,7 @@ const weddingCarRental: ServiceDetail = {
         seats: 4,
         transmission: "Automatic",
         image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAuaOzWRWQYA0uw2yt7UyJNB_QmzM3A4YzyQllk_PJLUq6cl08wmiYPZg3O0XRx_xCpBfmDZ0FCilJDKgFhAGYrk9N0qi-03FP_ruiy2wb_VGexSnpBdU6uNdnyMEWfPjUhU6zDeOwWAKHKvjBxgwP70jnQrp9d7Do9SMgvvEH_85_QhpiITW-55h_68wSPU9sZwM49d3SESkmztpoHrRAu4pyuv_vfeIl-7Q3NSPWND7k7Z0efKwrd",
+          "/images/fleet/s400-white.webp",
         priceDay: 60000,
       },
       {
@@ -486,7 +485,9 @@ const weddingCarRental: ServiceDetail = {
     description:
       "Fill out the form and our wedding concierge will get back to you within 2 hours with a customized quote and availability.",
     contact: [
-      { icon: "call", label: "Direct Line", value: formatPhoneDisplay() },
+      { icon: "call", label: "Call (Primary)", value: formatPhone(brand.phones[0].number), href: telLink(brand.phones[0].number) },
+      { icon: "call", label: "Call (Secondary)", value: formatPhone(brand.phones[1].number), href: telLink(brand.phones[1].number) },
+      { icon: "chat", label: "WhatsApp", value: formatPhone(brand.whatsapp), href: whatsappLink() },
       { icon: "mail", label: "Email Us", value: "info@example.com" },
     ],
   },
@@ -557,7 +558,7 @@ const dailyCarRental: ServiceDetail = {
     description:
       "Experience the pinnacle of automotive comfort for a day. Whether it's a business meeting or a weekend escape, travel with Best Carz Rent a Car and a professional chauffeur — with doorstep pickup available across every major city.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB-dunIcvM038_EixrJ7bpLCmUGRjDv0r1ufOXWfY_ZhiL5bc_FWICTBOU3alwtKozX5I4bfq_pV0MXp-0G8DlVWQtIKebtt-vHlmE4X26uW21kPQA4EKQry8Lp3npT8q9ofVW1Oj_HWWSMgfwgl83vBIWWIK3B7lYsiw3Kwx17jx4AKrxR7_LP7VLZOvoPP5Qch56Y-m60z_cRhJl1sQGKZ1ARsQ-kA7tLgYyrYmje9mZc4Mx_UDK8",
+      "/images/site/pakistan-motorway.webp",
     primaryCta: { label: "Search Available Cars", href: "#fleet" },
     secondaryCta: { label: "Book Now", href: "/contact" },
   },
@@ -598,7 +599,7 @@ const dailyCarRental: ServiceDetail = {
         seats: 5,
         transmission: "Automatic",
         image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuC0wQvGJEYMKEXQA_WiSQb5KC9VX9IhkjBqEG9bx7tD5svMCXRTwqXeDykIUGvye2zV_jOdPrF7ffAzT43jtzf_ptcurIGzXOCWX2cpUuk_e82kC3lZXan3oTixRoiNaYV1PnavdhIHI--J_VBC9-I8hzHwPpNHwYD69q_0X3KqUC_qFJwQk7JSCXzgULyktL61nxbXAtBCbPkYUb9NNQf3hgxaQa61H8Hcpy_-LAx_ueFW_oy_BkxB",
+          "/images/fleet/alto-mockup.webp",
         priceDay: 6500,
       },
       {
@@ -670,21 +671,8 @@ const dailyCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Drive Stories from Our Clients",
-    ratingSummary: { value: "4.9/5 Rating", label: "Based on 2.4k reviews" },
-    items: [
-      {
-        quote:
-          "Rented a BMW 5 Series for a last-minute business trip. The delivery was seamless, arriving exactly at my hotel in 45 minutes. The car was pristine. Truly a premium experience.",
-        name: "Omar Farooq",
-        role: "Investment Banker",
-      },
-      {
-        quote:
-          "Booked a Range Rover for a family weekend getaway to Murree. The flexible cancellation saved me when our plans shifted. Super clean vehicle and amazing customer service.",
-        name: "Sara Khan",
-        role: "Travel Vlogger",
-      },
-    ],
+    ratingSummary: googleRatingSummary,
+    items: googleReviewItems,
   },
   faqs: {
     title: "Frequently Asked Questions",
@@ -762,7 +750,7 @@ const monthlyCarRental: ServiceDetail = {
     description:
       "Elevate your commute with flexible monthly subscriptions. Designed for companies, families, and professionals who value prestige and peace of mind — with doorstep delivery and transparent billing.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCCoCn8jpaPUn3AnfWzEpoHCI_JGUERsh4pzO2b8x6zTU3JvSaDfHGKjo3ygmksMhoVGYVCINJB2aO8yc84vJSQ1GyQHuVhoSMEm_N-LsgWxSQ7PL-g2cMu-UOmK0g-KMggOm42NAOdIGrMBK_IP9JEe4GwNXsBdsrw3U4Z_BrP0fUTi0xYZpONuj6tRDSnGk2qHvZF0B7px0BYw1ibORwRlNpHpusYE3rmbmF5_b08FEfhG3otKl36",
+      "/images/site/islamabad-jinnah-avenue.webp",
     primaryCta: { label: "Browse Inventory", href: "#fleet" },
     secondaryCta: { label: "Talk to an Advisor", href: "/contact" },
   },
@@ -878,27 +866,8 @@ const monthlyCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Trust from High-Performers",
-    ratingSummary: { value: "4.9/5 Rating", label: "Chosen by CEOs and industry leaders" },
-    items: [
-      {
-        quote:
-          "Best Rent a Car has completely transformed our company's executive travel. The monthly plan is seamless, and the replacement vehicle service is a lifesaver during maintenance.",
-        name: "Sarah Jenkins",
-        role: "Director, TechFlow Inc.",
-      },
-      {
-        quote:
-          "I needed a premium SUV for a 4-month relocation. The process was entirely digital, and the car was delivered to my doorstep in pristine condition.",
-        name: "Marcus Thorne",
-        role: "Founder, E-com Ventures",
-      },
-      {
-        quote:
-          "The S-Class was practically new. The level of professionalism from the Best Rent a Car team is unmatched in the monthly rental market.",
-        name: "Dorian Gray",
-        role: "Creative Director",
-      },
-    ],
+    ratingSummary: googleRatingSummary,
+    items: googleReviewItems,
   },
   faqs: {
     title: "Frequently Asked Questions",
@@ -971,7 +940,7 @@ const weeklyCarRental: ServiceDetail = {
     description:
       "Experience uncompromising mobility. Whether it's for executive travel or a long getaway, our weekly packages offer the perfect balance of luxury and value.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAaiwazytZfpceG4LZ5PkOu1-RykKPLYoV6_XfOwc4I3AnyOtAMZ8wsr4fX9Z_mEBOVEyFfEFtZTXU3zoyQd-g0WRDr5vrDIDQdd24Oqr0UI_tBlIjpCezvpCC40TfgqEA2xjU-f57R6I6OrSFdzduwxGcAVSIBFanGpXJsNi3tzZF-0iUUbHGl_aGJ4oyU5PiVHY-Yi89xKqKclm7TJnWbu_denG4LI2twV77OLmn5cvVC2V7X1pN3",
+      "/images/site/northern-river-valley.webp",
     primaryCta: { label: "Explore Plans", href: "#packages" },
     secondaryCta: { label: "View Fleet", href: "#fleet" },
   },
@@ -1118,21 +1087,8 @@ const weeklyCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Weekly Drivers Love Best Carz Rent a Car",
-    ratingSummary: { value: "4.9/5", label: "Based on recent weekly bookings" },
-    items: [
-      {
-        quote:
-          "Booked an SUV for a week-long northern trip. Fair weekly rate, spotless car, and extending by two days was just one WhatsApp away.",
-        name: "Hassan Ali",
-        role: "Travel Planner",
-      },
-      {
-        quote:
-          "Needed a Civic for a project week in Lahore. Transparent daily pricing on the card and smooth doorstep delivery.",
-        name: "Ayesha Noor",
-        role: "Consultant",
-      },
-    ],
+    ratingSummary: googleRatingSummary,
+    items: googleReviewItems,
   },
   faqs: {
     title: "Frequently Asked Questions",
@@ -1205,7 +1161,7 @@ const corporateCarRental: ServiceDetail = {
     description:
       "Streamline your business travel with bespoke fleet management and executive transportation designed for the modern enterprise.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA0PN26zchzhvzBRLrr4cCZLVIaFKG79hlIWs8hAzu1P4cPQiHDj4o5i0oZsw7iqaop_Si8AuBUtcXNL7U2PP9frhdlQvmQYEzhbprmrWKWcM7w5Qin8Hi5KuSA1FPE4KJbqXKtnaCVKqQCnLGKXFcCH174v5O61MVM8t7s5PjZBib8fy0bkTKf0XW0ILLg9JXF_Hv9DqiZnAq1tyi2i-DZwmHmwFdruxudCCDN3j9VmM3j6xaKPaFT",
+      "/images/site/islamabad-city-view.webp",
     primaryCta: { label: "Setup Corporate Account", href: "#booking" },
     secondaryCta: { label: "View Fleet", href: "#fleet" },
   },
@@ -1328,27 +1284,16 @@ const corporateCarRental: ServiceDetail = {
       { icon: "check_circle", text: "24/7 roadside assistance & support" },
     ],
     contact: [
-      { icon: "call", label: "Direct Line", value: formatPhoneDisplay() },
+      { icon: "call", label: "Call (Primary)", value: formatPhone(brand.phones[0].number), href: telLink(brand.phones[0].number) },
+      { icon: "call", label: "Call (Secondary)", value: formatPhone(brand.phones[1].number), href: telLink(brand.phones[1].number) },
+      { icon: "chat", label: "WhatsApp", value: formatPhone(brand.whatsapp), href: whatsappLink() },
       { icon: "mail", label: "Email Us", value: "info@example.com" },
     ],
   },
   testimonials: {
     title: "Trusted by Leading Teams",
-    ratingSummary: { value: "500+", label: "Companies served across Pakistan" },
-    items: [
-      {
-        quote:
-          "Consolidated monthly invoicing and a dedicated manager made corporate travel finally painless for our sales team.",
-        name: "Imran Qureshi",
-        role: "Operations Lead",
-      },
-      {
-        quote:
-          "Airport transfers and meeting cars are always on time. The fleet looks executive and stays well maintained.",
-        name: "Nadia Shah",
-        role: "EA to CEO",
-      },
-    ],
+    ratingSummary: googleRatingSummary,
+    items: googleReviewItems,
   },
   faqs: {
     title: "Corporate FAQs",
@@ -1410,7 +1355,7 @@ const airportPickDrop: ServiceDetail = {
     description:
       "Experience seamless transitions from flight to road. Our executive fleet and professional chauffeurs ensure you reach your hotel or office in absolute comfort and safety.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBwU5kmS8-7Ah-pzafVpenFKcqCbVJJndjtTIBerrSK82P21ZTlCdGnMQ9141vlf2LEScGewr_hyHCj4WR4Lo_q_A2Ysu2ZYdhgWFAOqbPLYWL1zclpcvle-ly2C_XNxcuhLBa7BHKQnuvyh41KgYbxQSt8YwvhsPy8sMKO5qpepy4h24WkN3az4TevY4pU_HpwxPdxgL4c7MbjJtKQ1nznYT1FXhnD2UFgcUolyBFOwLkGO-11LFqX",
+      "/images/fleet/prado-white.webp",
     primaryCta: { label: "Book Transfer", href: "#book" },
     secondaryCta: { label: "View Fleet", href: "#fleet" },
   },
@@ -1445,10 +1390,10 @@ const airportPickDrop: ServiceDetail = {
     title: "Serving Major Airports In Pakistan",
     description: "Fixed-route airport transfers with clear pricing from these hubs.",
     cities: [
-      { name: "Islamabad", tag: "ISB Airport", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC-JhpogXLpfqCtEfTGOOxjaj2LK9WEUp-Sl7Mi90pWgFz1pfN-pCJWeiISE6KRFviqKOiptrSRx5n2NWuhyB7FO5-cy9bWDVP1LOydTECZO1WYrqlK-VUBUeedzPam7dyzZhqB8P7aX9rEO0CBaPM9Y8tMxZJT7WzJZkQFFVJQ2c2TP7i3TBF3aPV1HBEjAwcD1vP3l3BNKgSKDgxD4Bn6dmdgknHF6i5XWsYF7EdZPtqU-lRbbUfJ" },
-      { name: "Lahore", tag: "LHE Airport", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD5cqoX_Rdx80A9jBa6kuwWFxomB4YyhkwcBOdUlYYB656XiQuEWhqzzF6gWmkHNtlxWZ5s4RR_wl3MBVwZc9ff-c1GOfns6EjpG2LlEvZfCtS4x5D7V0SiSi4myXEKaAA9ZTmyrPDka5SbmR_hIL69bgR5dv2br8iIPWovkEjSe6GKW9ZQF_CuKcxSmpVLwEgFr1dDpHa5_Rd3OL6G3X6JuOHIItQ0EBAUHLJcAZJdHfhMNBiaymnT" },
-      { name: "Karachi", tag: "KHI Airport", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfSE4BVlTmJty8EmNDXRno3EOr4XGm0pIDPqJ4pgcefmY3ogkJxPMfgat5umfMARnYl6QoG3yo_-Cmc4M0MkGc02znhUtRqq0rB3yKE8pIAuil36e_PydUGcN2MK2Gywt6BEHhyMHwVMlgvTXH4g3PL0EgcNXB1cmfQH6tQ7cn1_NLHuLBFY1HbaZc0hx5kMohjCdyhqrplUX3dM6H2FizoScN3ePyu71v7ZqqUs-9N52-oxwcAm-V" },
-      { name: "Sialkot", tag: "SKT Airport", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBSA51EHZnqaWPUSTYNeB5v2GX9M-R-Ctr_DNWQDgGPlD1q2WFlK9fwNesApJlFoc_v-cVPpEtmC7sCZ_3Flz7Tyw-VDRIXt0cYD0oOTtFbTUiuv7ZOiodL-GjD7kCpcQzTH4s2_tJDIfLmtBPjeR2YndnXAWEmR3KXvStyErYOi-3-OAv2Z2_06aGQO-wDiUCa1dcJG9aGHo0DjOZHnGiOBJBFRCLfXvMybF8zzF1vbUevF7StDmmC" },
+      { name: "Islamabad", tag: "ISB Airport", image: "/images/site/faisal-mosque-sunset-road.webp" },
+      { name: "Lahore", tag: "LHE Airport", image: "/images/site/airport-walkway.webp" },
+      { name: "Karachi", tag: "KHI Airport", image: "/images/site/airport-white-arches.webp" },
+      { name: "Sialkot", tag: "SKT Airport", image: "/images/site/airport-plane-window.webp" },
     ],
   },
   fleet: {

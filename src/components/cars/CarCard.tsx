@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import type { CarModel } from "@/types";
 import { InquireModal } from "@/components/cars/InquireModal";
 import { fleetSections } from "@/data/cars";
-import { brand, formatPhoneDisplay, formatPrice, whatsappLink } from "@/lib/brand";
+import { formatPhone, formatPrice, telLink, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 type CarCardProps = {
@@ -260,9 +260,9 @@ export function CarCard({ car, sectionLabel, className }: CarCardProps) {
               <span className="truncate">WhatsApp</span>
             </a>
             <a
-              href={`tel:${brand.phone}`}
+              href={telLink()}
               className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-brand-black/15 bg-white px-2 text-xs font-semibold text-brand-black transition duration-200 hover:border-brand-black"
-              aria-label={`Call ${formatPhoneDisplay()}`}
+              aria-label={`Call ${formatPhone()}`}
             >
               <PhoneIcon className="h-3.5 w-3.5 shrink-0" />
               <span className="truncate">Call</span>

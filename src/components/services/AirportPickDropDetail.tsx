@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CtaBanner } from "@/components/shared";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { brand, formatPhoneDisplay, whatsappLink } from "@/lib/brand";
+import { brand, formatPhone, telLink, whatsappLink } from "@/lib/brand";
 import type { ServiceDetail } from "@/types";
 import { ServiceFaqAccordion } from "./ServiceFaqAccordion";
 import { ServiceFeatureGrid } from "./ServiceFeatureGrid";
@@ -40,13 +40,16 @@ export function AirportPickDropDetail({ data }: AirportPickDropDetailProps) {
               {hero.description}
             </p>
             <div className="animate-fade-up-delay-2 mt-6 flex flex-wrap gap-4 text-sm">
-              <a
-                href={`tel:${brand.phone}`}
-                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur transition hover:bg-white/20"
-              >
-                <span className="material-symbols-outlined text-accent text-[18px]">call</span>
-                {formatPhoneDisplay()}
-              </a>
+              {brand.phones.map((phone) => (
+                <a
+                  key={phone.number}
+                  href={telLink(phone.number)}
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur transition hover:bg-white/20"
+                >
+                  <span className="material-symbols-outlined text-accent text-[18px]">call</span>
+                  {formatPhone(phone.number)}
+                </a>
+              ))}
               <a
                 href={whatsappLink()}
                 target="_blank"
@@ -54,7 +57,7 @@ export function AirportPickDropDetail({ data }: AirportPickDropDetailProps) {
                 className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 font-semibold !text-white transition hover:brightness-95"
               >
                 <span className="material-symbols-outlined text-[18px]">chat</span>
-                WhatsApp
+                WhatsApp · {formatPhone(brand.whatsapp)}
               </a>
             </div>
           </div>
@@ -283,20 +286,23 @@ export function AirportPickDropDetail({ data }: AirportPickDropDetailProps) {
                     Our concierge team is available 24/7 to assist with your airport transfer.
                   </p>
                   <div className="mt-8 flex flex-col gap-3">
-                    <a
-                      href={`tel:${brand.phone}`}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-primary py-3.5 text-sm font-semibold !text-white transition hover:bg-navy"
-                    >
-                      <span className="material-symbols-outlined text-[18px]">call</span>
-                      {formatPhoneDisplay()}
-                    </a>
+                    {brand.phones.map((phone) => (
+                      <a
+                        key={phone.number}
+                        href={telLink(phone.number)}
+                        className="inline-flex items-center justify-center gap-2 rounded-full bg-primary py-3.5 text-sm font-semibold !text-white transition hover:bg-navy"
+                      >
+                        <span className="material-symbols-outlined text-[18px]">call</span>
+                        {formatPhone(phone.number)}
+                      </a>
+                    ))}
                     <a
                       href={whatsappLink()}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/20 bg-white py-3.5 text-sm font-semibold text-primary transition hover:bg-primary hover:!text-white"
                     >
-                      Chat on WhatsApp
+                      Chat on WhatsApp · {formatPhone(brand.whatsapp)}
                     </a>
                   </div>
                 </div>

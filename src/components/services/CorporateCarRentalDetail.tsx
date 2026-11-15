@@ -194,7 +194,17 @@ export function CorporateCarRentalDetail({ data }: CorporateCarRentalDetailProps
                         </span>
                         <div>
                           <p className="text-xs text-white/50">{item.label}</p>
-                          <p className="font-semibold">{item.value}</p>
+                          {item.href ? (
+                            <a
+                              href={item.href}
+                              {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                              className="wa-text wa-text-dark font-semibold transition hover:text-accent"
+                            >
+                              {item.value}
+                            </a>
+                          ) : (
+                            <p className="font-semibold">{item.value}</p>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -234,7 +244,7 @@ export function CorporateCarRentalDetail({ data }: CorporateCarRentalDetailProps
                       <label className="text-sm font-semibold">Phone Number</label>
                       <input
                         type="tel"
-                        placeholder={brand.phone}
+                        placeholder="03XX-XXXXXXX"
                         className="w-full rounded-xl border border-primary/10 bg-[#f3f4f5] p-4 outline-none transition focus:ring-2 focus:ring-secondary"
                       />
                     </div>

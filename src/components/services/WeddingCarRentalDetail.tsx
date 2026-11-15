@@ -158,7 +158,17 @@ export function WeddingCarRentalDetail({ data }: WeddingCarRentalDetailProps) {
                         </span>
                         <div>
                           <p className="text-xs text-white/50">{item.label}</p>
-                          <p className="font-semibold">{item.value}</p>
+                          {item.href ? (
+                            <a
+                              href={item.href}
+                              {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                              className="wa-text wa-text-dark font-semibold transition hover:text-accent"
+                            >
+                              {item.value}
+                            </a>
+                          ) : (
+                            <p className="font-semibold">{item.value}</p>
+                          )}
                         </div>
                       </div>
                     ))}

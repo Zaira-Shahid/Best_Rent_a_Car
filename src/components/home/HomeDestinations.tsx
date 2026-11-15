@@ -8,32 +8,32 @@ const DESTINATIONS = [
     name: "Islamabad",
     meta: "Capital City",
     href: "/rent-a-car/islamabad",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDBEsOO-S2DyklYxXEvORM4Sex9eaWzntlyc_4N1GKWwfN7q5SiN-FaCt5WumWGAclKDV5-iuMETh4Pp5TT7UXVj97YG4unFzR-DOAu5xaPfIlaQbEglo28biLgc92WyP44w89bB9RhxBs9EqqFEx9C7lzkQDA8_uL5kjxOAGxO7eTS_yizjCa5he15Tdq0376IlnVEn3TaURbc9TA9eTHJtjUF6Xii8mVVM8kFJKpL98ms4X1P4lqM",
+    image: "/images/site/destinations/islamabad.webp",
+    alt: "Pakistan Monument in Islamabad at dusk",
     className: "md:col-span-2 md:row-span-2",
   },
   {
     name: "Lahore",
     meta: "Cultural Hub",
     href: "/rent-a-car/lahore",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBu2jgMj_QfGnhZQgVd4TRc8aW6ADIUadRDmc5We8ZS3jRR8uvAq3FKIaGHuQswZgqJHL9WDt-m5IypKs071yZUarzJvWYL7srDq3P4uxU1EOXD7e1wLw1hOaVnJA0cdkmHD0z1BX4kBoqvXI80IYusN1Mm5jOhZblLs5H7Qg0Y5xGxbeFnq07mq-yfYJnw5e8HnNfjGEbC2o_nN-O7Rzk-VQs582D4gmx__otJ2V4m595qN0yHYMEb",
+    image: "/images/site/destinations/lahore.webp",
+    alt: "Wazir Khan Mosque courtyard in Lahore",
     className: "md:col-span-2",
   },
   {
     name: "Karachi",
     meta: "Coastal Metropolis",
     href: "/rent-a-car/karachi",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAm9DfIcAOqVY-KFaY-8uHfe3G9Ur9bEXo8sZiGRVrhtJbIbKiMwoC4TJQxAnagc3IdX56PuL7A6rk9426l9td6pexSDv_jtc-a_JfvxnWDnQBdculn9r_-rbGU362ovaf6KeQ_eTRN1lIlUX6DcLVd1OxGnG2rEIRiHGui7o_24VajnirUOClZ_OfNb4M08DzmNUVV_a0IChsG8NMJz8rSVGDEwyQ-Y31gdlY6ov0kdGSaVchHJRMD",
+    image: "/images/site/destinations/karachi.webp",
+    alt: "Mazar-e-Quaid mausoleum in Karachi",
     className: "",
   },
   {
     name: "Hunza",
     meta: "Northern Escape",
     href: "/rent-a-car/hunza",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBw0DCv15PoG1w9hfCNj2vf16txCJ15GHLj4HrhsBAunRkQVuBHQuR7sXb34I5mAtXZ-Vh9gehoAUT6HGjUVYJDagEztop-Cym8YErgaWQjtB8W0091zOFrq9jZjjWpwURtQKjtIlSwPKfznw9BvVd9hRj5Xe_ptc65Y4lIyjbDc-rVm20qhB7edCRrt5JoMK6fHQs2twGIaqKkMzg4gL1VoyE6O7lu8DDBef3HCAaPZDN62WXJPClH",
+    image: "/images/site/destinations/hunza.webp",
+    alt: "Attabad Lake in Hunza with turquoise water",
     className: "",
   },
 ];
@@ -57,13 +57,13 @@ export function HomeDestinations() {
               <Link href={item.href} className="group relative block h-full min-h-[220px] overflow-hidden rounded-2xl sm:min-h-[240px] md:min-h-0 md:h-full">
                 <Image
                   src={item.image}
-                  alt={item.name}
+                  alt={item.alt}
                   fill
                   className="object-cover transition duration-1000 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 text-white sm:bottom-8 sm:left-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+                <div className="absolute bottom-6 left-6 text-white drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)] sm:bottom-8 sm:left-8">
                   <h3 className="font-heading text-lg font-semibold sm:text-2xl">{item.name}</h3>
                   <p className="text-xs text-white/80 sm:text-sm">{item.meta}</p>
                 </div>

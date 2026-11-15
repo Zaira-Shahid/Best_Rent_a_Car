@@ -110,7 +110,7 @@ export type ServiceBooking = {
   title: string;
   description: string;
   highlights?: { icon: string; text: string }[];
-  contact?: { icon: string; label: string; value: string }[];
+  contact?: { icon: string; label: string; value: string; href?: string }[];
 };
 
 export type ServiceInfoBlock = {

@@ -5,7 +5,8 @@ import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { FaqHelpCard } from "@/components/faq/FaqHelpCard";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Container } from "@/components/ui/Container";
-import { brand, formatPhoneDisplay, whatsappLink } from "@/lib/brand";
+import { ContactNumbers } from "@/components/shared/ContactNumbers";
+import { brand, formatPhone, telLink, whatsappLink } from "@/lib/brand";
 import { pageMeta } from "@/lib/seo";
 
 const HERO_IMAGE =
@@ -472,11 +473,11 @@ export default function FaqPage() {
               </p>
               <div className="animate-fade-up-delay-2 mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <a
-                  href={`tel:${brand.phone}`}
+                  href={telLink()}
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold !text-white transition hover:brightness-95"
                 >
                   <span className="material-symbols-outlined text-[18px]">support_agent</span>
-                  Call Agent · {formatPhoneDisplay()}
+                  Call Agent · {formatPhone()}
                 </a>
                 <a
                   href="#faq-answers"
@@ -662,7 +663,7 @@ export default function FaqPage() {
                 </p>
                 <div className="animate-fade-up-delay-2 mt-8 flex flex-col justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4">
                   <a
-                    href={`tel:${brand.phone}`}
+                    href={telLink()}
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-8 py-3.5 text-sm font-semibold !text-white transition hover:brightness-95 sm:px-10 sm:py-4"
                   >
                     <span className="material-symbols-outlined text-[18px]">support_agent</span>
@@ -685,6 +686,7 @@ export default function FaqPage() {
                     WhatsApp
                   </a>
                 </div>
+                <ContactNumbers align="center" className="animate-fade-up-delay-2 mt-6" />
               </div>
               <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-secondary/10 blur-3xl" />
               <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-white/5 blur-3xl" />

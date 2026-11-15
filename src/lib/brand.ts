@@ -1,26 +1,48 @@
 const BRAND_NAME = "Best Carz Rent a Car";
 
+/** Call numbers, in local format. The first one is the primary number used by every "Call" button. */
+const PHONES = [
+  { label: "Primary", number: "03334761786" },
+  { label: "Secondary", number: "03350300292" },
+] as const;
+
 export const brand = {
   name: BRAND_NAME,
   shortName: "Best Carz",
   tagline: "Premium car rental across Pakistan",
-  // TODO(client): placeholder contact details. Replace phone, whatsapp, email and
-  // address with the real Best Carz Rent a Car details before accepting real bookings.
-  phone: "03000000000", // TODO: real phone
-  whatsapp: "923000000000", // TODO: real WhatsApp number (country code, no "+")
+  phones: PHONES,
+  /** Primary call number (same as phones[0]). */
+  phone: PHONES[0].number,
+  /** WhatsApp number in international format, no "+" or spaces. */
+  whatsapp: "923345414155",
+  // TODO(client): placeholder email. Replace with the real Best Carz Rent a Car email.
   email: "info@example.com", // TODO: real email
   currency: "PKR",
+  /** Opening hours, as shown on the Google Business profile. */
+  hours: "Open 24 hours",
+  // Google Business profile (verified from the live profile)
+  /** Public Google profile link: opens the business listing with all reviews. */
+  googleReviewsUrl: "https://share.google/54UMqoPDVn2LBEkHR",
+  /** Google rating out of 5. */
+  rating: 4.5,
+  /** Number of Google reviews behind the rating. */
+  reviewCount: 12,
   location: {
-    label: `${BRAND_NAME}, Islamabad`, // TODO: real location label
-    address: `${BRAND_NAME}, Islamabad, Pakistan`, // TODO: real address
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Islamabad+Pakistan",
+    label: `${BRAND_NAME}, G-9 Markaz, Islamabad`,
+    address: "Paragon Centre, Mangla Rd, G-9 Markaz, Islamabad 44090, Pakistan",
+    street: "Paragon Centre, Mangla Rd, G-9 Markaz",
+    city: "Islamabad",
+    postalCode: "44090",
+    /** Google Maps listing for the business ("Get Directions"). */
+    mapsUrl: "https://maps.google.com/?cid=3700636739437751155",
+    /** Embeddable map centred on the office. */
+    embedUrl: "https://maps.google.com/maps?q=33.6910704,73.0325385&z=16&output=embed",
+    coordinates: { lat: 33.6910704, lng: 73.0325385 },
   },
   social: {
-    facebook: "https://example.com/facebook",
-    instagram: "https://example.com/instagram",
-    tiktok: "https://example.com/tiktok",
-    youtube: "https://example.com/youtube",
-    pinterest: "https://example.com/pinterest",
+    facebook: "https://www.facebook.com/share/1cCiFygjXf/",
+    instagram: "https://www.instagram.com/bestcarz_rent_a_car/",
+    tiktok: "https://www.tiktok.com/@bestcarz_g9",
   },
   colors: {
     primary: "#06264b",
@@ -43,11 +65,27 @@ export function formatPrice(amount: number) {
   return `${brand.currency} ${amount.toLocaleString("en-PK")}`;
 }
 
-/** Display phone for UI (same number used for Call Us everywhere) */
-export function formatPhoneDisplay() {
-  const digits = brand.phone.replace(/\D/g, "");
-  if (digits.length === 11) {
-    return `${digits.slice(0, 4)}-${digits.slice(4)}`;
-  }
-  return brand.phone;
+/** The 10 national digits of a Pakistani number, from "0333-4761786", "03334761786" or "923334761786". */
+function nationalDigits(number: string) {
+  const digits = number.replace(/\D/g, "");
+  if (digits.startsWith("92") && digits.length === 12) return digits.slice(2);
+  if (digits.startsWith("0")) return digits.slice(1);
+  return digits;
+}
+
+/** "03334761786" -> "+923334761786" */
+export function internationalPhone(number: string = brand.phone) {
+  return `+92${nationalDigits(number)}`;
+}
+
+/** "03334761786" -> "tel:+923334761786" (defaults to the primary number) */
+export function telLink(number: string = brand.phone) {
+  return `tel:${internationalPhone(number)}`;
+}
+
+/** "03334761786" (or "923345414155") -> "0333-4761786" */
+export function formatPhone(number: string = brand.phone) {
+  const national = nationalDigits(number);
+  if (national.length !== 10) return number;
+  return `0${national.slice(0, 3)}-${national.slice(3)}`;
 }

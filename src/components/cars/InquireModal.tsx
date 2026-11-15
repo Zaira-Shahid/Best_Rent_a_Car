@@ -261,7 +261,7 @@ export function InquireModal({ car, open, onClose }: InquireModalProps) {
               <input
                 type="tel"
                 required
-                placeholder="33111116892"
+                placeholder="3XXXXXXXXX"
                 value={form.phone}
                 onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
                 className="w-full bg-transparent px-3 py-3 text-sm text-primary outline-none placeholder:text-primary/40"

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { CarModel } from "@/types";
 import { Section } from "@/components/ui/Section";
-import { brand, formatPrice, whatsappLink } from "@/lib/brand";
+import { brand, formatPhone, formatPrice, telLink, whatsappLink } from "@/lib/brand";
 
 type CarDetailBodyProps = {
   car: CarModel;
@@ -102,10 +102,10 @@ export function CarDetailBody({ car, categoryName, related }: CarDetailBodyProps
                   Book on WhatsApp
                 </Link>
                 <Link
-                  href={`tel:${brand.phone}`}
+                  href={telLink()}
                   className="rounded-full border border-primary/15 px-6 py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:!text-white"
                 >
-                  Call {brand.phone}
+                  Call {formatPhone()}
                 </Link>
               </div>
             </div>

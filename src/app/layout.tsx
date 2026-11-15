@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Sora } from "next/font/google";
 import { FirebaseAnalytics } from "@/components/FirebaseAnalytics";
 import { SiteShell } from "@/components/layout/SiteShell";
-import { brand } from "@/lib/brand";
+import { brand, internationalPhone } from "@/lib/brand";
 import { absoluteUrl, defaultKeywords, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
@@ -90,13 +90,28 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     name: brand.name,
     description: brand.tagline,
     url: siteUrl,
-    telephone: brand.phone,
+    telephone: internationalPhone(brand.phone),
     email: brand.email,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Islamabad",
+      streetAddress: brand.location.street,
+      addressLocality: brand.location.city,
+      postalCode: brand.location.postalCode,
       addressCountry: "PK",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: brand.location.coordinates.lat,
+      longitude: brand.location.coordinates.lng,
+    },
+    openingHours: "Mo-Su 00:00-23:59",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: brand.rating,
+      reviewCount: brand.reviewCount,
+      bestRating: 5,
+    },
+    sameAs: [brand.social.facebook, brand.social.instagram, brand.social.tiktok],
     hasMap: brand.location.mapsUrl,
     areaServed: "Pakistan",
     priceRange: "$$",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { brand } from "@/lib/brand";
+import { brand, formatPhone } from "@/lib/brand";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMeta({
 
 
 const HERO =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuD94szhMRd1So2I6jXVuFIZ2tQbFKaT4zBBLATaAWysZMcTnkWlqTfcKoiPnl4lDDMDJS0Va5Hvd-RpJ24HPehx7rUABKnCdSMv5GJrVrDx9zuEF52W39EthPpz_ZLvSVs8CWqZYMdPdkqwepdvOnBcigUucoJM3zRN6cpoS8PTDxip4rt-DX10lKmmNn0sDs303-NN-w2NS3-wo_9ar-erHkSyWUWVD8PEQTsQZUsTrdCpDIpjMIjp";
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuCDpXQ-dNhSDga9qWs9ffpWS7vDJKYhUUCe3YyTejoYH_AMoGbgP93VPVeYSBMpbrmwM-WCnuA_N9i7Z8JgaezKP91VHNrimt5alDa2kuNGvO62T4Hi6-ak970eeCRh3DN32EoXzm3d6BB5JqfQV6wC1NgA0w4Abu4tGvNVjRrxeOUz26so1yKvijJlhS01t_U13MlIBpLR2EzaBxko0_PzhxhecRHC9WcqlwagBlscZ0KoUbRW7LD4";
 
 const TOC = [
   { id: "intro", label: "Introduction" },
@@ -43,7 +43,7 @@ export default function TermsPage() {
   return (
     <>
       <header className="relative flex min-h-[280px] items-center justify-center overflow-hidden py-16 sm:min-h-[360px] sm:py-20">
-        <Image src={HERO} alt="Luxury sedan interior detail" fill priority className="object-cover" sizes="100vw" />
+        <Image src={HERO} alt="Hand holding a car key" fill priority className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-navy/70" />
         <div className="relative z-10 px-4 text-center">
           <nav className="mb-4 flex justify-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-white/80 sm:mb-6 sm:text-xs">
@@ -168,7 +168,8 @@ export default function TermsPage() {
                       2
                     </span>
                     <span>
-                      Contact our 24/7 emergency support line at {brand.phone} immediately to report the incident,
+                      Contact our 24/7 emergency support line at{" "}
+                      {brand.phones.map((phone) => formatPhone(phone.number)).join(" or ")} immediately to report the incident,
                       regardless of severity.
                     </span>
                   </li>

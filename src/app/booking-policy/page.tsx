@@ -17,7 +17,7 @@ const HERO =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAZUw0ldcd0m67b3_J2JfrSAhSKXWTJg6rI-wkqVq_K1FEskb8c6kUdv1SfiCh9Tk-gbFZ8Z6C6-5NzhjkdOAhWEU9CMOa0rPyNBnIB_keSH50GAqdttRaxfdr12_-JWiQIrDaSiUcyY3xzOSaqtOKNGdSybwl1RL3H__LdW5RS6v7MelqDS49Ir3fZ7RngiCCZDiiYpJZ_DQcIlqK0RroMlVQzWDFaBZz248x6bHUQnbrjObmdGF9c";
 
 const DRIVERS_IMAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDXXYdUuMNmDy7HVLLGbGQNQqD4uduNkndBV8sI64AZarGGyg8QS28z7Qq4C1ygld-A-4LjhhMyi4nwUTxgoDwfThpkbrKuWDnA5vUbcD9_qpOBIg4h_K1pbGrqaFTjnyaMlMc4VSwxh5smiQV4Vbh6-DT48EgFhlTArGZY2nWPDgWD7AoyNnCjRxEor0J0odbnDDDNcWixTOiaJAD6CUf4AYLiqYrKXxH3pGJG34KyegEOSP8GaUwM";
+  "/images/site/driver-van-interior.webp";
 
 const STEPS = [
   {
@@ -241,7 +241,7 @@ export default function BookingPolicyPage() {
           <div className="group relative h-[400px] overflow-hidden rounded-2xl shadow-2xl sm:h-[500px] lg:h-[600px]">
             <Image
               src={DRIVERS_IMAGE}
-              alt="Driver's hand holding a leather-bound car key"
+              alt="Chauffeur at the wheel of a passenger van"
               fill
               className="object-cover transition duration-700 group-hover:scale-105"
               sizes="(max-width: 1024px) 100vw, 50vw"

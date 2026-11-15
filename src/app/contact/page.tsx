@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactNumbers } from "@/components/shared/ContactNumbers";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Container } from "@/components/ui/Container";
 import { homeFaqs } from "@/data";
-import { brand, whatsappLink } from "@/lib/brand";
+import { brand, telLink, whatsappLink } from "@/lib/brand";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -19,28 +21,10 @@ export const metadata: Metadata = pageMeta({
 
 const HERO = "/images/contact-hero-v2.png";
 
-const OFFICE_MAP =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCOLcLgvntMjN0RKlanOO3hzDIQbvZuKjd4WntHKjUnZINDAaS9oMupBV4tr0QvZSUnrCLDh6tGRuvkQnZ8w3GVhqSF4tf1QC6JnvxsPjRAGW7OJeO778wbBrI6B_m4jNmMJnEp8lvJJDkl_FTybKegol1Euq7BMp9acaAM6slsr5q0aYI8QWhQnokHcEn0yIsxiK1KLCd9JvVAp71oLrA2kEBUGa3F9Gxn_pgQ0YWQqFbtDEbmdOGi";
-
-const OFFICES = [
-  {
-    title: "Islamabad HQ",
-    address: brand.location.address,
-    hours: "Mon - Sat: 09:00 - 20:00 | Sunday: 10:00 - 18:00",
-    href: brand.location.mapsUrl,
-  },
-  {
-    title: "Rawalpindi / Islamabad Airport Desk",
-    address: "Service desk near Islamabad International Airport arrivals, serving Rawalpindi & the airport corridor",
-    hours: "Daily: 05:00 - 01:00 (flight-aligned)",
-    href: "https://www.google.com/maps/search/?api=1&query=Islamabad+International+Airport",
-  },
-];
-
 const RESPONSE_PROMISES = [
-  { icon: "bolt", value: "< 15 min", label: "WhatsApp Response" },
-  { icon: "request_quote", value: "< 60 min", label: "Quote Turnaround" },
-  { icon: "local_shipping", value: "45 min", label: "Avg. Delivery Time" },
+  { icon: "bolt", value: "Quick", label: "WhatsApp Response" },
+  { icon: "request_quote", value: "Fast", label: "Quotes" },
+  { icon: "local_shipping", value: "On Request", label: "Doorstep Delivery" },
 ];
 
 const WHATSAPP_TIPS = [
@@ -55,8 +39,7 @@ const INFO_CARDS = [
     icon: "call",
     title: "Call Us",
     text: "Available for immediate booking & roadside support.",
-    href: `tel:${brand.phone}`,
-    linkLabel: brand.phone,
+    numbers: true,
   },
   {
     icon: "mail",
@@ -75,10 +58,7 @@ const INFO_CARDS = [
   {
     icon: "schedule",
     title: "Operating Hours",
-    hours: [
-      { label: "Mon - Sat", value: "09:00 - 20:00" },
-      { label: "Sunday", value: "10:00 - 18:00" },
-    ],
+    hours: [{ label: "Every day", value: brand.hours }],
   },
 ];
 
@@ -140,14 +120,18 @@ export default function ContactPage() {
                 ) : (
                   <>
                     <p className="mt-2 text-sm text-muted">{card.text}</p>
-                    <a
-                      href={card.href}
-                      target={card.href?.startsWith("http") ? "_blank" : undefined}
-                      rel={card.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="mt-4 block break-all text-sm font-semibold text-secondary hover:underline"
-                    >
-                      {card.linkLabel}
-                    </a>
+                    {card.numbers ? (
+                      <ContactNumbers tone="light" className="mt-4 text-base" />
+                    ) : (
+                      <a
+                        href={card.href}
+                        target={card.href?.startsWith("http") ? "_blank" : undefined}
+                        rel={card.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="mt-4 block break-all text-sm font-semibold text-secondary hover:underline"
+                      >
+                        {card.linkLabel}
+                      </a>
+                    )}
                   </>
                 )}
               </div>
@@ -177,37 +161,41 @@ export default function ContactPage() {
         <Container>
           <div className="mb-12 text-center sm:mb-16">
             <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
-              Our Locations
+              Our Location
             </span>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-              Two Ways to Reach Us in Person
-            </h2>
+            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">Visit Us in Islamabad</h2>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {OFFICES.map((office) => (
-              <div
-                key={office.title}
-                className="luxury-card-shadow rounded-2xl border border-primary/8 bg-white p-8 sm:p-10"
-              >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
-                  <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
-                    location_on
-                  </span>
-                </div>
-                <h3 className="font-heading text-lg font-semibold sm:text-xl">{office.title}</h3>
-                <p className="mt-2 text-sm text-muted">{office.address}</p>
-                <p className="mt-3 text-sm font-semibold text-primary">{office.hours}</p>
-                <a
-                  href={office.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:underline"
-                >
-                  Get Directions
-                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </a>
+          <div className="grid gap-6 lg:grid-cols-5">
+            <div className="luxury-card-shadow rounded-2xl border border-primary/8 bg-white p-8 sm:p-10 lg:col-span-2">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+                <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  location_on
+                </span>
               </div>
-            ))}
+              <h3 className="font-heading text-lg font-semibold sm:text-xl">{brand.name}</h3>
+              <p className="mt-2 text-sm text-muted">{brand.location.address}</p>
+              <p className="mt-3 text-sm font-semibold text-primary">{brand.hours}</p>
+              <ContactNumbers tone="light" className="mt-4" />
+              <a
+                href={brand.location.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold !text-secondary hover:underline"
+              >
+                Get Directions
+                <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-primary/8 bg-white lg:col-span-3">
+              <iframe
+                src={brand.location.embedUrl}
+                title={`Map showing the ${brand.name} office at ${brand.location.street}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                className="block h-[320px] w-full border-0 sm:h-[420px] lg:h-full lg:min-h-[420px]"
+              />
+            </div>
           </div>
         </Container>
       </section>
@@ -299,13 +287,16 @@ export default function ContactPage() {
                       WhatsApp
                     </a>
                     <a
-                      href={`tel:${brand.phone}`}
+                      href={telLink()}
                       className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-accent hover:text-accent"
                     >
                       <span className="material-symbols-outlined text-[18px]">call</span>
                       Call Us
                     </a>
                   </div>
+                  <ContactNumbers className="mt-5" />
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-white/45">Follow us</p>
+                  <SocialLinks className="mt-3" />
                 </div>
                 <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-secondary/10 blur-3xl" />
               </div>
@@ -314,26 +305,6 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="relative h-[360px] w-full sm:h-[440px]">
-        <Image src={OFFICE_MAP} alt={`Map to ${brand.name} office in Islamabad`} fill className="object-cover" sizes="100vw" />
-        <div className="absolute inset-0 bg-primary/20" />
-        <div className="absolute inset-0 flex items-center justify-center px-4">
-          <a
-            href={brand.location.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="luxury-card-shadow flex items-center gap-4 rounded-2xl bg-white p-6 transition hover:scale-[1.02]"
-          >
-            <span className="material-symbols-outlined text-4xl text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
-              location_on
-            </span>
-            <div className="text-left">
-              <p className="font-semibold text-primary">{brand.location.label}</p>
-              <p className="text-sm text-muted">Islamabad · Get Directions</p>
-            </div>
-          </a>
-        </div>
-      </section>
     </>
   );
 }
