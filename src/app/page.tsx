@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   BrandStrip,
   HomeBlog,
+  HomeCoverage,
   HomeCta,
   HomeDestinations,
   HomeFleet,
@@ -43,6 +44,7 @@ export default function HomePage() {
         ctaLabel="Rent a Car in Rawalpindi"
         imageSrc="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1800&q=80"
       />
+      <HomeCoverage />
       <HomeDestinations />
       <HomeReviews />
       <HomeBlog />

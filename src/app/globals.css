@@ -424,4 +424,14 @@ header:not(.ride-header) .site-brand-logo, footer .site-brand-logo, [role="dialo
   background-color: #0d743c !important;
   border-color: #0d743c !important;
 }
+/* Outline WhatsApp button in the coverage section (overrides the global green fill above). */
+:root a.coverage-wa[href^="https://wa.me/"] {
+  background-color: #fff !important;
+  border-color: rgba(21, 24, 29, 0.25) !important;
+  color: #15181d !important;
+}
+:root a.coverage-wa[href^="https://wa.me/"]:hover {
+  background-color: #f3f4f5 !important;
+  border-color: #15181d !important;
+}
 :root a[href^="https://wa.me/"] .mobile-whatsapp-label { color: #fff; }
