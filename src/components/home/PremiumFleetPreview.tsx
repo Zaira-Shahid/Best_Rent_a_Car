@@ -16,7 +16,7 @@ export function PremiumFleetPreview() {
       <Container>
         <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
           <div>
-            <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-brand-red">Our Premium Fleet</p>
+            <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-brand-red-dark">Our Premium Fleet</p>
             <h2 id="premium-fleet-title" className="mt-2 text-[clamp(1.75rem,3.6vw,2.75rem)] font-extrabold leading-[1.1] tracking-tight">
               Explore Our Premium Fleet
             </h2>

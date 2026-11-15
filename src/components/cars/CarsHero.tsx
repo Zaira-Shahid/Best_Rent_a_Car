@@ -135,7 +135,7 @@ export function CarsHero({
             {accent ? (
               <>
                 {" "}
-                <span className="text-accent">{accent}</span>
+                <span className="text-white underline decoration-accent decoration-[5px] underline-offset-[10px]">{accent}</span>
               </>
             ) : null}
           </motion.h1>
@@ -193,7 +193,7 @@ export function CarsHero({
                 }}
                 className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-sm sm:px-5 sm:py-4"
               >
-                <p className="font-heading text-lg font-semibold text-accent sm:text-xl">{stat.value}</p>
+                <p className="font-heading text-lg font-semibold text-white sm:text-xl">{stat.value}</p>
                 <p className="mt-0.5 text-[11px] uppercase tracking-wider text-white/65 sm:text-xs">
                   {stat.label}
                 </p>

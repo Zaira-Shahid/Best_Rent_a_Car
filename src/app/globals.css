@@ -6,8 +6,8 @@
 
 @theme inline {
   --color-primary: #06264b;
-  --color-secondary: #278a08;
-  --color-accent: #278a08;
+  --color-secondary: #247f07;
+  --color-accent: #247f07;
   --color-background: #f8f9fa;
   --color-surface: #f8f9fa;
   --color-muted: #44474c;
@@ -263,14 +263,14 @@ header:not(.site-header) .site-brand-logo, footer .site-brand-logo, [role="dialo
 /* WhatsApp keeps its own green action color. */
 :root a[href^="https://wa.me/"],
 :root .site-header a[href^="https://wa.me/"] {
-  background-color: #128c4a !important;
-  border-color: #128c4a !important;
+  background-color: #0f7d43 !important;
+  border-color: #0f7d43 !important;
   color: #fff !important;
 }
 :root a[href^="https://wa.me/"]:hover,
 :root .site-header a[href^="https://wa.me/"]:hover {
-  background-color: #0d743c !important;
-  border-color: #0d743c !important;
+  background-color: #0b6636 !important;
+  border-color: #0b6636 !important;
 }
 /* Outline WhatsApp button in the coverage section (overrides the global green fill above). */
 :root a.coverage-wa[href^="https://wa.me/"] {

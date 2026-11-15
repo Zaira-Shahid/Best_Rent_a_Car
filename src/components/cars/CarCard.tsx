@@ -61,7 +61,7 @@ function RatingRow({ rating, reviewCount }: { rating: number; reviewCount?: numb
       </span>
       <span className="font-bold text-brand-black">{rating.toFixed(1)}</span>
       {typeof reviewCount === "number" ? (
-        <span className="text-brand-black/55">({reviewCount} Reviews)</span>
+        <span className="text-brand-black/70">({reviewCount} Reviews)</span>
       ) : null}
     </div>
   );
@@ -209,7 +209,7 @@ export function CarCard({ car, sectionLabel, className }: CarCardProps) {
             <div className="mt-4 flex items-center justify-between gap-3">
               <p className="font-heading text-xl font-bold text-brand-black sm:text-2xl">
                 {formatPrice(car.priceDay)}
-                <span className="text-sm font-medium text-brand-black/55"> / day</span>
+                <span className="text-sm font-medium text-brand-black/70"> / day</span>
               </p>
               <Link
                 href={href}

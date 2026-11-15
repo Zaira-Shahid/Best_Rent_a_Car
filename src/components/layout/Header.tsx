@@ -491,7 +491,7 @@ export function Header() {
                     {item.href === "/cars" ? (
                       <div className={cn(panelBase, "relative grid max-h-[min(78vh,600px)] grid-cols-[320px_minmax(0,1fr)] overflow-hidden")}>
                         <div className="overflow-y-auto border-r border-brand-black/[0.06] p-4">
-                          <p className="mb-2 px-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-black/55">
+                          <p className="mb-2 px-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-black/70">
                             {item.groups?.[0]?.label}
                           </p>
                           <ul>
@@ -508,7 +508,7 @@ export function Header() {
                         <div className="min-w-0 bg-brand-black/[0.025] p-5">
                           <div className="mb-3 flex items-center justify-between gap-3">
                             <p className="truncate font-heading text-base font-bold text-brand-black">{activeCategory?.name}</p>
-                            <Link href="/cars" className="shrink-0 text-xs font-semibold !text-brand-red hover:underline">
+                            <Link href="/cars" className="shrink-0 text-xs font-semibold !text-brand-red-dark hover:underline">
                               View all
                             </Link>
                           </div>
@@ -526,7 +526,7 @@ export function Header() {
                                     <span className="block truncate text-[13px] font-semibold !text-brand-black">{car.name}</span>
                                     <span className="mt-0.5 block text-xs font-bold text-brand-red">
                                       {formatPrice(car.priceDay)}
-                                      <span className="font-medium text-brand-black/55"> / day</span>
+                                      <span className="font-medium text-brand-black/70"> / day</span>
                                     </span>
                                   </span>
                                 </Link>
@@ -540,7 +540,7 @@ export function Header() {
                         <div className="grid grid-cols-4 gap-6">
                           {CITY_COLUMNS.map((column) => (
                             <div key={column.type} className={cn("min-w-0", column.type === "local" && "col-span-2")}>
-                              <p className="mb-2 px-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-black/55">{column.label}</p>
+                              <p className="mb-2 px-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-black/70">{column.label}</p>
                               <ul className={column.type === "local" ? "grid grid-cols-2" : undefined}>
                                 {cities
                                   .filter((city) => city.type === column.type)

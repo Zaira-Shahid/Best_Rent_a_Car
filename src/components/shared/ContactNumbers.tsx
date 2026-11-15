@@ -15,7 +15,7 @@ type ContactNumbersProps = {
  * Every number is a clickable link (tel: for calls, wa.me for WhatsApp).
  */
 export function ContactNumbers({ className, tone = "dark", align = "left" }: ContactNumbersProps) {
-  const label = tone === "dark" ? "text-white/55" : "text-primary/55";
+  const label = tone === "dark" ? "text-white/70" : "text-primary/70";
   // "!" because globals.css sets an unlayered `a { color: inherit }` that beats layered utilities.
   const link = tone === "dark" ? "!text-white/85 hover:!text-accent" : "!text-primary hover:!text-secondary";
 
