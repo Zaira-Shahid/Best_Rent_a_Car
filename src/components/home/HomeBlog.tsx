@@ -15,7 +15,7 @@ export function HomeBlog() {
             <h2 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
               Travel guides & tips
             </h2>
-            <p className="mt-3 max-w-xl text-sm text-primary/65 sm:text-base">
+            <p className="mt-3 max-w-xl text-sm text-primary/75 sm:text-base">
               Useful reads for planning city trips and mountain getaways.
             </p>
           </div>
@@ -45,7 +45,7 @@ export function HomeBlog() {
                     {post.title}
                   </Link>
                 </h3>
-                <p className="mt-2 flex-1 text-sm text-primary/60">{post.excerpt}</p>
+                <p className="mt-2 flex-1 text-sm text-primary/75">{post.excerpt}</p>
                 <Link
                   href={`/blog/${post.slug}`}
                   className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary transition hover:text-secondary"

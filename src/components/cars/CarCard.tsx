@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import type { CarModel } from "@/types";
 import { InquireModal } from "@/components/cars/InquireModal";
 import { fleetSections } from "@/data/cars";
-import { formatPhone, formatPrice, telLink, whatsappLink } from "@/lib/brand";
+import { CarActionButtons } from "@/components/cars/CarActionButtons";
+import { formatPrice, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 type CarCardProps = {
@@ -22,28 +23,6 @@ const ENTRY_CATEGORIES = new Set(["economy", "standard"]);
 
 function categoryLabel(slug: string) {
   return fleetSections.find((section) => section.slug === slug)?.name.replace(/ Fleet$/, "") ?? slug;
-}
-
-function WhatsAppIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.97.55 3.8 1.5 5.38L2 22l4.95-1.6a9.86 9.86 0 0 0 5.09 1.4h.01c5.46 0 9.89-4.4 9.89-9.83C21.94 6.4 17.5 2 12.04 2Zm5.76 13.98c-.24.68-1.4 1.25-1.93 1.33-.5.07-1.13.1-1.83-.12-.42-.13-.97-.32-1.67-.62-2.94-1.27-4.85-4.23-5-4.42-.14-.19-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.45.27-.29.59-.36.79-.36h.57c.18 0 .42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.45.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.2-.29.4-.24.66-.14.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.73-.17 1.41Z" />
-    </svg>
-  );
-}
-
-function PhoneIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M6.6 10.8c1.8 3.5 3.1 4.8 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 3.7c0-.6.4-1 1-1H7c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.2 1.1l-2.2 2.2Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
 }
 
 const STAR_PATH =
@@ -82,7 +61,7 @@ function RatingRow({ rating, reviewCount }: { rating: number; reviewCount?: numb
       </span>
       <span className="font-bold text-brand-black">{rating.toFixed(1)}</span>
       {typeof reviewCount === "number" ? (
-        <span className="text-brand-black/55">({reviewCount} Reviews)</span>
+        <span className="text-brand-black/70">({reviewCount} Reviews)</span>
       ) : null}
     </div>
   );
@@ -230,13 +209,13 @@ export function CarCard({ car, sectionLabel, className }: CarCardProps) {
             <div className="mt-4 flex items-center justify-between gap-3">
               <p className="font-heading text-xl font-bold text-brand-black sm:text-2xl">
                 {formatPrice(car.priceDay)}
-                <span className="text-sm font-medium text-brand-black/55"> / day</span>
+                <span className="text-sm font-medium text-brand-black/70"> / day</span>
               </p>
               <Link
                 href={href}
                 onClick={(e) => e.stopPropagation()}
                 aria-label={`View ${car.name}`}
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-brand-black/15 bg-white text-brand-black transition hover:border-brand-black hover:bg-brand-black hover:text-white"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-black/15 bg-white text-brand-black transition hover:border-brand-black hover:bg-brand-black hover:text-white"
               >
                 <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
                   chevron_right
@@ -245,39 +224,12 @@ export function CarCard({ car, sectionLabel, className }: CarCardProps) {
             </div>
           ) : null}
 
-          <div
-            className="mt-auto grid grid-cols-1 gap-2 pt-4 min-[400px]:grid-cols-[1.05fr_0.8fr_1.35fr] min-[400px]:gap-1.5"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-accent px-2 text-xs font-semibold !text-white transition duration-200 hover:brightness-95"
-            >
-              <WhatsAppIcon className="h-3.5 w-3.5 shrink-0" />
-              <span className="truncate">WhatsApp</span>
-            </a>
-            <a
-              href={telLink()}
-              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-brand-black/15 bg-white px-2 text-xs font-semibold text-brand-black transition duration-200 hover:border-brand-black"
-              aria-label={`Call ${formatPhone()}`}
-            >
-              <PhoneIcon className="h-3.5 w-3.5 shrink-0" />
-              <span className="truncate">Call</span>
-            </a>
-            <button
-              type="button"
-              onClick={() => setInquireOpen(true)}
-              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-brand-red px-2 text-xs font-semibold text-white transition duration-200 hover:bg-brand-red-dark"
-            >
-              <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
-                mail
-              </span>
-              <span className="truncate">{isEntry ? "Inquiry" : "Inquiry Now"}</span>
-            </button>
-          </div>
+          <CarActionButtons
+            className="mt-auto pt-4"
+            whatsappHref={whatsappHref}
+            inquiryLabel={isEntry ? "Inquiry" : "Inquiry Now"}
+            onInquire={() => setInquireOpen(true)}
+          />
         </div>
       </article>
 

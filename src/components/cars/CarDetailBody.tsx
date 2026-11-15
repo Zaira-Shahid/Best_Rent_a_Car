@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { CarModel } from "@/types";
 import { Section } from "@/components/ui/Section";
+import { carButtonClass, PhoneIcon, WhatsAppIcon } from "@/components/cars/CarActionButtons";
+import { cn } from "@/lib/utils";
 import { brand, formatPhone, formatPrice, telLink, whatsappLink } from "@/lib/brand";
 
 type CarDetailBodyProps = {
@@ -97,14 +99,16 @@ export function CarDetailBody({ car, categoryName, related }: CarDetailBodyProps
                   href={whatsappLink(`Hi, I want to book ${car.name}.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-accent px-6 py-3 text-center text-sm font-semibold !text-white transition hover:brightness-110"
+                  className={cn(carButtonClass.whatsapp, "w-full text-sm")}
                 >
+                  <WhatsAppIcon />
                   Book on WhatsApp
                 </Link>
                 <Link
                   href={telLink()}
-                  className="rounded-full border border-primary/15 px-6 py-3 text-center text-sm font-semibold text-primary transition hover:bg-primary hover:!text-white"
+                  className={cn(carButtonClass.call, "w-full text-sm")}
                 >
+                  <PhoneIcon />
                   Call {formatPhone()}
                 </Link>
               </div>

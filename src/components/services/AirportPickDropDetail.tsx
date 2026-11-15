@@ -32,7 +32,7 @@ export function AirportPickDropDetail({ data }: AirportPickDropDetailProps) {
               {hero.accent ? (
                 <>
                   {" "}
-                  <span className="text-accent">{hero.accent}</span>
+                  <span className="text-white underline decoration-brand-red decoration-[5px] underline-offset-[10px]">{hero.accent}</span>
                 </>
               ) : null}
             </h1>

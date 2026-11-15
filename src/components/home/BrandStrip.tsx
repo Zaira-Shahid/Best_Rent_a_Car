@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Reveal } from "@/components/ui/Reveal";
 
 const brands = [
   { name: "Toyota", image: "/brands/toyota-logo.png" },
@@ -16,16 +15,8 @@ const brands = [
 
 function BrandItem({ name, image }: { name: string; image: string }) {
   return (
-    <div className="brand-logo-card relative mx-2 h-[110px] w-[110px] shrink-0 sm:mx-3 sm:h-[140px] sm:w-[140px]">
-      <span className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[16px] bg-white p-3 sm:p-4">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-contain p-3 sm:p-4"
-          sizes="140px"
-        />
-      </span>
+    <div className="relative mx-4 h-14 w-24 shrink-0 opacity-80 transition hover:opacity-100 sm:mx-6 sm:h-16 sm:w-28">
+      <Image src={image} alt={name} fill className="object-contain mix-blend-multiply" sizes="112px" />
     </div>
   );
 }
@@ -34,26 +25,24 @@ export function BrandStrip() {
   const loop = [...brands, ...brands, ...brands];
 
   return (
-    <section className="brand-strip-section relative overflow-hidden py-12 sm:py-16">
-      <div className="brand-strip-wave" aria-hidden="true" />
-
-      <div className="relative z-10 mx-auto mb-8 max-w-7xl px-4 text-center sm:mb-10 sm:px-6 lg:px-8">
-        <Reveal>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Brands</p>
-          <h2 className="font-heading text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+    <section className="border-b border-brand-black/10 bg-white" aria-labelledby="brand-strip-title">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-3 px-4 py-6 sm:px-6 lg:flex-row lg:gap-10 lg:px-8 lg:py-7">
+        <div className="shrink-0 text-center lg:w-[270px] lg:text-left">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-red">Brands</p>
+          <h2 id="brand-strip-title" className="font-heading text-xl font-bold tracking-tight text-brand-black">
             Trusted car brands
           </h2>
-          <p className="mx-auto mt-2 max-w-xl px-2 text-sm text-white/65 sm:text-base">
+          <p className="sr-only lg:not-sr-only lg:mt-1 lg:text-[13px] lg:leading-snug lg:text-brand-black/65">
             Popular brands available for daily, weekly, and monthly rental.
           </p>
-        </Reveal>
-      </div>
+        </div>
 
-      <div className="relative z-10 overflow-hidden pb-2 pt-2">
-        <div className="marquee-track flex w-max">
-          {loop.map((item, index) => (
-            <BrandItem key={`${item.name}-${index}`} name={item.name} image={item.image} />
-          ))}
+        <div className="relative min-w-0 w-full flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div className="marquee-track flex w-max" style={{ animationDuration: "32s" }}>
+            {loop.map((item, index) => (
+              <BrandItem key={`${item.name}-${index}`} name={item.name} image={item.image} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

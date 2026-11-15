@@ -2,7 +2,7 @@ import type { GoogleReview } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import { GoogleMark } from "./GoogleMark";
 
-const AVATAR_COLORS = ["#4285F4", "#EA4335", "#34A853", "#F29900"] as const;
+const AVATAR_COLORS = ["bg-brand-black", "bg-brand-red-dark"] as const;
 
 function initials(name: string) {
   return name
@@ -32,8 +32,7 @@ export function GoogleReviewCard({ review, index = 0, className }: GoogleReviewC
       <div className="mb-4 flex items-start justify-between gap-3">
         <div className="flex min-w-0 items-center gap-3">
           <div
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
-            style={{ backgroundColor: AVATAR_COLORS[index % AVATAR_COLORS.length] }}
+            className={cn("flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white", AVATAR_COLORS[index % AVATAR_COLORS.length])}
             aria-hidden="true"
           >
             {initials(review.name)}

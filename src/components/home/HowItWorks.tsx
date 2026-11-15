@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { brand } from "@/lib/brand";
+import { cn } from "@/lib/utils";
 
 const steps = [
   {
@@ -41,55 +42,44 @@ export function HowItWorks() {
           </div>
         </Reveal>
 
-        <div className="relative mt-10 sm:mt-14">
-          <svg
-            className="pointer-events-none absolute left-0 right-0 top-[34px] hidden h-16 w-full lg:block"
-            viewBox="0 0 1000 64"
-            fill="none"
-            preserveAspectRatio="none"
+        <ol className="relative mt-12 sm:mt-16">
+          {/* centre line (left edge on mobile) */}
+          <span
+            className="absolute bottom-0 left-7 top-0 w-px border-l-2 border-dashed border-secondary/40 lg:left-1/2 lg:-translate-x-px"
             aria-hidden="true"
-          >
-            <path
-              d="M40 32 C 140 8, 220 56, 320 32 S 500 8, 600 32 S 760 56, 860 32 S 940 18, 960 28"
-              stroke="#278a08"
-              strokeWidth="2.5"
-              strokeDasharray="5 7"
-              strokeLinecap="round"
-              fill="none"
-            />
-          </svg>
-
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {steps.map((step, index) => (
-              <Reveal key={step.title} delay={index * 80}>
-                <div className="relative flex flex-col items-center text-center">
-                  <div className="relative z-10 flex h-[68px] w-[68px] items-center justify-center rounded-full bg-secondary/15 sm:h-[76px] sm:w-[76px]">
-                    <span
-                      className="material-symbols-outlined text-[28px] text-secondary sm:text-[32px]"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      {step.icon}
+          />
+          {steps.map((step, index) => {
+            const right = index % 2 === 1;
+            return (
+              <li key={step.title} className={cn("relative pb-10 pl-20 last:pb-0 lg:w-1/2 lg:pl-0", right ? "lg:ml-auto lg:pl-14" : "lg:pr-14")}>
+                <span
+                  className={cn(
+                    "absolute left-0 top-0 grid h-14 w-14 place-items-center rounded-full bg-secondary font-heading text-xl font-bold text-white ring-8 ring-white",
+                    right ? "lg:-left-7" : "lg:left-auto lg:-right-7",
+                  )}
+                >
+                  {index + 1}
+                </span>
+                <Reveal delay={index * 80}>
+                  <div className={cn("rounded-3xl border border-primary/10 bg-background p-6 sm:p-7", !right && "lg:text-right")}>
+                    <span className={cn("grid h-12 w-12 place-items-center rounded-2xl bg-secondary/15", !right && "lg:ml-auto")}>
+                      <span
+                        className="material-symbols-outlined text-[26px] text-secondary"
+                        style={{ fontVariationSettings: "'FILL' 1" }}
+                        aria-hidden="true"
+                      >
+                        {step.icon}
+                      </span>
                     </span>
+                    <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-secondary">Step {index + 1}</p>
+                    <h3 className="mt-1 font-heading text-lg font-bold text-primary sm:text-xl">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">{step.text}</p>
                   </div>
-                  <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-secondary">
-                    Step {index + 1}
-                  </p>
-                  <h3 className="mt-1 font-heading text-base font-bold text-primary sm:text-lg">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 max-w-[260px] text-sm leading-relaxed text-muted">{step.text}</p>
-
-                  {index < steps.length - 1 ? (
-                    <div
-                      className="my-1 h-8 w-px border-l-2 border-dashed border-secondary/50 lg:hidden"
-                      aria-hidden="true"
-                    />
-                  ) : null}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
+                </Reveal>
+              </li>
+            );
+          })}
+        </ol>
       </Container>
     </section>
   );
