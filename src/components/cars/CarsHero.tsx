@@ -21,6 +21,8 @@ type CarsHeroProps = {
   description: string;
   image: string;
   imageAlt?: string;
+  /** "cover" fills the hero (default). "natural" shows the image at most at its own size, so it is never upscaled. */
+  imageFit?: "cover" | "natural";
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   stats?: CarsHeroStat[];
@@ -43,6 +45,7 @@ export function CarsHero({
   description,
   image,
   imageAlt = title,
+  imageFit = "cover",
   primaryCta = { label: "Book Now", href: "/contact" },
   secondaryCta = {
     label: "WhatsApp",
@@ -51,6 +54,7 @@ export function CarsHero({
   stats,
   className,
 }: CarsHeroProps) {
+  const natural = imageFit === "natural";
   const imageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -79,17 +83,35 @@ export function CarsHero({
     <header
       className={cn(
         "relative flex min-h-[420px] items-end overflow-hidden sm:min-h-[500px] lg:min-h-[560px]",
+        natural && "flex-col items-stretch bg-navy lg:flex-row lg:items-end",
         className,
       )}
     >
-      <div ref={imageRef} className="absolute inset-0">
-        <Image src={image} alt={imageAlt} fill priority className="object-cover" sizes="100vw" />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/92 via-navy/70 to-navy/35" />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/20" />
+      {natural ? (
+        <div
+          ref={imageRef}
+          className="relative flex justify-center px-4 pt-24 lg:absolute lg:inset-0 lg:items-center lg:pb-40 lg:pl-[52%] lg:pr-[3%] lg:pt-6"
+        >
+          {/* Plain <img> on purpose: with no width/height it renders at its natural size and only ever shrinks. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image}
+            alt={imageAlt}
+            className="h-auto max-h-[320px] w-auto max-w-full rounded-2xl object-contain shadow-2xl lg:max-h-[290px]"
+          />
+        </div>
+      ) : (
+        <>
+          <div ref={imageRef} className="absolute inset-0">
+            <Image src={image} alt={imageAlt} fill priority className="object-cover" sizes="100vw" />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/92 via-navy/70 to-navy/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/20" />
+        </>
+      )}
 
-      <Container className="relative z-10 w-full pb-10 pt-24 sm:pb-14 sm:pt-28 lg:pb-16">
-        <div className="max-w-3xl text-white">
+      <Container className={cn("relative z-10 w-full pb-10 pt-24 sm:pb-14 sm:pt-28 lg:pb-16", natural && "pt-8 sm:pt-8 lg:pt-28")}>
+        <div className={cn("max-w-3xl text-white", natural && "lg:max-w-xl")}>
           <motion.span
             custom={0.05}
             variants={fadeUp}
