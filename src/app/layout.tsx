@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Sora } from "next/font/google";
-import Script from "next/script";
 import { FirebaseAnalytics } from "@/components/FirebaseAnalytics";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { brand } from "@/lib/brand";
@@ -117,18 +116,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       {/* Extensions may inject body attributes before React hydrates. */}
       <body className={`${sora.variable} ${inter.variable}`} suppressHydrationWarning>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18444721583"
-          strategy="afterInteractive"
-        />
-        <Script id="google-ads-gtag" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-18444721583');
-          `}
-        </Script>
         <FirebaseAnalytics />
         <SiteShell>{children}</SiteShell>
       </body>

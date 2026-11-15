@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 import type { CityPage } from "@/types";
 import { CarCard } from "@/components/cars/CarCard";
 import { carModels } from "@/data";
-import { brand } from "@/lib/brand";
+import { brand, whatsappLink } from "@/lib/brand";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -125,7 +125,7 @@ export function CityDetailContent({ city }: CityDetailContentProps) {
       "Please confirm availability. Thank you!",
     ].join("\n");
 
-    window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(whatsappLink(message), "_blank");
   }
 
   return (
@@ -230,7 +230,7 @@ export function CityDetailContent({ city }: CityDetailContentProps) {
           <Reveal>
             <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-16">
               <h2 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
-                Why Choose Best Rent a Car in {city.name}?
+                Why Choose {brand.name} in {city.name}?
               </h2>
               <p className="mt-4 text-sm text-primary/65 sm:text-base">
                 Experience unmatched professionalism, pristine vehicles, and seamless service tailored for

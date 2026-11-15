@@ -5,14 +5,14 @@ import { GoogleReviewsSection } from "@/components/reviews/GoogleReviewsSection"
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { brand } from "@/lib/brand";
+import { brand, whatsappLink } from "@/lib/brand";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Reviews",
-  description: "Customer reviews and testimonials for Best Rent a Car across Pakistan.",
+  description: `Customer reviews and testimonials for ${brand.name} across Pakistan.`,
   path: "/reviews",
-  keywords: ["car rental reviews", "Best Rent a Car testimonials", "Google reviews"],
+  keywords: ["car rental reviews", `${brand.name} testimonials`, "Google reviews"],
 });
 
 const HERO =
@@ -35,7 +35,7 @@ const WHY_CLIENTS = [
   {
     icon: "verified_user",
     title: "Verified Trips Only",
-    text: "Every review comes from a confirmed Best Rent a Car booking — no anonymous fluff.",
+    text: `Every review comes from a confirmed ${brand.name} booking — no anonymous fluff.`,
   },
   {
     icon: "support_agent",
@@ -138,7 +138,7 @@ export default function ReviewsPage() {
             What Our Customers Say
           </h1>
           <p className="animate-fade-up-delay mx-auto mt-3 max-w-2xl text-sm text-white/80 sm:mt-4 sm:text-base lg:text-lg">
-            Real Google reviews from clients who booked Best Rent a Car for airport transfers, weddings, corporate travel,
+            Real Google reviews from clients who booked {brand.name} for airport transfers, weddings, corporate travel,
             and northern trips.
           </p>
           <div className="animate-fade-up-delay-2 mx-auto mt-5 flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full bg-white/15 px-3 py-2 backdrop-blur-md sm:mt-6 sm:inline-flex sm:gap-2 sm:px-4">
@@ -278,7 +278,7 @@ export default function ReviewsPage() {
                   our fleet and chauffeurs.
                 </p>
                 <a
-                  href={`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent("Hi Best Rent a Car, I'd like to share feedback about my recent booking.")}`}
+                  href={whatsappLink(`Hi ${brand.name}, I'd like to share feedback about my recent booking.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold !text-white transition hover:brightness-95 sm:mt-6 sm:w-auto"
@@ -317,7 +317,7 @@ export default function ReviewsPage() {
                   <span className="text-xs font-semibold text-white sm:text-sm">4.9 on Google</span>
                 </div>
                 <h2 className="font-heading text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
-                  Ready for a Best Rent a Car Experience?
+                  Ready for a {brand.name} Experience?
                 </h2>
                 <p className="mx-auto mt-4 max-w-2xl text-sm text-white/70 sm:mt-6 sm:text-base lg:text-lg">
                   Don&apos;t just take their word for it. Book your premium vehicle today and discover why clients

@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { Container } from "@/components/ui/Container";
-import { brand } from "@/lib/brand";
+import { whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 type CarsHeroStat = {
@@ -46,7 +46,7 @@ export function CarsHero({
   primaryCta = { label: "Book Now", href: "/contact" },
   secondaryCta = {
     label: "WhatsApp",
-    href: `https://wa.me/${brand.whatsapp}`,
+    href: whatsappLink(),
   },
   stats,
   className,

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { brand, formatPhoneDisplay } from "@/lib/brand";
+import { brand, formatPhoneDisplay, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 const AGENT_IMAGE =
@@ -42,7 +42,7 @@ export function FaqHelpCard({ className }: FaqHelpCardProps) {
         </div>
         <h3 className="font-heading text-lg font-semibold text-white sm:text-xl">Need immediate help?</h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/75">
-          Talk to a live Best Rent a Car agent for bookings, changes, and roadside support — available 24/7.
+          Talk to a live {brand.name} agent for bookings, changes, and roadside support — available 24/7.
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-stretch xl:flex-row xl:items-center">
           <a
@@ -53,7 +53,7 @@ export function FaqHelpCard({ className }: FaqHelpCardProps) {
             Call Agent
           </a>
           <a
-            href={`https://wa.me/${brand.whatsapp}`}
+            href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"

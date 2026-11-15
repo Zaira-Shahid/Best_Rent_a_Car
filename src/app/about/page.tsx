@@ -5,13 +5,14 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Container } from "@/components/ui/Container";
 import { cities } from "@/data";
 import { pageMeta } from "@/lib/seo";
+import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = pageMeta({
   title: "About Us",
   description:
-    "Learn about Best Rent a Car — premium chauffeur-driven car rental across Pakistan since 2010.",
+    `Learn about ${brand.name} — premium chauffeur-driven car rental across Pakistan since 2010.`,
   path: "/about",
-  keywords: ["about Best Rent a Car", "car rental company Pakistan"],
+  keywords: [`about ${brand.name}`, "car rental company Pakistan"],
 });
 
 
@@ -142,7 +143,7 @@ export default function AboutPage() {
       <header className="relative min-h-[320px] overflow-hidden sm:min-h-[440px] lg:min-h-[560px]">
         <Image
           src={HERO}
-          alt="Best Rent a Car premium SUV fleet with Faisal Mosque at dusk"
+          alt={`${brand.name} premium SUV fleet with Faisal Mosque at dusk`}
           fill
           priority
           className="object-cover object-[75%_center] sm:object-right"
@@ -162,7 +163,7 @@ export default function AboutPage() {
               From Islamabad and Rawalpindi to Lahore, Karachi, and the northern routes, we deliver polished vehicles with professional drivers.
             </p>
             <p>
-              Whether it is an airport transfer, corporate day, wedding, or a mountain weekend — Best Rent a Car keeps every journey smooth and on time.
+              Whether it is an airport transfer, corporate day, wedding, or a mountain weekend — {brand.name} keeps every journey smooth and on time.
             </p>
           </div>
         </Container>
@@ -178,7 +179,7 @@ export default function AboutPage() {
               Redefining Luxury Mobility Since 2010
             </h2>
             <p className="text-base leading-relaxed text-muted sm:text-lg">
-              Best Rent a Car was born from a simple vision: to provide more than just transportation.
+              {brand.name} was born from a simple vision: to provide more than just transportation.
               We set out to offer an experience of unparalleled luxury, where every drive becomes a statement
               of success and refinement.
             </p>
@@ -419,7 +420,7 @@ export default function AboutPage() {
           <AnimateIn>
             <div>
               <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-                The Best Rent a Car Experience
+                The {brand.name} Experience
               </h2>
               <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
                 {STEPS.map((step, index) => (

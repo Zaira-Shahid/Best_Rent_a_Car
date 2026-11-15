@@ -12,6 +12,7 @@ import {
 } from "@/components/services";
 import { serviceDetails, services } from "@/data";
 import { pageMeta } from "@/lib/seo";
+import { brand } from "@/lib/brand";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: service.name,
     description:
       detail?.metaDescription ??
-      `${service.name} with Best Rent a Car — professional and on-time service across Pakistan.`,
+      `${service.name} with ${brand.name} — professional and on-time service across Pakistan.`,
     path: `/services/${service.slug}`,
     keywords: [service.name.toLowerCase(), "car rental service Pakistan"],
   });
@@ -65,7 +66,7 @@ export default async function ServicePage({ params }: Props) {
   return (
     <ContentPage
       title={service.name}
-      description={`Book ${service.name.toLowerCase()} with Best Rent a Car.`}
+      description={`Book ${service.name.toLowerCase()} with ${brand.name}.`}
       body={[
         `Our ${service.name.toLowerCase()} service is designed for comfort, reliability, and clear pricing.`,
         "Contact us with your schedule and preferred vehicle to confirm availability.",

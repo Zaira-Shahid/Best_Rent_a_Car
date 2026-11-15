@@ -6,13 +6,23 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { CarModel } from "@/types";
 import { InquireModal } from "@/components/cars/InquireModal";
-import { brand, formatPhoneDisplay, formatPrice } from "@/lib/brand";
+import { fleetSections } from "@/data/cars";
+import { brand, formatPhoneDisplay, formatPrice, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 type CarCardProps = {
   car: CarModel;
+  /** Name of the section the card is shown in. Falls back to the car's own category. */
+  sectionLabel?: string;
   className?: string;
 };
+
+/** Entry tiers use the yellow pill and show the price under the specs instead of on the image. */
+const ENTRY_CATEGORIES = new Set(["economy", "standard"]);
+
+function categoryLabel(slug: string) {
+  return fleetSections.find((section) => section.slug === slug)?.name.replace(/ Fleet$/, "") ?? slug;
+}
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -36,13 +46,56 @@ function PhoneIcon({ className }: { className?: string }) {
   );
 }
 
-export function CarCard({ car, className }: CarCardProps) {
+const STAR_PATH =
+  "M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.4l-5.9 3.3 1.2-6.6-4.8-4.6 6.56-.9L12 2.5Z";
+
+function Star({ fill }: { fill: "full" | "half" | "empty" }) {
+  return (
+    <span className="relative inline-block h-4 w-4">
+      <svg viewBox="0 0 24 24" className="absolute inset-0 h-4 w-4 text-brand-black/15" fill="currentColor" aria-hidden="true">
+        <path d={STAR_PATH} />
+      </svg>
+      {fill !== "empty" ? (
+        <svg
+          viewBox="0 0 24 24"
+          className="absolute inset-0 h-4 w-4 text-brand-yellow"
+          fill="currentColor"
+          aria-hidden="true"
+          style={fill === "half" ? { clipPath: "inset(0 50% 0 0)" } : undefined}
+        >
+          <path d={STAR_PATH} />
+        </svg>
+      ) : null}
+    </span>
+  );
+}
+
+/** Rendered only when the car has a rating; the review count is optional. */
+function RatingRow({ rating, reviewCount }: { rating: number; reviewCount?: number }) {
+  const rounded = Math.round(rating * 2) / 2;
+  return (
+    <div className="flex items-center gap-1.5 text-sm" aria-label={`Rated ${rating} out of 5`}>
+      <span className="flex items-center gap-0.5">
+        {[1, 2, 3, 4, 5].map((n) => (
+          <Star key={n} fill={rounded >= n ? "full" : rounded >= n - 0.5 ? "half" : "empty"} />
+        ))}
+      </span>
+      <span className="font-bold text-brand-black">{rating.toFixed(1)}</span>
+      {typeof reviewCount === "number" ? (
+        <span className="text-brand-black/55">({reviewCount} Reviews)</span>
+      ) : null}
+    </div>
+  );
+}
+
+export function CarCard({ car, sectionLabel, className }: CarCardProps) {
   const router = useRouter();
   const [inquireOpen, setInquireOpen] = useState(false);
   const [showAlt, setShowAlt] = useState(false);
   const [paused, setPaused] = useState(false);
   const hasAlt = Boolean(car.imageAlt && car.imageAlt !== car.image);
   const href = `/cars/${car.slug}`;
+  const isEntry = ENTRY_CATEGORIES.has(car.category);
 
   useEffect(() => {
     if (!hasAlt || paused) return;
@@ -54,19 +107,26 @@ export function CarCard({ car, className }: CarCardProps) {
     return () => window.clearInterval(id);
   }, [hasAlt, paused]);
 
-  const whatsappHref = `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(
+  const whatsappHref = whatsappLink(
     `Hi, I want to inquire about ${car.name} rental.`,
-  )}`;
+  );
 
   function goToCar() {
     router.push(href);
   }
 
+  const specs = [
+    { icon: "person", label: `${car.seats} Seats` },
+    { icon: "settings", label: car.transmission },
+    { icon: "local_gas_station", label: car.fuel },
+    ...(car.colors?.length ? [{ icon: "palette", label: car.colors.join(" / ") }] : []),
+  ];
+
   return (
     <>
       <article
         className={cn(
-          "group flex h-full cursor-pointer flex-col overflow-hidden rounded-[12px] border border-primary/8 bg-white shadow-[0_10px_35px_rgba(0,11,29,0.05)] transition duration-300 hover:-translate-y-1.5 hover:border-secondary/25 hover:shadow-[0_22px_50px_rgba(0,11,29,0.12)]",
+          "group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-brand-black/5 bg-white shadow-[0_10px_35px_rgba(21,24,29,0.08)] transition duration-300 hover:-translate-y-1.5 hover:border-brand-red/30 hover:shadow-[0_22px_50px_rgba(21,24,29,0.14)]",
           className,
         )}
         onClick={goToCar}
@@ -109,44 +169,84 @@ export function CarCard({ car, className }: CarCardProps) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           ) : null}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent opacity-70 transition duration-300 group-hover:opacity-90" />
+
+          <span
+            className={cn(
+              "absolute left-3 top-3 rounded-full px-4 py-1.5 text-xs font-bold shadow-sm",
+              isEntry ? "bg-brand-yellow text-brand-black" : "bg-brand-red text-white",
+            )}
+          >
+            {sectionLabel ?? categoryLabel(car.category)}
+          </span>
+
           {car.badge ? (
-            <span className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 text-xs font-semibold !text-white shadow-sm">
+            <span className="absolute right-3 top-3 rounded-full bg-brand-black/85 px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
               {car.badge}
             </span>
           ) : null}
-          <div className="absolute bottom-3 left-3">
-            <p className="rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-primary backdrop-blur">
-              {formatPrice(car.priceDay)}
-              <span className="font-normal text-primary/55"> / day</span>
+
+          {!isEntry ? (
+            <p className="absolute bottom-3 left-3 flex items-center overflow-hidden rounded-full bg-brand-black/90 py-1.5 pl-4 pr-5 text-sm font-bold text-white shadow-md">
+              <span>
+                {formatPrice(car.priceDay)}
+                <span className="font-medium text-white/80"> / day</span>
+              </span>
+              <span className="absolute inset-y-0 right-0 w-1.5 bg-brand-red" aria-hidden="true" />
             </p>
-          </div>
+          ) : null}
         </div>
 
         <div className="flex flex-1 flex-col p-4 sm:p-5">
-          <p className="text-xs font-medium uppercase tracking-wider text-secondary">{car.brand}</p>
-          <h3 className="mt-1 min-w-0 text-base font-semibold text-primary transition-colors group-hover:text-secondary sm:text-lg">
+          {typeof car.rating === "number" ? <RatingRow rating={car.rating} reviewCount={car.reviewCount} /> : null}
+
+          <p className={cn("text-xs font-bold uppercase tracking-[0.18em] text-brand-red", car.rating !== undefined && "mt-2")}>
+            {car.brand}
+          </p>
+          <h3 className="mt-1 min-w-0 font-heading text-lg font-bold text-brand-black transition-colors group-hover:text-brand-red sm:text-xl">
             <Link href={href} onClick={(e) => e.stopPropagation()} className="line-clamp-2 break-words">
               {car.name}
             </Link>
           </h3>
 
-          <div className="mt-3 flex flex-wrap gap-2 text-xs text-primary/60">
-            <span className="rounded-[10px] bg-background px-2.5 py-1">{car.seats} Seats</span>
-            <span className="rounded-[10px] bg-background px-2.5 py-1">{car.transmission}</span>
-            <span className="rounded-[10px] bg-background px-2.5 py-1">{car.fuel}</span>
-            {car.colors?.length ? (
-              <span className="rounded-[10px] bg-background px-2.5 py-1">{car.colors.join(" / ")}</span>
-            ) : null}
-          </div>
+          <ul className="mt-3 grid grid-cols-2 gap-y-2 text-xs text-brand-black/70">
+            {specs.map((spec, index) => (
+              <li
+                key={spec.icon}
+                className={cn(
+                  "flex min-w-0 items-center gap-1.5",
+                  index % 2 === 1 && "border-l pl-3",
+                  index % 2 === 1 && (isEntry ? "border-brand-black/15" : "border-brand-red/60"),
+                )}
+              >
+                <span className="material-symbols-outlined text-[16px] text-brand-black/65" aria-hidden="true">
+                  {spec.icon}
+                </span>
+                <span className="truncate">{spec.label}</span>
+              </li>
+            ))}
+          </ul>
 
-          <p className="mt-4 text-sm font-semibold text-primary">
-            {formatPrice(car.priceDay)}
-            <span className="font-normal text-primary/55"> / day</span>
-          </p>
+          {isEntry ? (
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <p className="font-heading text-xl font-bold text-brand-black sm:text-2xl">
+                {formatPrice(car.priceDay)}
+                <span className="text-sm font-medium text-brand-black/55"> / day</span>
+              </p>
+              <Link
+                href={href}
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`View ${car.name}`}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-brand-black/15 bg-white text-brand-black transition hover:border-brand-black hover:bg-brand-black hover:text-white"
+              >
+                <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
+                  chevron_right
+                </span>
+              </Link>
+            </div>
+          ) : null}
 
           <div
-            className="mt-auto grid grid-cols-1 gap-2 pt-4 min-[400px]:grid-cols-3 min-[400px]:gap-1.5"
+            className="mt-auto grid grid-cols-1 gap-2 pt-4 min-[400px]:grid-cols-[1.05fr_0.8fr_1.35fr] min-[400px]:gap-1.5"
             onClick={(e) => e.stopPropagation()}
           >
             <a
@@ -154,14 +254,14 @@ export function CarCard({ car, className }: CarCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
-              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-[10px] bg-accent px-2 text-xs font-semibold !text-white transition duration-200 hover:brightness-95"
+              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-accent px-2 text-xs font-semibold !text-white transition duration-200 hover:brightness-95"
             >
               <WhatsAppIcon className="h-3.5 w-3.5 shrink-0" />
               <span className="truncate">WhatsApp</span>
             </a>
             <a
               href={`tel:${brand.phone}`}
-              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-[10px] bg-secondary px-2 text-xs font-semibold !text-white transition duration-200 hover:brightness-95"
+              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-brand-black/15 bg-white px-2 text-xs font-semibold text-brand-black transition duration-200 hover:border-brand-black"
               aria-label={`Call ${formatPhoneDisplay()}`}
             >
               <PhoneIcon className="h-3.5 w-3.5 shrink-0" />
@@ -170,9 +270,12 @@ export function CarCard({ car, className }: CarCardProps) {
             <button
               type="button"
               onClick={() => setInquireOpen(true)}
-              className="inline-flex min-h-11 items-center justify-center rounded-[10px] border border-white/20 bg-primary px-2 text-xs font-semibold !text-white transition duration-200 hover:bg-primary/90"
+              className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-brand-red px-2 text-xs font-semibold text-white transition duration-200 hover:bg-brand-red-dark"
             >
-              Inquiry
+              <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
+                mail
+              </span>
+              <span className="truncate">{isEntry ? "Inquiry" : "Inquiry Now"}</span>
             </button>
           </div>
         </div>

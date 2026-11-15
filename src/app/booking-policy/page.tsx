@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { brand } from "@/lib/brand";
+import { brand, whatsappLink } from "@/lib/brand";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Booking Policy",
-  description: "Booking, cancellation, and payment policy for Best Rent a Car.",
+  description: `Booking, cancellation, and payment policy for ${brand.name}.`,
   path: "/booking-policy",
 });
 
@@ -269,7 +269,7 @@ export default function BookingPolicyPage() {
               </p>
               <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
                 <ButtonLink
-                  href={`https://wa.me/${brand.whatsapp}`}
+                  href={whatsappLink()}
                   variant="accent"
                   size="lg"
                   target="_blank"

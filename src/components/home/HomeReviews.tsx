@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { brand } from "@/lib/brand";
 
 const GOOGLE_REVIEWS = [
   {
@@ -78,7 +79,7 @@ export function HomeReviews() {
               What Our Clients Say
             </h2>
             <p className="mt-2 text-sm text-muted sm:text-base">
-              Real Google reviews from customers who booked with Best Rent a Car.
+              Real Google reviews from customers who booked with {brand.name}.
             </p>
           </div>
         </Reveal>

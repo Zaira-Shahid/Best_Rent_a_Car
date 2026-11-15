@@ -174,6 +174,10 @@ export type CarModel = {
   featured?: boolean;
   sale?: boolean;
   family?: boolean;
+  /** Optional customer rating (0-5). Card shows the rating row only when present. */
+  rating?: number;
+  /** Optional number of reviews behind the rating. */
+  reviewCount?: number;
 };
 
 export type BlogCategory = {

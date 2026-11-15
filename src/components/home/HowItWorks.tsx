@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { brand } from "@/lib/brand";
 
 const steps = [
   {
@@ -31,11 +32,11 @@ export function HowItWorks() {
         <Reveal>
           <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-2xl lg:text-left">
             <h2 className="font-heading text-2xl font-bold tracking-tight text-primary sm:text-3xl lg:text-4xl">
-              How to Book a Car with Best Rent a Car?
+              How to Book a Car with {brand.name}?
             </h2>
             <p className="mt-3 text-sm text-muted sm:text-base">
               Booking a chauffeur-driven car rental in Islamabad &amp; Rawalpindi is quick and hassle-free.
-              Follow these four simple steps to reserve your vehicle with Best Rent a Car.
+              Follow these four simple steps to reserve your vehicle with {brand.name}.
             </p>
           </div>
         </Reveal>

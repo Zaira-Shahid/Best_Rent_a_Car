@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { carModels, cities } from "@/data";
-import { brand } from "@/lib/brand";
+import { brand, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 const locationOptions = cities.filter(
@@ -124,7 +124,7 @@ export function BookingBar({ className }: BookingBarProps) {
       "Please confirm availability. Thank you!",
     ].join("\n");
 
-    window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(whatsappLink(message), "_blank");
   }
 
   return (

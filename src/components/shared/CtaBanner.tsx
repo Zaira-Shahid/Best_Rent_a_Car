@@ -3,7 +3,7 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
-import { brand } from "@/lib/brand";
+import { whatsappLink } from "@/lib/brand";
 
 type CtaBannerProps = {
   title?: string;
@@ -27,7 +27,7 @@ export function CtaBanner({
               Book Now
             </ButtonLink>
             <ButtonLink
-              href={`https://wa.me/${brand.whatsapp}`}
+              href={whatsappLink()}
               variant="outline"
               size="lg"
               className="w-full border-white/30 !text-white hover:border-secondary hover:!text-secondary sm:w-auto"

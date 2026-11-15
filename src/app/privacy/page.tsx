@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { ContentPage } from "@/components/shared";
 import { pageMeta } from "@/lib/seo";
+import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
-  description: "How Best Rent a Car collects and protects your information.",
+  description: `How ${brand.name} collects and protects your information.`,
   path: "/privacy",
 });
 

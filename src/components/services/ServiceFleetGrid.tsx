@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { CarModel, ServiceFleetItem } from "@/types";
 import { InquireModal } from "@/components/cars/InquireModal";
 import { Reveal } from "@/components/ui/Reveal";
-import { brand, formatPrice } from "@/lib/brand";
+import { brand, formatPrice, whatsappLink } from "@/lib/brand";
 
 type ServiceFleetGridProps = {
   items: ServiceFleetItem[];
@@ -15,7 +15,7 @@ function toCarModel(item: ServiceFleetItem): CarModel {
   return {
     slug: item.name.toLowerCase().replace(/\s+/g, "-"),
     name: item.name,
-    brand: "Best Rent a Car",
+    brand: brand.name,
     category: "luxury",
     seats: item.seats,
     transmission: item.transmission === "Manual" ? "Manual" : "Automatic",
@@ -55,9 +55,9 @@ function FleetCard({ item }: { item: ServiceFleetItem }) {
   const [showAlt, setShowAlt] = useState(false);
   const car = toCarModel(item);
   const hasAlt = Boolean(item.imageAlt && item.imageAlt !== item.image);
-  const whatsappHref = `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(
+  const whatsappHref = whatsappLink(
     `Hi, I want to inquire about ${item.name} rental.`,
-  )}`;
+  );
 
   function toggleAltImage() {
     if (hasAlt) setShowAlt((value) => !value);

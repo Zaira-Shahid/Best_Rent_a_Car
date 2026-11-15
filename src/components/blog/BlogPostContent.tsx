@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { blogCategories, blogPosts } from "@/data";
 import type { BlogPost } from "@/types";
+import { brand } from "@/lib/brand";
 
 type BlogPostContentProps = {
   post: BlogPost;
@@ -171,7 +172,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       </section>
 
       <CtaBanner
-        title="Plan your next trip with Best Rent a Car"
+        title={`Plan your next trip with ${brand.name}`}
         description="Book a sedan, SUV, or chauffeur for city days, airport transfers, and mountain weekends."
       />
     </>

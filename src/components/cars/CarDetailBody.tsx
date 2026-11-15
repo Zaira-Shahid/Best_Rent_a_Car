@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { CarModel } from "@/types";
 import { Section } from "@/components/ui/Section";
-import { brand, formatPrice } from "@/lib/brand";
+import { brand, formatPrice, whatsappLink } from "@/lib/brand";
 
 type CarDetailBodyProps = {
   car: CarModel;
@@ -94,7 +94,7 @@ export function CarDetailBody({ car, categoryName, related }: CarDetailBodyProps
               </div>
               <div className="flex flex-col gap-3">
                 <Link
-                  href={`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(`Hi, I want to book ${car.name}.`)}`}
+                  href={whatsappLink(`Hi, I want to book ${car.name}.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full bg-accent px-6 py-3 text-center text-sm font-semibold !text-white transition hover:brightness-110"

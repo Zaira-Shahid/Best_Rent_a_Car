@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { homeFaqs } from "@/data";
 import { cn } from "@/lib/utils";
+import { brand } from "@/lib/brand";
 
 export function WhyChooseUs() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -19,7 +20,7 @@ export function WhyChooseUs() {
               Frequently Asked Questions
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg">
-              Answers to common questions about chauffeur-driven car rental with Best Rent a Car.
+              Answers to common questions about chauffeur-driven car rental with {brand.name}.
             </p>
           </div>
         </Reveal>
