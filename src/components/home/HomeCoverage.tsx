@@ -33,16 +33,16 @@ export function HomeCoverage() {
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-8">
           <Reveal>
             <div>
-              <p className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-[#ed0014] sm:text-sm">
-                <span className="h-0.5 w-10 bg-[#ed0014]" aria-hidden="true" />
+              <p className="flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-brand-red sm:text-sm">
+                <span className="h-0.5 w-10 bg-brand-red" aria-hidden="true" />
                 Our Service Coverage
               </p>
 
               <h2
                 id="coverage-heading"
-                className="mt-5 font-heading text-3xl font-bold leading-tight tracking-tight text-[#15181d] sm:text-4xl lg:text-[44px]"
+                className="mt-5 font-heading text-3xl font-bold leading-tight tracking-tight text-brand-black sm:text-4xl lg:text-[44px]"
               >
-                Premium Car Rental in {islamabad} &amp; <span className="text-[#ed0014]">{rawalpindi}</span>
+                Premium Car Rental in {islamabad} &amp; <span className="text-brand-red">{rawalpindi}</span>
               </h2>
 
               <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
@@ -55,12 +55,12 @@ export function HomeCoverage() {
                 {SERVICES.map((service) => (
                   <li
                     key={service.label}
-                    className="flex flex-col items-center gap-2 rounded-2xl bg-white px-2 py-4 text-center shadow-[0_8px_24px_rgba(21,24,29,0.08)] ring-1 ring-black/5"
+                    className="flex flex-col items-center gap-2 rounded-2xl bg-white px-2 py-4 text-center shadow-lg shadow-brand-black/10 ring-1 ring-black/5"
                   >
-                    <span className="material-symbols-outlined text-[30px] text-[#ed0014]" aria-hidden="true">
+                    <span className="material-symbols-outlined text-[30px] text-brand-red" aria-hidden="true">
                       {service.icon}
                     </span>
-                    <span className="text-sm font-semibold leading-tight text-[#15181d]">{service.label}</span>
+                    <span className="text-sm font-semibold leading-tight text-brand-black">{service.label}</span>
                   </li>
                 ))}
               </ul>
@@ -68,7 +68,7 @@ export function HomeCoverage() {
               <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
                 <Link
                   href="/cars"
-                  className="inline-flex items-center gap-3 rounded-full bg-[#ed0014] px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_20px_rgba(237,0,20,0.3)] transition hover:bg-[#b80010]"
+                  className="inline-flex items-center gap-3 rounded-full bg-brand-red px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-red/30 transition hover:bg-brand-red-dark"
                 >
                   Explore Our Fleet
                   <span className="material-symbols-outlined text-[20px]" aria-hidden="true">

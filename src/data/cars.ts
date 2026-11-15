@@ -283,7 +283,6 @@ export const carModels: CarModel[] = [
     imageAlt: carImage("prado-black.png"),
     colors: ["White", "Black"],
     featured: true,
-    badge: "Best Carz Rent a Car",
   },
   {
     slug: "toyota-fortuner",
