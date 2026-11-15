@@ -3,6 +3,7 @@ export { BookingBar } from "./BookingBar";
 export { HomeFleet } from "./HomeFleet";
 export { BrandStrip } from "./BrandStrip";
 export { PromoBanner } from "./PromoBanner";
+export { HomeCities } from "./HomeCities";
 export { HowItWorks } from "./HowItWorks";
 export { WhyChooseUs } from "./WhyChooseUs";
 export { HomeServices } from "./HomeServices";

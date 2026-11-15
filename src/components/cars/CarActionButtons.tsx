@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 /** Shared WhatsApp / Call / Inquiry button style used on car cards, service fleet grids and the car page. */
 
 const base =
-  "inline-flex h-[44px] min-w-0 items-center justify-center gap-1.5 rounded-full px-3 text-[13px] font-semibold leading-5 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black";
+  "inline-flex h-[44px] min-w-0 items-center justify-center gap-1.5 rounded-full px-2.5 text-[13px] font-semibold leading-5 transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black";
 
 export const carButtonClass = {
   // Green fill/hover colour comes from the global wa.me link rule in globals.css.
@@ -70,7 +70,7 @@ type CarActionButtonsProps = {
 export function CarActionButtons({ whatsappHref, callLabel = "Call", inquiryLabel, onInquire, className }: CarActionButtonsProps) {
   return (
     <div
-      className={cn("grid grid-cols-2 gap-2 min-[360px]:grid-cols-[1.15fr_0.8fr_1.25fr]", className)}
+      className={cn("grid grid-cols-2 gap-2 min-[360px]:grid-cols-[1.05fr_0.7fr_1.4fr]", className)}
       onClick={(e) => e.stopPropagation()}
     >
       <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className={carButtonClass.whatsapp}>
