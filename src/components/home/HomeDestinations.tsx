@@ -62,7 +62,7 @@ export function HomeDestinations() {
                   className="object-cover transition duration-1000 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/35 to-transparent" />
                 <div className="absolute bottom-6 left-6 text-white drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)] sm:bottom-8 sm:left-8">
                   <h3 className="font-heading text-lg font-semibold sm:text-2xl">{item.name}</h3>
                   <p className="text-xs text-white/80 sm:text-sm">{item.meta}</p>

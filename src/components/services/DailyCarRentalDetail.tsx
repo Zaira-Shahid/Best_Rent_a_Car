@@ -31,7 +31,7 @@ export function DailyCarRentalDetail({ data }: DailyCarRentalDetailProps) {
             </span>
             <h1 className="hero-shadow animate-fade-up font-heading text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl">
               {hero.title}
-              {hero.accent ? <> <span className="text-accent">{hero.accent}</span></> : null}
+              {hero.accent ? <> <span className="text-white underline decoration-brand-red decoration-[5px] underline-offset-[10px]">{hero.accent}</span></> : null}
             </h1>
             <p className="animate-fade-up-delay mt-4 max-w-xl text-sm text-white/85 sm:mt-5 sm:text-base lg:text-lg">{hero.description}</p>
           </div>

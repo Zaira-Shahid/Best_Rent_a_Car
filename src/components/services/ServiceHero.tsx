@@ -20,7 +20,7 @@ export function ServiceHero({ hero }: ServiceHeroProps) {
           </span>
           <h1 className="animate-fade-up font-heading text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
             {hero.title}
-            {hero.accent ? <> <span className="text-accent">{hero.accent}</span></> : null}
+            {hero.accent ? <> <span className="text-white underline decoration-brand-red decoration-[5px] underline-offset-[10px]">{hero.accent}</span></> : null}
           </h1>
           <p className="animate-fade-up-delay max-w-xl text-sm leading-relaxed text-white/80 sm:text-base lg:text-lg">
             {hero.description}

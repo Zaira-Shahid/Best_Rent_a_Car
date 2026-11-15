@@ -14,7 +14,7 @@ export function GoogleRatingBadge({ className, tone = "light" }: GoogleRatingBad
     <div className={cn("inline-flex flex-wrap items-center gap-2.5", className)}>
       <GoogleMark className="h-6 w-6 shrink-0" />
       <span className={cn("text-sm font-semibold sm:text-base", tone === "dark" ? "text-white" : "text-primary")}>
-        {brand.rating.toFixed(1)} <span className="text-[#FBBC04]">★</span> · {brand.reviewCount} Google reviews
+        {brand.rating.toFixed(1)} <span className={tone === "dark" ? "text-brand-yellow" : "text-brand-black"}>★</span> · {brand.reviewCount} Google reviews
       </span>
     </div>
   );

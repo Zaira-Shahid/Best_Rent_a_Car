@@ -68,7 +68,7 @@ export function HomeCoverage() {
               <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
                 <Link
                   href="/cars"
-                  className="inline-flex items-center gap-3 rounded-full bg-brand-red px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-red/30 transition hover:bg-brand-red-dark"
+                  className="inline-flex items-center gap-3 rounded-full bg-brand-red px-7 py-3.5 text-base font-semibold !text-white shadow-lg shadow-brand-red/30 transition hover:bg-brand-red-dark"
                 >
                   Explore Our Fleet
                   <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
