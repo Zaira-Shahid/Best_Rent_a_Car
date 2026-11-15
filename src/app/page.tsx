@@ -29,8 +29,8 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <PremiumFleetPreview />
       <BrandStrip />
+      <PremiumFleetPreview />
       <HomeFleet />
       <PromoBanner />
       <HowItWorks />

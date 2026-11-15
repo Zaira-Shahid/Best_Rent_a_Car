@@ -82,38 +82,6 @@
   animation-play-state: paused;
 }
 
-.brand-strip-section {
-  background: linear-gradient(180deg, #06264b 0%, #06264b 52%, #f8f9fa 52%, #f8f9fa 100%);
-  padding-bottom: 1.5rem;
-}
-
-.brand-strip-wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 52%;
-  height: 90px;
-  background: #f8f9fa;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  transform: scaleX(1.15);
-}
-
-.brand-logo-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  padding: 3px;
-  background: linear-gradient(145deg, #278a08 0%, #06264b 45%, #278a08 100%);
-  box-shadow: 0 10px 22px rgba(0, 11, 29, 0.22);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.brand-logo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 28px rgba(39, 138, 8, 0.28);
-}
 
 
 .animate-fade-up {
@@ -251,7 +219,7 @@ body {
   color: var(--color-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip (not hidden) so the sticky header keeps a viewport scroll container */
 }
 
 h1,
@@ -289,147 +257,18 @@ img {
   height: auto;
 }
 
-@media (max-width: 640px) {
-  .brand-strip-wave {
-    height: 56px;
-    top: 54%;
-  }
-
-  .brand-gold-card {
-    border-radius: 18px;
-    padding: 8px;
-  }
-
-  .brand-gold-card::before {
-    inset: 8px;
-    border-radius: 12px;
-  }
-}
-
-/* Home hero colors follow the black and red logo. */
-.ride-hero { position: relative; isolation: isolate; overflow: hidden; background: #fff; padding: 38px 0 22px; color: #15181d; }
-.ride-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(115deg, #ff3025, #ed0014); clip-path: polygon(0 79%, 22% 77%, 58% 58%, 100% 65%, 100% 100%, 0 100%); }
-.ride-hero-main { display: grid; grid-template-columns: 0.94fr 1.06fr; min-height: 360px; align-items: center; }
-.ride-hero-copy { position: relative; z-index: 4; padding-bottom: 38px; }
-.ride-hero-copy h1 { font-size: clamp(36px, 4.2vw, 60px); line-height: 1.04; font-weight: 850; letter-spacing: -2.6px; }
-.ride-hero-copy h2 { margin-top: 18px; color: #ed0014; font-size: clamp(17px, 1.65vw, 23px); font-weight: 750; line-height: 1.3; }
-.ride-hero-copy p { max-width: 460px; margin-top: 12px; font-size: 16px; line-height: 1.65; color: #363940; }
-.ride-more { display: inline-flex; gap: 24px; align-items: center; margin-top: 20px; border-radius: 10px; background: #15181d; color: white; padding: 13px 23px; font-weight: 650; box-shadow: 0 4px 12px #1112; transition: background .2s; }
-.ride-more:hover { background: #ed0014; }
-.ride-more span { font-size: 22px; }
-.ride-hero-art { height: 365px; position: relative; align-self: end; }
-.ride-map { position: absolute; top: 0; right: 0; width: 94%; height: 245px; overflow: hidden; border-radius: 25px; background: repeating-linear-gradient(33deg, transparent 0 40px, #fff 41px 46px, transparent 47px 83px), repeating-linear-gradient(122deg, #eff0ed 0 49px, #fff 50px 55px, #f3f4f1 56px 90px); }
-.ride-map-park { position: absolute; background: #e4e4e7; width: 130px; height: 95px; transform: rotate(-24deg); border-radius: 20px; }
-.park-one { left: 18px; top: 70px; }.park-two { right: 0; top: 25px; }
-.ride-map-road { position: absolute; height: 9px; background: #ffd6d9; border: 2px solid #fff0f1; width: 120%; left: -10%; top: 50%; transform: rotate(-30deg); }
-.road-two { transform: rotate(55deg); top: 30%; }
-.ride-map-label { position: absolute; color: #52525b; font-weight: 700; font-size: 11px; letter-spacing: 1px; }.map-islamabad { left: 20%; top: 30%; }.map-rawalpindi { right: 12%; top: 62%; }
-.ride-pin { position: absolute; font-size: 60px; font-variation-settings: 'FILL' 1; filter: drop-shadow(0 5px 2px #0002); }.pin-blue { color: #15181d; left: 8%; top: 2%; }.pin-red { color: #ed0014; right: 20%; top: 15%; }
-.ride-route { position: absolute; inset: 0; width: 100%; height: 100%; }
-.ride-cars-cutout { position: absolute; z-index: 2; left: -8%; right: -4%; bottom: 0; height: 275px; }.ride-cars-cutout img { object-fit: contain; object-position: center bottom; }
-
-.ride-search { position: relative; z-index: 5; display: grid; grid-template-columns: 1.05fr 1fr 1fr .65fr; align-items: center; gap: 16px; border-radius: 19px; padding: 18px 24px; background: #fff; box-shadow: 0 9px 28px #15181d20; }
-.ride-search-field { display: flex; gap: 13px; align-items: center; min-width: 0; padding-right: 14px; border-right: 1px solid #dedfe3; }.ride-search-field > .material-symbols-outlined { font-size: 31px; }.ride-search-field > span:last-child { min-width: 0; width: 100%; }.ride-search-field strong { display: block; font-size: 16px; font-weight: 750; }.ride-search-field input { display: block; width: 100%; min-width: 0; border: 0; background: transparent; color: #787e88; font-size: 13px; margin-top: 4px; padding: 3px 0; outline-offset: 3px; color-scheme: light; }
-.ride-search-button { display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 11px; background: #ed0014; color: white; padding: 15px 18px; font-size: 19px; font-weight: 700; cursor: pointer; transition: background .2s; }.ride-search-button:hover { background: #b80010; }
-@media (max-width: 1023px) { .ride-hero-main { min-height: 330px; }.ride-hero-art { height: 310px; }.ride-hero-copy h1 { font-size: 43px; }.ride-hero-copy p { font-size: 14px; }.ride-search { grid-template-columns: 1fr 1fr; }.ride-search-field:nth-child(2) { border-right: 0; } }
-@media (max-width: 639px) { .ride-hero { padding-top: 28px; }.ride-hero-main { grid-template-columns: 1fr; }.ride-hero-copy { padding-bottom: 0; }.ride-hero-copy h1 { font-size: 42px; letter-spacing: -1.8px; }.ride-hero-copy h2 { max-width: 330px; }.ride-hero-copy p { max-width: 390px; }.ride-hero-art { height: 280px; margin-top: 24px; }.ride-map { height: 195px; }.ride-search { grid-template-columns: 1fr; gap: 0; padding: 8px 18px 18px; border-radius: 16px; }.ride-search-field { padding: 13px 0; border-right: 0; border-bottom: 1px solid #eee; }.ride-search-button { margin-top: 14px; }.ride-hero::before { clip-path: polygon(0 68%, 100% 57%, 100% 100%, 0 100%); } }
-.ride-header { background: #fff; color: #06264b; border-bottom-color: #f0f0f0; }
-.ride-header nav > a, .ride-header nav > div > a { color: #24262b; font-weight: 600; }
-.ride-header nav > a:hover, .ride-header nav > div > a:hover { color: #278a08; }
-.ride-header nav a.border-b-2 { border-color: #278a08; }
-.ride-header > div > div:last-child button { color: #06264b; border-color: #ddd; }
-.ride-header > div > div > a.rounded-full { color: #06264b; border-color: #ccc; }
-.ride-header > div > div > a.bg-accent { background: #278a08; color: #fff !important; }
-.ride-header > div > div > a[aria-label="WhatsApp"] { color: #20b44b; border-color: #ddd; }
-
-@media (max-width: 639px) { .ride-cars-cutout { left: -3%; right: -3%; height: 220px; bottom: 12px; } }
 /* Keep the transparent logo readable on dark navigation and footer surfaces. */
-header:not(.ride-header) .site-brand-logo, footer .site-brand-logo, [role="dialog"] .site-brand-logo { filter: brightness(0) invert(1); }
-
-.premium-fleet-preview { background: #f7f8fa; color: #06264b; padding: 24px 0 30px; }
-.premium-fleet-intro { padding: 0 12px; }
-.premium-fleet-eyebrow { color: #278a08; font-size: 14px; font-weight: 800; text-transform: uppercase; margin-bottom: 3px; }
-.premium-fleet-intro h2 { font-size: clamp(25px, 2.7vw, 38px); font-weight: 800; line-height: 1.16; letter-spacing: -1px; }
-.premium-fleet-description { margin-top: 8px; color: #747982; font-size: 16px; line-height: 1.5; }
-.premium-fleet-categories { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 20px; }
-.premium-category { position: relative; display: block; aspect-ratio: 1.65; overflow: hidden; border-radius: 20px; background: #edeef0; transition: transform .2s, box-shadow .2s; }
-.premium-category img { object-fit: cover; object-position: center 57%; mix-blend-mode: multiply; transition: transform .25s; }
-.premium-category:hover { transform: translateY(-3px); box-shadow: 0 10px 22px #06264b12; }
-.premium-category:hover img { transform: scale(1.04); }
-.premium-category:focus-visible { outline: 3px solid #278a08; outline-offset: 4px; }
-.premium-category-badge { position: absolute; top: 10px; left: 14px; z-index: 1; padding: 4px 15px; border-radius: 30px; color: #fff; background: #171a1f; font-size: 12px; line-height: 1.3; font-weight: 650; }
-.premium-category:first-child .premium-category-badge { background: #278a08; }
-.premium-category:nth-child(3) .premium-category-badge { background: #62666b; }
-.premium-category-arrow { position: absolute; right: 12px; bottom: 10px; display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: #278a08; color: white; font-size: 24px; line-height: 1; }
-@media (max-width: 1023px) { .premium-fleet-categories { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 639px) { .premium-fleet-preview { padding: 25px 0; }.premium-fleet-intro { padding: 0; }.premium-fleet-description { font-size: 14px; }.premium-fleet-categories { gap: 12px; margin-top: 16px; }.premium-category { aspect-ratio: 1.3; border-radius: 14px; }.premium-category-badge { top: 8px; left: 8px; padding: 4px 10px; font-size: 11px; }.premium-category-arrow { width: 25px; height: 25px; right: 8px; bottom: 8px; font-size: 21px; } }
-.ride-location-control { position: relative; }
-.ride-location-options { position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 20; max-height: 180px; overflow-y: auto; overscroll-behavior: contain; margin: 0; padding: 4px; list-style: none; border: 1px solid #e5e7eb; border-radius: 9px; background: #fff; box-shadow: 0 8px 20px #06264b18; }
-.ride-location-options li { padding: 7px 10px; font-size: 13px; line-height: 18px; border-radius: 5px; cursor: pointer; }
-.ride-location-options li:hover, .ride-location-options li[aria-selected="true"] { background: #fff0f1; color: #b80010; }
-
-.premium-fleet-mobile-description { display: none; }
-.mobile-book-button { border-radius: 999px; background: #278a08; color: white; padding: 10px 16px; font-size: 12px; font-weight: 700; white-space: nowrap; }
-.mobile-whatsapp-label { font-size: 12px; color: #06264b; font-weight: 650; }
-.ride-header .mobile-header-actions > a[aria-label="WhatsApp"] { width: auto; gap: 5px; padding: 0 12px; border-radius: 999px; }
-@media (max-width: 639px) {
-  .ride-header > div { height: 70px; gap: 6px; padding-inline: 14px; }
-  .ride-header .mobile-header-actions { gap: 6px; }
-  .ride-header .mobile-header-actions > a[aria-label="WhatsApp"] { height: 32px; padding: 0 8px; }
-  .ride-header .mobile-header-actions > a svg { width: 16px; height: 16px; }
-  .ride-header .mobile-whatsapp-label { font-size: 10px; }
-  .ride-header .mobile-book-button { padding: 8px 12px; font-size: 11px; }
-  .ride-header .mobile-header-actions button { width: 29px; height: 34px; border: 0; }
-  .ride-hero { padding-top: 22px; padding-bottom: 22px; overflow: visible; }
-  .ride-hero > div { padding-inline: 16px; }
-  .ride-hero-main { position: relative; gap: 0; }
-  .ride-hero-copy { padding-bottom: 0; }
-  .ride-hero-copy h1 { font-size: clamp(29px, 7vw, 44px); line-height: 1.08; letter-spacing: -1.4px; }
-  .ride-hero-copy h2 { max-width: 100%; font-size: clamp(13px, 3.25vw, 19px); margin-top: 10px; }
-  .ride-hero-copy p { width: 76%; font-size: 12px; line-height: 1.55; margin-top: 9px; }
-  .ride-more { margin-top: 13px; padding: 9px 13px; border-radius: 7px; font-size: 12px; gap: 18px; }
-  .ride-hero-art { position: static; height: clamp(145px, 35vw, 220px); margin-top: 0; }
-  .ride-map { top: 0; right: -16px; width: 34%; height: 260px; border-radius: 18px 0 0 18px; z-index: -1; opacity: .75; mask-image: linear-gradient(to bottom, black 65%, transparent); }
-  .ride-map-label { font-size: 7px; letter-spacing: 0; }.map-islamabad { left: 8%; top: 35%; }.map-rawalpindi { right: 6%; top: 70%; }
-  .ride-pin { font-size: 35px; }.pin-blue { left: 12%; top: 6%; }.pin-red { right: 12%; top: 42%; }
-  .ride-cars-cutout { left: -12px; right: -12px; bottom: 0; height: clamp(145px, 35vw, 220px); }
-  .ride-hero::before { clip-path: polygon(0 63%, 100% 60%, 100% 98%, 78% 100%, 20% 100%, 0 98%); }
-  .ride-search { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 13px 10px 10px; margin-top: 12px; border-radius: 13px; }
-  .ride-search-field { gap: 5px; padding: 0 7px; border-bottom: 0; border-right: 1px solid #d9dce1; align-items: flex-start; }
-  .ride-search-field:nth-child(2) { border-right: 1px solid #d9dce1; }.ride-search-field:nth-child(3) { border-right: 0; }
-  .ride-search-field > .material-symbols-outlined { font-size: 19px; margin-top: 2px; }
-  .ride-search-field strong { font-size: 10px; white-space: nowrap; }
-  .ride-search-field input { font-size: 10px; margin-top: 3px; padding: 0; height: 34px; }
-  .ride-search-field input[type="datetime-local"] { font-size: 10px; overflow: hidden; }
-  .ride-search-button { grid-column: 1 / -1; margin-top: 12px; padding: 10px 12px; font-size: 16px; border-radius: 8px; }
-  .ride-location-options { min-width: 160px; }
-  .premium-fleet-preview { padding: 20px 0 24px; }
-  .premium-fleet-intro { text-align: center; }
-  .premium-fleet-eyebrow, .premium-fleet-description { display: none; }
-  .premium-fleet-intro h2 { font-size: clamp(20px, 5vw, 29px); letter-spacing: -.6px; }
-  .premium-fleet-mobile-description { display: block; margin-top: 5px; font-size: 13px; color: #34373c; }
-  .premium-fleet-categories { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
-  .premium-category { aspect-ratio: auto; height: clamp(106px, 28vw, 165px); background: #fff; border-radius: 11px; box-shadow: 0 5px 13px #06264b0c; }
-  .premium-category img { height: 76% !important; object-fit: contain; object-position: center; }
-  .premium-category .premium-category-badge { top: auto; bottom: 11px; left: 7px; padding: 0; background: transparent; color: #06264b; border-radius: 0; font-size: 10px; font-weight: 750; }
-  .premium-category-arrow { width: 17px; height: 17px; right: 5px; bottom: 9px; font-size: 16px; }
-}
-@media (max-width: 359px) {
-  .ride-header .mobile-whatsapp-label { display: none; }
-  .ride-header .mobile-book-button { padding-inline: 9px; }
-  .ride-search-field { padding-inline: 4px; gap: 3px; }.ride-search-field > .material-symbols-outlined { font-size: 16px; }
-  .premium-category .premium-category-badge { font-size: 9px; left: 5px; }.premium-category-arrow { right: 3px; width: 15px; height: 15px; }
-}
+header:not(.site-header) .site-brand-logo, footer .site-brand-logo, [role="dialog"] .site-brand-logo { filter: brightness(0) invert(1); }
 
 /* WhatsApp keeps its own green action color. */
 :root a[href^="https://wa.me/"],
-:root .ride-header a[href^="https://wa.me/"] {
+:root .site-header a[href^="https://wa.me/"] {
   background-color: #128c4a !important;
   border-color: #128c4a !important;
   color: #fff !important;
 }
 :root a[href^="https://wa.me/"]:hover,
-:root .ride-header a[href^="https://wa.me/"]:hover {
+:root .site-header a[href^="https://wa.me/"]:hover {
   background-color: #0d743c !important;
   border-color: #0d743c !important;
 }
@@ -452,4 +291,3 @@ header:not(.ride-header) .site-brand-logo, footer .site-brand-logo, [role="dialo
 :root a.wa-text-dark[href^="https://wa.me/"] { color: rgba(255, 255, 255, 0.85) !important; }
 :root a.wa-text-light[href^="https://wa.me/"] { color: var(--color-brand-black) !important; }
 :root a.wa-text[href^="https://wa.me/"]:hover { color: #278a08 !important; }
-:root a[href^="https://wa.me/"] .mobile-whatsapp-label { color: #fff; }
