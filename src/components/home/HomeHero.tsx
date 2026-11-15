@@ -36,7 +36,7 @@ export function HomeHero() {
               <span className="material-symbols-outlined ride-pin pin-red">location_on</span>
               <svg className="ride-route" viewBox="0 0 500 250"><path d="M85 80 C140 20 170 180 260 110 S360 50 410 95" fill="none" stroke="#a1a8ad" strokeWidth="3" strokeDasharray="7 7" /></svg>
             </div>
-            <div className="ride-cars-cutout"><Image src="/images/hero-cars-transparent.png" alt="" fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 55vw, 700px" priority /></div>
+            <div className="ride-cars-cutout"><Image src="/images/hero-cars-transparent.webp" alt="" fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 55vw, 700px" priority /></div>
           </div>
         </div>
         <form className="ride-search" onSubmit={(event) => {

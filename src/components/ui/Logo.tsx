@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../../public/images/best-carz-logo.png";
+import logo from "../../../public/images/best-carz-logo.webp";
 import { cn } from "@/lib/utils";
 import { brand } from "@/lib/brand";
 
