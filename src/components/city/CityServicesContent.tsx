@@ -6,6 +6,10 @@ import { useMemo, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { brand } from "@/lib/brand";
+import { GoogleRatingBadge } from "@/components/reviews/GoogleRatingBadge";
+import { GoogleReviewCard } from "@/components/reviews/GoogleReviewCard";
+import { SeeAllOnGoogleButton } from "@/components/reviews/SeeAllOnGoogleButton";
+import { googleReviews } from "@/data/reviews";
 
 const HERO =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDObDk9FnJ_zDMDuCf8585s03QVwuFCHe4TImsKGgPU32m6ovZhgEwBdnyXi870THDwWfvaIFZ0uw9XuzOFPKbuIs4H4-4JDSmYt4IDQEM4XuERd3uK9RzH3gXFHW8eWFS9HNXRZokYrrqXAs1yNpd7f6SA-BkcQjlBnRpiv01F9UFVu4dZkAMsuot1VpqDVimLLopsXK3PwkbzUyZsl2itlw9n5s7qR8tuhjVkz_sGrDKdTI0KcdGn";
@@ -138,33 +142,6 @@ const STEPS = [
   { icon: "travel_explore", title: "Select City", text: "Choose your destination and preferred pickup location." },
   { icon: "directions_car", title: "Pick a Car", text: "Browse our elite collection from sedans to rugged SUVs." },
   { icon: "key", title: "Enjoy Journey", text: "We deliver the car to your doorstep. Drive with confidence." },
-];
-
-const REVIEWS = [
-  {
-    quote:
-      "The experience in Islamabad was flawless. The Mercedes was pristine, and the delivery was exactly on time. Truly a signature service.",
-    name: "Haris Ahmed",
-    role: "CEO, TechFlow",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB72AgTZkB__F0AS1OsoC_TbIgBnc2AwVP5gvWwUCl57aNYl774FrDN1d7XQEO-6cL28JViX4J0b5F9PZly0sdJzXHG6AgVBg9HjsieWtq7TPA0VibOxT2Js3nMLI4tbKLBo-u5U15MjoUs5NwRBwr96ljcZrvAJDInpR7yjGLQOBFBsU_QLoyBsM1YHZuYUAe_9lV39p4kuaEyQxgFXspVMkxIaezt1hww6V43Fr6vpyYQk56PgeEE",
-  },
-  {
-    quote:
-      "Rented a Land Cruiser for our Hunza trip. The vehicle's performance on the Karakoram Highway was exceptional. Highly recommended.",
-    name: "Sara Khan",
-    role: "Travel Vlogger",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD3yi3-6EYniRfyW6rYApkWKB49Sfy_R3CMb8OOyrQMsHKMjBVaiIxMUJ_XID05A48V5wtvs53OcaUOc57yQvz5oetAO7Od1pFQNeybIrM2MdSBrvfh5mjpLKEgaFNIGyykXQ7x85zUxikcZcjEyFrnrG3-tNUjYdjqLcRMuArYHRpw6vhuDjOk9kg5EXEx8HJVnOtWjDGaTDxUnSECUd7BM7RL4ww3KBQL5677sMw00unpuP_3EJX4",
-  },
-  {
-    quote:
-      "Professionalism at its peak. The booking process in Karachi was incredibly fast, and the car was in showroom condition. Best in Pakistan.",
-    name: "Omar Farooq",
-    role: "Investment Banker",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDkhJ8xVigWRxdITDWuF9wO4gF-nEWyT0_A1Ae0P3S_p5vySH_HUItr5yCnZFMDgEA63U49wbUzop4CqsestBI9sH9qL2CiXsLCJfl_fyAw6BhSjL9sawAdh5gTlwCIu57jN_jhRyqdlr7uytlAy83-yyhpdrK_SUvIna3vpY95T0SEBtmsWgLhcFMrPvI3hjavwyO3cg1Au58O0LKaWHhtf-zVrPp1WD_H4-_lhliO2HJs8v7rMwgk",
-  },
 ];
 
 const STATS = [
@@ -470,36 +447,16 @@ export function CityServicesContent() {
               </h2>
             </div>
           </Reveal>
-          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
-            {REVIEWS.map((item, index) => (
-              <Reveal key={item.name} delay={index * 90}>
-              <article
-                className="h-full rounded-3xl border border-primary/8 bg-[#f3f4f5] p-8 sm:p-10"
-              >
-                <div className="mb-6 flex gap-1 text-accent">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className="material-symbols-outlined text-[20px]"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      star
-                    </span>
-                  ))}
-                </div>
-                <p className="mb-8 text-base italic leading-relaxed">&ldquo;{item.quote}&rdquo;</p>
-                <div className="flex items-center gap-4">
-                  <div className="relative h-12 w-12 overflow-hidden rounded-full">
-                    <Image src={item.image} alt={item.name} fill className="object-cover" sizes="48px" />
-                  </div>
-                  <div>
-                    <div className="font-semibold">{item.name}</div>
-                    <div className="text-xs uppercase tracking-wide text-muted">{item.role}</div>
-                  </div>
-                </div>
-              </article>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {googleReviews.map((review, index) => (
+              <Reveal key={review.name} delay={index * 90}>
+                <GoogleReviewCard review={review} index={index} />
               </Reveal>
             ))}
+          </div>
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+            <GoogleRatingBadge />
+            <SeeAllOnGoogleButton />
           </div>
         </Container>
       </section>

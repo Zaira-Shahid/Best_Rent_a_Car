@@ -15,13 +15,29 @@ export const brand = {
   phone: PHONES[0].number,
   /** WhatsApp number in international format, no "+" or spaces. */
   whatsapp: "923345414155",
-  // TODO(client): placeholder email and address. Replace with the real Best Carz Rent a Car details.
+  // TODO(client): placeholder email. Replace with the real Best Carz Rent a Car email.
   email: "info@example.com", // TODO: real email
   currency: "PKR",
+  /** Opening hours, as shown on the Google Business profile. */
+  hours: "Open 24 hours",
+  // Google Business profile (verified from the live profile)
+  /** Public Google profile link: opens the business listing with all reviews. */
+  googleReviewsUrl: "https://share.google/54UMqoPDVn2LBEkHR",
+  /** Google rating out of 5. */
+  rating: 4.5,
+  /** Number of Google reviews behind the rating. */
+  reviewCount: 12,
   location: {
-    label: `${BRAND_NAME}, Islamabad`, // TODO: real location label
-    address: `${BRAND_NAME}, Islamabad, Pakistan`, // TODO: real address
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Islamabad+Pakistan",
+    label: `${BRAND_NAME}, G-9 Markaz, Islamabad`,
+    address: "Paragon Centre, Mangla Rd, G-9 Markaz, Islamabad 44090, Pakistan",
+    street: "Paragon Centre, Mangla Rd, G-9 Markaz",
+    city: "Islamabad",
+    postalCode: "44090",
+    /** Google Maps listing for the business ("Get Directions"). */
+    mapsUrl: "https://maps.google.com/?cid=3700636739437751155",
+    /** Embeddable map centred on the office. */
+    embedUrl: "https://maps.google.com/maps?q=33.6910704,73.0325385&z=16&output=embed",
+    coordinates: { lat: 33.6910704, lng: 73.0325385 },
   },
   social: {
     facebook: "https://www.facebook.com/share/1cCiFygjXf/",

@@ -40,6 +40,21 @@ export function Footer() {
             </p>
             <div className="space-y-3 text-sm text-white/70">
               <ContactNumbers />
+              <div className="space-y-1">
+                <p>{brand.location.address}</p>
+                <p className="text-white/55">{brand.hours}</p>
+                <a
+                  href={brand.location.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-medium !text-white/85 transition hover:!text-accent"
+                >
+                  Get Directions
+                  <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
+                    arrow_outward
+                  </span>
+                </a>
+              </div>
               <a href={`mailto:${brand.email}`} className="block transition hover:text-accent">
                 {brand.email}
               </a>

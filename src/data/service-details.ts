@@ -1,5 +1,17 @@
-import type { ServiceDetail } from "@/types";
+import type { ServiceDetail, ServiceTestimonial } from "@/types";
 import { brand, formatPhone, telLink, whatsappLink } from "@/lib/brand";
+import { googleReviews, reviewMeta } from "./reviews";
+
+/** Service pages show the same real Google reviews (the only reviews there are), never invented ones. */
+const googleReviewItems: ServiceTestimonial[] = googleReviews.map((review) => ({
+  quote: review.text,
+  name: review.name,
+  role: reviewMeta(review),
+}));
+const googleRatingSummary = {
+  value: `${brand.rating.toFixed(1)}/5 on Google`,
+  label: `Based on ${brand.reviewCount} Google reviews`,
+};
 
 const hotelTransfer: ServiceDetail = {
   slug: "hotel-transfer",
@@ -296,20 +308,7 @@ const executiveCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Voices of Excellence",
-    items: [
-      {
-        quote:
-          "Best Rent a Car has become our exclusive partner for all executive travel. Their attention to detail and the professionalism of their chauffeurs are unmatched in the industry.",
-        name: "Haris Ahmed",
-        role: "CEO, TechFlow",
-      },
-      {
-        quote:
-          "The airport transfer service was flawless. My flight was delayed, but the chauffeur was waiting at the terminal when I landed. Exceptionally reliable.",
-        name: "Elena Vance",
-        role: "Global Logistics Director",
-      },
-    ],
+    items: googleReviewItems,
   },
   included: {
     title: "What's Included",
@@ -672,21 +671,8 @@ const dailyCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Drive Stories from Our Clients",
-    ratingSummary: { value: "4.9/5 Rating", label: "Based on 2.4k reviews" },
-    items: [
-      {
-        quote:
-          "Rented a BMW 5 Series for a last-minute business trip. The delivery was seamless, arriving exactly at my hotel in 45 minutes. The car was pristine. Truly a premium experience.",
-        name: "Omar Farooq",
-        role: "Investment Banker",
-      },
-      {
-        quote:
-          "Booked a Range Rover for a family weekend getaway to Murree. The flexible cancellation saved me when our plans shifted. Super clean vehicle and amazing customer service.",
-        name: "Sara Khan",
-        role: "Travel Vlogger",
-      },
-    ],
+    ratingSummary: googleRatingSummary,
+    items: googleReviewItems,
   },
   faqs: {
     title: "Frequently Asked Questions",
@@ -880,27 +866,8 @@ const monthlyCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Trust from High-Performers",
-    ratingSummary: { value: "4.9/5 Rating", label: "Chosen by CEOs and industry leaders" },
-    items: [
-      {
-        quote:
-          "Best Rent a Car has completely transformed our company's executive travel. The monthly plan is seamless, and the replacement vehicle service is a lifesaver during maintenance.",
-        name: "Sarah Jenkins",
-        role: "Director, TechFlow Inc.",
-      },
-      {
-        quote:
-          "I needed a premium SUV for a 4-month relocation. The process was entirely digital, and the car was delivered to my doorstep in pristine condition.",
-        name: "Marcus Thorne",
-        role: "Founder, E-com Ventures",
-      },
-      {
-        quote:
-          "The S-Class was practically new. The level of professionalism from the Best Rent a Car team is unmatched in the monthly rental market.",
-        name: "Dorian Gray",
-        role: "Creative Director",
-      },
-    ],
+    ratingSummary: googleRatingSummary,
+    items: googleReviewItems,
   },
   faqs: {
     title: "Frequently Asked Questions",
@@ -1120,21 +1087,8 @@ const weeklyCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Weekly Drivers Love Best Carz Rent a Car",
-    ratingSummary: { value: "4.9/5", label: "Based on recent weekly bookings" },
-    items: [
-      {
-        quote:
-          "Booked an SUV for a week-long northern trip. Fair weekly rate, spotless car, and extending by two days was just one WhatsApp away.",
-        name: "Hassan Ali",
-        role: "Travel Planner",
-      },
-      {
-        quote:
-          "Needed a Civic for a project week in Lahore. Transparent daily pricing on the card and smooth doorstep delivery.",
-        name: "Ayesha Noor",
-        role: "Consultant",
-      },
-    ],
+    ratingSummary: googleRatingSummary,
+    items: googleReviewItems,
   },
   faqs: {
     title: "Frequently Asked Questions",
@@ -1338,21 +1292,8 @@ const corporateCarRental: ServiceDetail = {
   },
   testimonials: {
     title: "Trusted by Leading Teams",
-    ratingSummary: { value: "500+", label: "Companies served across Pakistan" },
-    items: [
-      {
-        quote:
-          "Consolidated monthly invoicing and a dedicated manager made corporate travel finally painless for our sales team.",
-        name: "Imran Qureshi",
-        role: "Operations Lead",
-      },
-      {
-        quote:
-          "Airport transfers and meeting cars are always on time. The fleet looks executive and stays well maintained.",
-        name: "Nadia Shah",
-        role: "EA to CEO",
-      },
-    ],
+    ratingSummary: googleRatingSummary,
+    items: googleReviewItems,
   },
   faqs: {
     title: "Corporate FAQs",
@@ -1414,7 +1355,7 @@ const airportPickDrop: ServiceDetail = {
     description:
       "Experience seamless transitions from flight to road. Our executive fleet and professional chauffeurs ensure you reach your hotel or office in absolute comfort and safety.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBwU5kmS8-7Ah-pzafVpenFKcqCbVJJndjtTIBerrSK82P21ZTlCdGnMQ9141vlf2LEScGewr_hyHCj4WR4Lo_q_A2Ysu2ZYdhgWFAOqbPLYWL1zclpcvle-ly2C_XNxcuhLBa7BHKQnuvyh41KgYbxQSt8YwvhsPy8sMKO5qpepy4h24WkN3az4TevY4pU_HpwxPdxgL4c7MbjJtKQ1nznYT1FXhnD2UFgcUolyBFOwLkGO-11LFqX",
+      "/images/fleet/prado-white.webp",
     primaryCta: { label: "Book Transfer", href: "#book" },
     secondaryCta: { label: "View Fleet", href: "#fleet" },
   },

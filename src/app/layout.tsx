@@ -94,8 +94,22 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     email: brand.email,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Islamabad",
+      streetAddress: brand.location.street,
+      addressLocality: brand.location.city,
+      postalCode: brand.location.postalCode,
       addressCountry: "PK",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: brand.location.coordinates.lat,
+      longitude: brand.location.coordinates.lng,
+    },
+    openingHours: "Mo-Su 00:00-23:59",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: brand.rating,
+      reviewCount: brand.reviewCount,
+      bestRating: 5,
     },
     sameAs: [brand.social.facebook, brand.social.instagram],
     hasMap: brand.location.mapsUrl,
