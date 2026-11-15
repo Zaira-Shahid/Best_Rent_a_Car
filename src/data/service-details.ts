@@ -5,7 +5,7 @@ const hotelTransfer: ServiceDetail = {
   slug: "hotel-transfer",
   name: "Hotel Transfer",
   metaDescription:
-    "Comfortable hotel transfer services across Pakistan with Best Rent a Car — professional chauffeurs, fixed pricing, and door-to-door luxury.",
+    "Comfortable hotel transfer services across Pakistan with Best Carz Rent a Car — professional chauffeurs, fixed pricing, and door-to-door luxury.",
   hero: {
     badge: "Premium Logistics",
     title: "Comfortable Hotel Transfer Services",
@@ -175,7 +175,7 @@ const executiveCarRental: ServiceDetail = {
   slug: "executive-car-rental",
   name: "Executive Car Rental",
   metaDescription:
-    "Executive car rental with premium chauffeur service from Best Rent a Car — designed for global leaders who demand privacy, punctuality, and prestige.",
+    "Executive car rental with premium chauffeur service from Best Carz Rent a Car — designed for global leaders who demand privacy, punctuality, and prestige.",
   hero: {
     badge: "VIP Chauffeur Services",
     title: "Executive Car Rental With Premium Chauffeur Service",
@@ -345,7 +345,7 @@ const executiveCarRental: ServiceDetail = {
   },
   notes: {
     title: "Corporate Account Benefits",
-    description: "Simplify recurring travel for your organization with a dedicated Best Rent a Car corporate account.",
+    description: "Simplify recurring travel for your organization with a dedicated Best Carz Rent a Car corporate account.",
     items: [
       {
         icon: "receipt_long",
@@ -375,7 +375,7 @@ const weddingCarRental: ServiceDetail = {
   slug: "wedding-car-rental",
   name: "Wedding Car Rental",
   metaDescription:
-    "Premium wedding car rental from Best Rent a Car — make your wedding journey memorable with a decorated luxury fleet and dedicated concierge.",
+    "Premium wedding car rental from Best Carz Rent a Car — make your wedding journey memorable with a decorated luxury fleet and dedicated concierge.",
   hero: {
     badge: "Premium Wedding Rentals",
     title: "Make Your Wedding Journey",
@@ -549,20 +549,20 @@ const dailyCarRental: ServiceDetail = {
   slug: "daily-car-rental",
   name: "Daily Car Rental",
   metaDescription:
-    "Rent a car for a day with Best Rent a Car — flexible booking, affordable rates, and fast doorstep delivery across Pakistan.",
+    "Rent a car for a day with Best Carz Rent a Car — flexible booking, affordable rates, and fast doorstep delivery across Pakistan.",
   hero: {
     badge: "Premium Daily Rental",
     title: "Rent A Car For A Day With",
     accent: "Easy Booking",
     description:
-      "Experience the pinnacle of automotive comfort for a day. Whether it's a business meeting or a weekend escape, travel with Best Rent a Car and a professional chauffeur — with doorstep pickup available across every major city.",
+      "Experience the pinnacle of automotive comfort for a day. Whether it's a business meeting or a weekend escape, travel with Best Carz Rent a Car and a professional chauffeur — with doorstep pickup available across every major city.",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuB-dunIcvM038_EixrJ7bpLCmUGRjDv0r1ufOXWfY_ZhiL5bc_FWICTBOU3alwtKozX5I4bfq_pV0MXp-0G8DlVWQtIKebtt-vHlmE4X26uW21kPQA4EKQry8Lp3npT8q9ofVW1Oj_HWWSMgfwgl83vBIWWIK3B7lYsiw3Kwx17jx4AKrxR7_LP7VLZOvoPP5Qch56Y-m60z_cRhJl1sQGKZ1ARsQ-kA7tLgYyrYmje9mZc4Mx_UDK8",
     primaryCta: { label: "Search Available Cars", href: "#fleet" },
     secondaryCta: { label: "Book Now", href: "/contact" },
   },
   features: {
-    title: "The Best Rent a Car Advantage",
+    title: "The Best Carz Rent a Car Advantage",
     description:
       "Setting the gold standard for daily car rentals, with transparent pricing and a fleet ready whenever your plans change.",
     items: [
@@ -712,7 +712,7 @@ const dailyCarRental: ServiceDetail = {
       {
         question: "Is a chauffeur included with every booking?",
         answer:
-          "Yes. Every Best Rent a Car rental includes a professional chauffeur. Mention any language preference or VIP requirements when confirming your reservation.",
+          "Yes. Every Best Carz Rent a Car rental includes a professional chauffeur. Mention any language preference or VIP requirements when confirming your reservation.",
       },
     ],
   },
@@ -754,7 +754,7 @@ const monthlyCarRental: ServiceDetail = {
   slug: "monthly-car-rental",
   name: "Monthly Car Rental",
   metaDescription:
-    "Flexible monthly car rental plans with Best Rent a Car — no maintenance hassles, replacement vehicles, and premium insurance across Pakistan.",
+    "Flexible monthly car rental plans with Best Carz Rent a Car — no maintenance hassles, replacement vehicles, and premium insurance across Pakistan.",
   hero: {
     badge: "Premium Long-Term Mobility",
     title: "Monthly Car Rental Plans For Your",
@@ -963,7 +963,7 @@ const weeklyCarRental: ServiceDetail = {
   slug: "weekly-car-rental",
   name: "Weekly Car Rental",
   metaDescription:
-    "Flexible weekly car rental plans with Best Rent a Car — save up to 30% vs daily rates, seamless extensions, and premium fleet across Pakistan.",
+    "Flexible weekly car rental plans with Best Carz Rent a Car — save up to 30% vs daily rates, seamless extensions, and premium fleet across Pakistan.",
   hero: {
     badge: "Premium Weekly Plans",
     title: "Flexible Weekly Car Rental",
@@ -1117,7 +1117,7 @@ const weeklyCarRental: ServiceDetail = {
     ],
   },
   testimonials: {
-    title: "Weekly Drivers Love Best Rent a Car",
+    title: "Weekly Drivers Love Best Carz Rent a Car",
     ratingSummary: { value: "4.9/5", label: "Based on recent weekly bookings" },
     items: [
       {
@@ -1197,7 +1197,7 @@ const corporateCarRental: ServiceDetail = {
   slug: "corporate-car-rental",
   name: "Corporate Car Rental",
   metaDescription:
-    "Professional corporate car rental with Best Rent a Car — dedicated account managers, flexible plans, monthly billing, and business-class fleet across Pakistan.",
+    "Professional corporate car rental with Best Carz Rent a Car — dedicated account managers, flexible plans, monthly billing, and business-class fleet across Pakistan.",
   hero: {
     badge: "Premium Corporate Service",
     title: "Professional Corporate Car Rental",
@@ -1210,7 +1210,7 @@ const corporateCarRental: ServiceDetail = {
     secondaryCta: { label: "View Fleet", href: "#fleet" },
   },
   features: {
-    title: "Why Partner With Best Rent a Car?",
+    title: "Why Partner With Best Carz Rent a Car?",
     description: "Elevate your operational efficiency with benefits tailored to corporate demands.",
     items: [
       {
@@ -1321,7 +1321,7 @@ const corporateCarRental: ServiceDetail = {
   booking: {
     title: "Partner With the Industry Leader",
     description:
-      "Join hundreds of organizations that trust Best Rent a Car for mobility. Let us design a custom plan that fits your corporate structure.",
+      "Join hundreds of organizations that trust Best Carz Rent a Car for mobility. Let us design a custom plan that fits your corporate structure.",
     highlights: [
       { icon: "check_circle", text: "Priority vehicle allocation" },
       { icon: "check_circle", text: "Customized insurance packages" },
@@ -1402,7 +1402,7 @@ const airportPickDrop: ServiceDetail = {
   slug: "airport-pick-drop",
   name: "Airport Pick & Drop",
   metaDescription:
-    "Reliable airport pick and drop across Pakistan with Best Rent a Car — flight monitoring, meet & greet, and professional chauffeurs at ISB, LHE, KHI, and SKT.",
+    "Reliable airport pick and drop across Pakistan with Best Carz Rent a Car — flight monitoring, meet & greet, and professional chauffeurs at ISB, LHE, KHI, and SKT.",
   hero: {
     badge: "Premium Chauffeur",
     title: "Reliable Airport Pick & Drop Service Across",
@@ -1415,7 +1415,7 @@ const airportPickDrop: ServiceDetail = {
     secondaryCta: { label: "View Fleet", href: "#fleet" },
   },
   features: {
-    title: "The Best Rent a Car Advantage",
+    title: "The Best Carz Rent a Car Advantage",
     description:
       "Why discerning travelers choose our airport transfer services for corporate and private needs.",
     items: [
@@ -1474,8 +1474,8 @@ const airportPickDrop: ServiceDetail = {
         priceDay: 8500,
       },
       {
-        name: "Best Rent a Car Elite",
-        tag: "Best Rent a Car",
+        name: "Best Carz Rent a Car Elite",
+        tag: "Best Carz Rent a Car",
         seats: 3,
         transmission: "Automatic",
         image: "/images/fleet/s400-white.png",

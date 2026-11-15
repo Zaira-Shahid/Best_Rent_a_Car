@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CarGridSection, CarsHero } from "@/components/cars";
 import { CtaBanner } from "@/components/shared";
-import { brand } from "@/lib/brand";
+import { brand, whatsappLink } from "@/lib/brand";
 import { carCategories, getCarsForCategory } from "@/data";
 import { pageMeta } from "@/lib/seo";
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: category.name,
     description:
       category.description ??
-      `Browse ${category.name.toLowerCase()} available for rent with Best Rent a Car.`,
+      `Browse ${category.name.toLowerCase()} available for rent with ${brand.name}.`,
     path: `/categories/${category.slug}`,
     keywords: [`${category.name} rental`, `${category.name} Pakistan`],
   });
@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: Props) {
         image={heroImage}
         imageAlt={category.name}
         primaryCta={{ label: "View Models", href: "#available-models" }}
-        secondaryCta={{ label: "WhatsApp", href: `https://wa.me/${brand.whatsapp}` }}
+        secondaryCta={{ label: "WhatsApp", href: whatsappLink() }}
         stats={[
           { value: `${models.length}`, label: "Cars Available" },
           { value: "Chauffeur", label: "With Every Hire" },

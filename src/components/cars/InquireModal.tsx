@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import type { CarModel } from "@/types";
-import { brand } from "@/lib/brand";
+import { whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 const timeOptions = [
@@ -103,7 +103,7 @@ export function InquireModal({ car, open, onClose }: InquireModalProps) {
     ].join("\n");
 
     window.open(
-      `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(message)}`,
+      whatsappLink(message),
       "_blank",
       "noopener,noreferrer",
     );

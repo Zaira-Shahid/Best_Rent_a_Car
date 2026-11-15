@@ -16,6 +16,7 @@ import {
 } from "@/lib/blog-firestore";
 import { getFirebaseAuth, getGoogleProvider, isFirebaseConfigured } from "@/lib/firebase";
 import type { BlogPost } from "@/types";
+import { brand } from "@/lib/brand";
 
 type BlogAdminPanelProps = {
   open: boolean;
@@ -252,7 +253,7 @@ export function BlogAdminPanel({ open, onClose, onPostsChange }: BlogAdminPanelP
   function buildPostFromForm(slug: string): BlogPost | null {
     const title = form.title.trim();
     const excerpt = form.excerpt.trim();
-    const author = form.author.trim() || "Best Rent a Car Team";
+    const author = form.author.trim() || `${brand.name} Team`;
     const image = form.image.trim();
     const content = form.content
       .split(/\n+/)
@@ -485,7 +486,7 @@ export function BlogAdminPanel({ open, onClose, onPostsChange }: BlogAdminPanelP
                       value={form.author}
                       onChange={(e) => update("author", e.target.value)}
                       className="w-full rounded-xl border border-primary/10 bg-[#f8f9fa] px-4 py-3 text-sm outline-none focus:border-secondary focus:bg-white focus:ring-2 focus:ring-secondary/20"
-                      placeholder="Best Rent a Car Team"
+                      placeholder={`${brand.name} Team`}
                     />
                   </label>
                 </div>

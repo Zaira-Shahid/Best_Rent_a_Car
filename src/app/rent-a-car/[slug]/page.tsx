@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CityDetailContent } from "@/components/city/CityDetailContent";
 import { cities } from "@/data";
 import { pageMeta } from "@/lib/seo";
+import { brand } from "@/lib/brand";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return pageMeta({
     title: `Rent a Car in ${city.name}`,
-    description: `Affordable and premium car rental in ${city.name}. Chauffeur-driven cars for business, tourism, and family travel with Best Rent a Car.`,
+    description: `Affordable and premium car rental in ${city.name}. Chauffeur-driven cars for business, tourism, and family travel with ${brand.name}.`,
     path: `/rent-a-car/${city.slug}`,
     keywords: [`rent a car ${city.name}`, `${city.name} car rental`, `car hire ${city.name}`],
   });

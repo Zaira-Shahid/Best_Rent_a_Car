@@ -5,7 +5,7 @@ import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { FaqHelpCard } from "@/components/faq/FaqHelpCard";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Container } from "@/components/ui/Container";
-import { brand, formatPhoneDisplay } from "@/lib/brand";
+import { brand, formatPhoneDisplay, whatsappLink } from "@/lib/brand";
 import { pageMeta } from "@/lib/seo";
 
 const HERO_IMAGE =
@@ -14,7 +14,7 @@ const HERO_IMAGE =
 export const metadata: Metadata = pageMeta({
   title: "FAQ",
   description:
-    "Frequently asked questions about booking, payments, drivers, and airport pickups with Best Rent a Car.",
+    `Frequently asked questions about booking, payments, drivers, and airport pickups with ${brand.name}.`,
   path: "/faq",
   keywords: ["car rental FAQ", "booking questions"],
 });
@@ -82,13 +82,13 @@ const FAQS = [
     category: "general",
     question: "Can I smoke inside the vehicle?",
     answer:
-      "No. All Best Rent a Car vehicles are strictly non-smoking. A cleaning fee may apply if this policy is violated.",
+      `No. All ${brand.name} vehicles are strictly non-smoking. A cleaning fee may apply if this policy is violated.`,
   },
   {
     category: "booking",
     question: "How can I book a car?",
     answer:
-      "Booking your Best Rent a Car vehicle is effortless. Browse our fleet online, select your desired dates and location, and confirm through our secure form. Alternatively, contact our agent via WhatsApp or phone for a personalized booking experience.",
+      `Booking your ${brand.name} vehicle is effortless. Browse our fleet online, select your desired dates and location, and confirm through our secure form. Alternatively, contact our agent via WhatsApp or phone for a personalized booking experience.`,
   },
   {
     category: "booking",
@@ -337,7 +337,7 @@ const FAQS = [
     category: "policies",
     question: "Who is allowed to drive the vehicle?",
     answer:
-      "Best Rent a Car rentals are chauffeur-driven. Only our assigned professional driver operates the vehicle for safety and insurance compliance.",
+      `${brand.name} rentals are chauffeur-driven. Only our assigned professional driver operates the vehicle for safety and insurance compliance.`,
   },
   {
     category: "policies",
@@ -411,7 +411,7 @@ const BOOKING_STEPS = [
     step: "04",
     icon: "airport_shuttle",
     title: "Ride in Comfort",
-    text: "Your chauffeur arrives on time with a clean, inspected Best Rent a Car vehicle.",
+    text: `Your chauffeur arrives on time with a clean, inspected ${brand.name} vehicle.`,
   },
 ];
 
@@ -467,7 +467,7 @@ export default function FaqPage() {
                 Frequently Asked <span className="text-accent">Questions</span>
               </h1>
               <p className="animate-fade-up-delay mt-5 max-w-xl text-sm text-white/60 sm:mt-6 sm:text-base lg:text-lg">
-                Everything you need to know about renting a luxury vehicle with Best Rent a Car. Find answers on booking,
+                Everything you need to know about renting a luxury vehicle with {brand.name}. Find answers on booking,
                 payments, chauffeurs, and airport transfers — or call an agent anytime.
               </p>
               <div className="animate-fade-up-delay-2 mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -492,7 +492,7 @@ export default function FaqPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl sm:aspect-[5/6] lg:aspect-[4/5]">
                 <Image
                   src={HERO_IMAGE}
-                  alt="Best Rent a Car call agent ready to answer your questions"
+                  alt={`${brand.name} call agent ready to answer your questions`}
                   fill
                   priority
                   className="object-cover object-[center_20%]"
@@ -555,7 +555,7 @@ export default function FaqPage() {
                 How Booking Works
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-sm text-muted sm:text-base">
-                From first inquiry to doorstep delivery, your Best Rent a Car agent keeps every step clear and quick.
+                From first inquiry to doorstep delivery, your {brand.name} agent keeps every step clear and quick.
               </p>
             </div>
           </AnimateIn>
@@ -676,7 +676,7 @@ export default function FaqPage() {
                     Contact Us
                   </Link>
                   <a
-                    href={`https://wa.me/${brand.whatsapp}`}
+                    href={whatsappLink()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-accent px-8 py-3.5 text-sm font-semibold text-accent transition hover:bg-accent hover:text-primary sm:px-10 sm:py-4"

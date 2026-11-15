@@ -119,12 +119,12 @@ export function Footer() {
             © {new Date().getFullYear()} {brand.name}. All rights reserved.
           </p>
           <a
-            href="https://www.developerx.org/"
+            href="https://www.developerx.org/" /* TODO: replace with Developers Tech Solutions URL */
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex w-fit flex-col text-xs text-white/45 transition hover:text-accent"
           >
-            Website By DeveloperX
+            Website By Developers Tech Solutions
             <span className="developerx-line" aria-hidden="true" />
           </a>
         </div>

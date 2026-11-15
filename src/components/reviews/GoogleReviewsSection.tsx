@@ -100,7 +100,7 @@ export function GoogleReviewsSection() {
           Google Reviews
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-sm text-muted sm:mx-0 sm:text-base">
-          Real Google reviews from customers who booked with Best Rent a Car — same style as our homepage.
+          Real Google reviews from customers who booked with {brand.name} — same style as our homepage.
         </p>
       </motion.div>
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CtaBanner } from "@/components/shared";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { brand, formatPhoneDisplay } from "@/lib/brand";
+import { brand, formatPhoneDisplay, whatsappLink } from "@/lib/brand";
 import type { ServiceDetail } from "@/types";
 import { ServiceFaqAccordion } from "./ServiceFaqAccordion";
 import { ServiceFeatureGrid } from "./ServiceFeatureGrid";
@@ -48,7 +48,7 @@ export function AirportPickDropDetail({ data }: AirportPickDropDetailProps) {
                 {formatPhoneDisplay()}
               </a>
               <a
-                href={`https://wa.me/${brand.whatsapp}`}
+                href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 font-semibold !text-white transition hover:brightness-95"
@@ -102,7 +102,7 @@ export function AirportPickDropDetail({ data }: AirportPickDropDetailProps) {
                     <select className="w-full rounded-xl border border-white/15 bg-white/95 px-3 py-3 text-sm text-primary outline-none">
                       <option>Executive Sedan</option>
                       <option>Luxury SUV</option>
-                      <option>Best Rent a Car Fleet</option>
+                      <option>{brand.name} Fleet</option>
                       <option>Van / Hiace</option>
                     </select>
                   </div>
@@ -291,7 +291,7 @@ export function AirportPickDropDetail({ data }: AirportPickDropDetailProps) {
                       {formatPhoneDisplay()}
                     </a>
                     <a
-                      href={`https://wa.me/${brand.whatsapp}`}
+                      href={whatsappLink()}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/20 bg-white py-3.5 text-sm font-semibold text-primary transition hover:bg-primary hover:!text-white"

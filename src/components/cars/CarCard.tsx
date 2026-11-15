@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { CarModel } from "@/types";
 import { InquireModal } from "@/components/cars/InquireModal";
-import { brand, formatPhoneDisplay, formatPrice } from "@/lib/brand";
+import { brand, formatPhoneDisplay, formatPrice, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 type CarCardProps = {
@@ -54,9 +54,9 @@ export function CarCard({ car, className }: CarCardProps) {
     return () => window.clearInterval(id);
   }, [hasAlt, paused]);
 
-  const whatsappHref = `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(
+  const whatsappHref = whatsappLink(
     `Hi, I want to inquire about ${car.name} rental.`,
-  )}`;
+  );
 
   function goToCar() {
     router.push(href);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { brand } from "@/lib/brand";
+import { brand, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 const PICKUP_OPTIONS = [
@@ -48,7 +48,7 @@ export function ContactForm() {
 
     setStatus("submitting");
     window.open(
-      `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(text)}`,
+      whatsappLink(text),
       "_blank",
       "noopener,noreferrer",
     );

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { brand } from "@/lib/brand";
 
 const HERO =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDObDk9FnJ_zDMDuCf8585s03QVwuFCHe4TImsKGgPU32m6ovZhgEwBdnyXi870THDwWfvaIFZ0uw9XuzOFPKbuIs4H4-4JDSmYt4IDQEM4XuERd3uK9RzH3gXFHW8eWFS9HNXRZokYrrqXAs1yNpd7f6SA-BkcQjlBnRpiv01F9UFVu4dZkAMsuot1VpqDVimLLopsXK3PwkbzUyZsl2itlw9n5s7qR8tuhjVkz_sGrDKdTI0KcdGn";
@@ -251,7 +252,7 @@ export function CityServicesContent() {
                   Discover Excellence in Every Destination
                 </h2>
                 <p className="mt-5 text-base text-muted sm:text-lg">
-                  From the modern boulevards of Islamabad to the rugged beauty of Hunza, Best Rent a Car provides
+                  From the modern boulevards of Islamabad to the rugged beauty of Hunza, {brand.name} provides
                   seamless luxury car rentals tailored to each city&apos;s unique terrain and lifestyle. Every
                   location is served by a dedicated local team, so whether you&apos;re navigating Karachi&apos;s
                   coastal traffic or climbing into the Karakoram, your vehicle and driver are matched to the
@@ -379,7 +380,7 @@ export function CityServicesContent() {
             </h2>
             <p className="text-base text-white/55 sm:text-lg">
               Our strategic hubs are positioned to provide 24/7 assistance and delivery services. No matter
-              where your journey begins or ends, the Best Rent a Car standard follows you.
+              where your journey begins or ends, the {brand.name} standard follows you.
             </p>
             <div className="grid grid-cols-2 gap-6 pt-2">
               {STATS.map((item) => (

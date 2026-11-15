@@ -1,4 +1,4 @@
-import { brand } from "@/lib/brand";
+import { whatsappLink } from "@/lib/brand";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -11,7 +11,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 export function WhatsAppFloat() {
   return (
     <a
-      href={`https://wa.me/${brand.whatsapp}`}
+      href={whatsappLink()}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"

@@ -1,15 +1,18 @@
+const BRAND_NAME = "Best Carz Rent a Car";
+
 export const brand = {
-  name: "Best Rent a Car",
-  shortName: "Best",
+  name: BRAND_NAME,
+  shortName: "Best Carz",
   tagline: "Premium car rental across Pakistan",
-  // Demo contact details. Replace these before accepting real bookings.
-  phone: "03000000000",
-  whatsapp: "923000000000",
-  email: "info@example.com",
+  // TODO(client): placeholder contact details. Replace phone, whatsapp, email and
+  // address with the real Best Carz Rent a Car details before accepting real bookings.
+  phone: "03000000000", // TODO: real phone
+  whatsapp: "923000000000", // TODO: real WhatsApp number (country code, no "+")
+  email: "info@example.com", // TODO: real email
   currency: "PKR",
   location: {
-    label: "Best Rent a Car, Islamabad",
-    address: "Best Rent a Car, Islamabad, Pakistan",
+    label: `${BRAND_NAME}, Islamabad`, // TODO: real location label
+    address: `${BRAND_NAME}, Islamabad, Pakistan`, // TODO: real address
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Islamabad+Pakistan",
   },
   social: {
@@ -26,6 +29,15 @@ export const brand = {
     background: "#F8F9FA",
   },
 } as const;
+
+/**
+ * Single place that builds WhatsApp links. Without a message it returns the plain
+ * chat link; with one it pre-fills the text.
+ */
+export function whatsappLink(message?: string) {
+  const base = `https://wa.me/${brand.whatsapp}`;
+  return message === undefined ? base : `${base}?text=${encodeURIComponent(message)}`;
+}
 
 export function formatPrice(amount: number) {
   return `${brand.currency} ${amount.toLocaleString("en-PK")}`;

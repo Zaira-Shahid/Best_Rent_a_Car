@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { blogCategories, blogPosts } from "@/data";
 import type { BlogCategory, BlogPost } from "@/types";
+import { brand } from "@/lib/brand";
 
 type BlogCategoryContentProps = {
   category: BlogCategory;
@@ -37,7 +38,7 @@ export function BlogCategoryContent({ category, posts }: BlogCategoryContentProp
 
       <BlogFilters
         activeSlug={category.slug}
-        intro={`${posts.length} curated ${posts.length === 1 ? "article" : "articles"} in ${category.name} — tips and guides from Best Rent a Car.`}
+        intro={`${posts.length} curated ${posts.length === 1 ? "article" : "articles"} in ${category.name} — tips and guides from ${brand.name}.`}
       />
 
       <section className="bg-[#f8f9fa] py-14 sm:py-20">

@@ -10,6 +10,7 @@ import {
   getPostsByCategory,
 } from "@/data";
 import { pageMeta } from "@/lib/seo";
+import { brand } from "@/lib/brand";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (category) {
     return pageMeta({
       title: category.name,
-      description: `${category.name} articles and tips from Best Rent a Car.`,
+      description: `${category.name} articles and tips from ${brand.name}.`,
       path: `/blog/${category.slug}`,
       keywords: [category.name.toLowerCase(), "car rental blog"],
     });

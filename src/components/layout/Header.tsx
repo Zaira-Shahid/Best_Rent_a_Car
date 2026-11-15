@@ -7,7 +7,7 @@ import { createPortal } from "react-dom";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import { mainNav } from "@/data/navigation";
-import { brand } from "@/lib/brand";
+import { whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 import type { NavItem, NavLink } from "@/types";
 
@@ -165,7 +165,7 @@ export function Header() {
               <Logo className="h-9 w-[72px] sm:h-10 sm:w-[80px]" />
               <div className="flex shrink-0 items-center gap-2">
                 <a
-                  href={`https://wa.me/${brand.whatsapp}`}
+                  href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
@@ -319,7 +319,7 @@ export function Header() {
 
                 <div className="mt-5 flex flex-col gap-2 border-t border-white/10 pt-5">
                   <a
-                    href={`https://wa.me/${brand.whatsapp}`}
+                    href={whatsappLink()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-full border border-white/20 px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-white"
@@ -519,7 +519,7 @@ export function Header() {
 
           <div className="hidden items-center gap-3 xl:flex">
             <a
-              href={`https://wa.me/${brand.whatsapp}`}
+              href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-white/20 px-5 py-2 text-xs font-semibold uppercase tracking-wider text-white/85 transition hover:border-accent hover:text-accent"
@@ -536,7 +536,7 @@ export function Header() {
 
           <div className="mobile-header-actions flex shrink-0 items-center gap-2 xl:hidden">
             <a
-              href={`https://wa.me/${brand.whatsapp}`}
+              href={whatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
