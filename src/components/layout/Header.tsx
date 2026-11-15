@@ -365,7 +365,7 @@ export function Header() {
 
   const navLinkClass = (active: boolean, menuOpen = false) =>
     cn(
-      "inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 text-[15px] transition-colors",
+      "inline-flex h-11 items-center gap-1.5 whitespace-nowrap rounded-full px-2 text-[15px] transition-colors min-[1440px]:px-2.5",
       "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black",
       active
         ? "bg-brand-black/[0.07] font-semibold !text-brand-black"
@@ -404,7 +404,7 @@ export function Header() {
             priority
             className={cn(
               "transition-[height,width] duration-300",
-              scrolled ? "h-10 w-[80px] xl:h-10 xl:w-[80px]" : "h-11 w-[88px] xl:h-12 xl:w-[96px]",
+              scrolled ? "h-11 w-[88px] xl:h-12 xl:w-[96px]" : "h-12 w-[96px] xl:h-14 xl:w-[112px]",
             )}
           />
 
@@ -595,14 +595,14 @@ export function Header() {
             <a
               href={telLink(phone.number)}
               aria-label={`Call ${formatPhone(phone.number)}`}
-              className="group/call flex items-center gap-2.5 rounded-full pr-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
+              className="group/call flex items-center gap-2.5 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-black"
             >
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-red text-white transition group-hover/call:bg-brand-red-dark">
                 <span className="material-symbols-outlined text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }} aria-hidden="true">
                   call
                 </span>
               </span>
-              <span className="leading-tight">
+              <span className="hidden leading-tight min-[1440px]:block">
                 <span className="block whitespace-nowrap text-[11px] font-medium text-brand-black/60">Call 24/7</span>
                 <span className="block whitespace-nowrap text-[15px] font-bold !text-brand-black">{formatPhone(phone.number)}</span>
               </span>
@@ -640,6 +640,15 @@ export function Header() {
 
           {/* Tablet / mobile: phone icon + menu button only. */}
           <div className="flex shrink-0 items-center gap-2 xl:hidden">
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+            </a>
             <a
               href={telLink(phone.number)}
               aria-label={`Call ${formatPhone(phone.number)}`}
