@@ -42,6 +42,7 @@ export const brand = {
   social: {
     facebook: "https://www.facebook.com/share/1cCiFygjXf/",
     instagram: "https://www.instagram.com/bestcarz_rent_a_car/",
+    tiktok: "https://www.tiktok.com/@bestcarz_g9",
   },
   colors: {
     primary: "#06264b",

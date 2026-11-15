@@ -18,7 +18,7 @@ export const metadata: Metadata = pageMeta({
 });
 
 const HERO =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuD0KMKhRNrVTWjs6lo2c5IpQiTRMm4yN05WhPyEApAC8nEZH_q-Xki_olgfUckmoavNUnXYFxnIpnhl_U15wSjcpsjixHrbxZMT2JI9skG4qoQOqbNavHQBNGr34B4OtJuKMRFwUgj7FV-T9uHItfApXOYv57c_f6LILs-v5KvfcqETwMgtok1RXunj_QYj8tpmVm781mZeFaDy_PvDAM5hoa3PRts2nfsmN3Th-t1_0y1Aza-JdutX";
+  "/images/site/faisal-mosque-night.webp";
 
 const STATS = [
   { icon: "stars", value: `${brand.rating.toFixed(1)}/5`, label: "Google Rating" },
@@ -81,7 +81,7 @@ export default function ReviewsPage() {
   return (
     <div className="overflow-x-hidden">
       <header className="relative flex min-h-[280px] items-center justify-center overflow-hidden py-12 sm:min-h-[400px] sm:py-20 lg:min-h-[520px]">
-        <Image src={HERO} alt="Luxury sedan on a city street at twilight" fill priority className="object-cover" sizes="100vw" />
+        <Image src={HERO} alt="Faisal Mosque in Islamabad at night" fill priority className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-primary/50" />
         <div className="relative z-10 w-full px-4 text-center">
           <nav className="mb-3 flex justify-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-white/80 sm:mb-6 sm:text-xs">

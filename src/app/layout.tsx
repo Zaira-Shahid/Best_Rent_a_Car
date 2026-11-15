@@ -111,7 +111,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       reviewCount: brand.reviewCount,
       bestRating: 5,
     },
-    sameAs: [brand.social.facebook, brand.social.instagram],
+    sameAs: [brand.social.facebook, brand.social.instagram, brand.social.tiktok],
     hasMap: brand.location.mapsUrl,
     areaServed: "Pakistan",
     priceRange: "$$",

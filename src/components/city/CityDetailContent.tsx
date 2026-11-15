@@ -14,10 +14,10 @@ import { Reveal } from "@/components/ui/Reveal";
 const ISLAMABAD_HERO = "/services/islambad.jpeg";
 
 const FLEET_IMAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuA1A79IDJIW_aFnBsQj1JQWPCi85fII9bVRg7OP6lB_FM1HQdJCKMuU8ogEgCN8BaR7e98m8vMSjxppY1ZnkiXVlqgYQeoOtmXBwsSEKC6ly7j83OJLZ_6f9NhpEJ-j9LAl-aLND1WWTUIvkGca0VXOQRKgPACwengq_1yXUh927w_jT_ARf7iovL-okVs1HPNIcnET-cmAft3oJ3orvTPjKoSSB7pDaUy8WPoJAhlk61FaopWNyHxv";
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuAZUw0ldcd0m67b3_J2JfrSAhSKXWTJg6rI-wkqVq_K1FEskb8c6kUdv1SfiCh9Tk-gbFZ8Z6C6-5NzhjkdOAhWEU9CMOa0rPyNBnIB_keSH50GAqdttRaxfdr12_-JWiQIrDaSiUcyY3xzOSaqtOKNGdSybwl1RL3H__LdW5RS6v7MelqDS49Ir3fZ7RngiCCZDiiYpJZ_DQcIlqK0RroMlVQzWDFaBZz248x6bHUQnbrjObmdGF9c";
 
 const AIRPORT_IMAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDsZiYxccqSOLeaydChTp_SczAfABKJ7kdwrYvETuRCJN1yU7SbQDkfWsg-1KFFEgarBZL9xH8ONmyVa5720Lb8a3B8vg9jn0yjy8V4X9nEgxpQQbxudUKbRYHmdz-BeayNHu-AeboS513MhU_lu_vNX3gX1SfdWRZEYKok5hkxQWAP97eLxbM4jh7QjM4ebcjoKUzp1iWMiy-5ZHu6GBpnG0Fpxo7iRrgLW5FCkWtrQf1e0R3oukbv";
+  "/images/site/airport-terminal.webp";
 
 const CITY_HERO_IMAGES: Record<string, string> = {
   islamabad: ISLAMABAD_HERO,
@@ -35,9 +35,9 @@ const CITY_HERO_IMAGES: Record<string, string> = {
   "gulberg-greens": ISLAMABAD_HERO,
   taxila: ISLAMABAD_HERO,
   rawalpindi:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCxtoridxoRYv-Wrfwj5dXtNfOEwI1q923go8nTqbUz1ZuoFPnKI41iarOXzOF4WDMOcZItfkFvKsJ4V_CmX2YurqXt43F1RVJS74hg4R8Hv_izfiiAd38KzNqKzei82dbe8YXyWdOs47CRxVZdQyXNoe6z51JPXiFfjPw2_pP2ZJZ62hjfVLRAnWh3uUtDzQ75cn6g4jZG29KSvgHpMPlGBcKgrmrRVVtHsZkA0z2zkE4SREzVQ3AJ",
+    "/images/site/islamabad-towers-aerial.webp",
   "saddar-rawalpindi":
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCxtoridxoRYv-Wrfwj5dXtNfOEwI1q923go8nTqbUz1ZuoFPnKI41iarOXzOF4WDMOcZItfkFvKsJ4V_CmX2YurqXt43F1RVJS74hg4R8Hv_izfiiAd38KzNqKzei82dbe8YXyWdOs47CRxVZdQyXNoe6z51JPXiFfjPw2_pP2ZJZ62hjfVLRAnWh3uUtDzQ75cn6g4jZG29KSvgHpMPlGBcKgrmrRVVtHsZkA0z2zkE4SREzVQ3AJ",
+    "/images/site/islamabad-city-view.webp",
   lahore:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBu2jgMj_QfGnhZQgVd4TRc8aW6ADIUadRDmc5We8ZS3jRR8uvAq3FKIaGHuQswZgqJHL9WDt-m5IypKs071yZUarzJvWYL7srDq3P4uxU1EOXD7e1wLw1hOaVnJA0cdkmHD0z1BX4kBoqvXI80IYusN1Mm5jOhZblLs5H7Qg0Y5xGxbeFnq07mq-yfYJnw5e8HnNfjGEbC2o_nN-O7Rzk-VQs582D4gmx__otJ2V4m595qN0yHYMEb",
   karachi:
@@ -47,25 +47,25 @@ const CITY_HERO_IMAGES: Record<string, string> = {
   skardu:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCnwK0Ew-attpsBBbujzYACE2dT2UhYuS8Z456Jmxm9T5J4FYZIbTSHnFj6IKiQ50cVjv8lDKaGRtkVbKcxHdjcfMAejPWHYYz8_1dm0U6bnipUuWqWkC0o2gxHRhL64vXPlPHRNgGA7PpxYZsZsMN--sYZEHnrLvraldXI5_lGy-2qhBuD8BkwmZrUbsTQ8BjTIqHEKG-nqak_v-tB51DeZPgX5YxSl97Emrg0VCvWvDIN8PXe4_j-",
   murree:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDbcKDjND0qZPOzEu6BH6j38ppx1NhDSsowcK0WDSaHsKHu7uHk93RX5s7YaXVvt0QtcE8qzID1dq3cM-Sab7YzUvTvJhX1MQ9hdykrxtwlicMPIUZw4xSo3IMJyuaegBUWb3WXcTixky3BjzHS8j82x8Cj6U1FjYmd00kk0A9LaRTazW6zZcU2_oAH8r-g0PHA8-gQZN9dXOVROP-s3jMzDKjWhhTKdY3sqsev1-V7mNibVGOymCfG",
+    "/images/site/murree-hills-aerial.webp",
   naran:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDTqVkNdV-owxjJjCBPTFmklAzduRiBbdF6yk6lST455UjKRJs_LLlN6Cn0-0X3jrXJ5LerZOOM7zYpj1H3Yu6Ooy5cmxin4qB5HIs385dcwGipLKWOpCKCpeIoXr4698VqHJNoG68tTCSESHwTTUSR4R_IRTgYYxMF4p968vc_aS5zysFTzAe1cRqFixfm9LcSZP8HBVZ75727AWDrRv1GD48gM95LiDAFk0IoJtO3sgD99IVDb9T1",
+    "/images/site/mountain-lake.webp",
   kaghan:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDTqVkNdV-owxjJjCBPTFmklAzduRiBbdF6yk6lST455UjKRJs_LLlN6Cn0-0X3jrXJ5LerZOOM7zYpj1H3Yu6Ooy5cmxin4qB5HIs385dcwGipLKWOpCKCpeIoXr4698VqHJNoG68tTCSESHwTTUSR4R_IRTgYYxMF4p968vc_aS5zysFTzAe1cRqFixfm9LcSZP8HBVZ75727AWDrRv1GD48gM95LiDAFk0IoJtO3sgD99IVDb9T1",
-  swat: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=80",
-  "neelum-valley": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80",
-  "azad-kashmir": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80",
+    "/images/site/kaghan-village-river.webp",
+  swat: "/images/site/river-valley-green.webp",
+  "neelum-valley": "/images/site/river-canyon-aerial.webp",
+  "azad-kashmir": "/images/site/green-hills-meadow.webp",
   faisalabad: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1600&q=80",
   multan: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1600&q=80",
-  peshawar: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80",
-  abbottabad: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=80",
-  haripur: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=80",
+  peshawar: "/images/site/pakistan-motorway.webp",
+  abbottabad: "/images/site/green-hills-clouds.webp",
+  haripur: "/images/site/misty-hills.webp",
 };
 
 function getCityHeroImage(city: CityPage) {
   if (CITY_HERO_IMAGES[city.slug]) return CITY_HERO_IMAGES[city.slug];
   if (city.type === "tourist") {
-    return "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80";
+    return "/images/site/mountain-forest-peaks.webp";
   }
   return ISLAMABAD_HERO;
 }
@@ -294,7 +294,7 @@ export function CityDetailContent({ city }: CityDetailContentProps) {
                 <div className="relative h-40 w-full flex-1 overflow-hidden rounded-lg">
                   <Image
                     src={AIRPORT_IMAGE}
-                    alt="Airport pickup"
+                    alt="Airport terminal"
                     fill
                     className="object-cover"
                     sizes="(max-width:768px) 100vw, 33vw"

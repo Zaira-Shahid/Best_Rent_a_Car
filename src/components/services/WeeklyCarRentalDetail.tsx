@@ -112,8 +112,8 @@ export function WeeklyCarRentalDetail({ data }: WeeklyCarRentalDetailProps) {
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {[
-                  "https://lh3.googleusercontent.com/aida-public/AB6AXuBCDsayYY0RK1_tAozq3TmWwYebo70XvSmKhrIoJ26YpoZAY5KrKTXNRxEFptwdQOAABHk2plNSkCTig1OgTfkNRkxeEYM6AvbLiVxzI0KeYME4UiVT0FJPDQhLY7sal59-MRwRHCB1ZUOX7FN-XrNF1m_U3LlA1Dm2-JUDOaAfUcEzY2C_WkVvAVF5VYmVAmCklRl_ZJvCEBRbkepjZ5j-n38eA6oIwVc4JdQX8cWOnAeFOKm5HSec",
-                  "https://lh3.googleusercontent.com/aida-public/AB6AXuDsG-abBgIbU4fYsrAV0muqTps_tvwT8L-NiTgMnVTjr-tSxev-eDgTY2Top6c6k-ZK1buDx1N2nfQiMGxnycKEwi4OGHApYP2sdHiLcVvmgAOIMNvffU4ICA82oRqzyvv4c8gMkdc8EDKVrNcNSZOaJ_d4Wo-J7qJvoRoYr65nOQyOaa7TjGbZFdtlWU7K4YbBVMsjXI9hi2AYHE2Ob-BB57x4lp-cTMhWO579PQxs-Awb-u9RvEvW",
+                  "/images/site/driver-van-interior.webp",
+                  "/images/site/hotel-chauffeur-van.webp",
                   "https://lh3.googleusercontent.com/aida-public/AB6AXuCyODs5eCaVJw8UTDaNAsT6kRPhOMV3inuOc4IzXHXMaSbMGM21U30NbcXbDYvGZ04EYmvbkow0zM5v-sXmfBk9-0sJFyh5KWTNLfKKB5eNnfEArkRLH2dS0KrFYBAYQrOcZmymZ-DaJBU74xQ1C3zvWFC_od2iQyHQeeqjqwCtdLRy9RKFoch3B31PbDDVHUpjmcx7IQssHJ3cWOMjC5m-9aaTfjmbV4nvDD3mCmNV4UPe-Rm-Kj14",
                   "https://lh3.googleusercontent.com/aida-public/AB6AXuA-38msxt9PF81vFNxRKS8y9Vt7iqEOfg73pdkAb3zpQ8EhsYhVx4HfggCRNRwgZb_ku4ZOpJz24vY6PwBMfwOPufOW_xQXSkZwkfNBTMASiM7XU42eQA3tuxVCpQHkD7ns5K-eBcUeGztFz_yE4oRZ3MfPdYkx27sK-CY5YSMy4JA_2lR-7Rm8drKrx_MsxxRSh3wvYS-UoX4kaKu1a6B_VGdgcVjRvwfT3c4IPWyPcFWTcNQl7Ve7",
                 ].map((src, index) => (

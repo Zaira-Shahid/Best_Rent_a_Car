@@ -3,14 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Container } from "@/components/ui/Container";
-import { cities } from "@/data";
+import { carModels, cities } from "@/data";
 import { pageMeta } from "@/lib/seo";
 import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = pageMeta({
   title: "About Us",
   description:
-    `Learn about ${brand.name} — premium chauffeur-driven car rental across Pakistan since 2010.`,
+    `Learn about ${brand.name} — premium chauffeur-driven car rental across Pakistan.`,
   path: "/about",
   keywords: [`about ${brand.name}`, "car rental company Pakistan"],
 });
@@ -20,16 +20,17 @@ const HERO = "/images/about-hero-v2.png";
 const FOUNDER = "/images/founder-umar-saeed.jpg";
 
 const STORY =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuA_0DvMgtwmvaqx9Ri-RF_X5h36PhzSZEy3QOy3_mIOctfV29MYedB-lytMPbgF6KfGb0CTLBso4efmlWt-tgjviDre4b7Zps_zEo-EnLGTBfUqdptA_tGtr7DjeTGqJ3ACcyhIhsvxwTp4RyoDZJYifoRZsb-QBU3lR01ZZO9lMMWaSWPaWy2IER5DyxTGDLThHulB8tOQb0uf7LmJv425G8do_dV_Xs7zB-O8_gXlzZJfcSFt4FIy";
+  "/images/site/sunset-sedan-bridge.webp";
 
 const PROCESS =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCDpXQ-dNhSDga9qWs9ffpWS7vDJKYhUUCe3YyTejoYH_AMoGbgP93VPVeYSBMpbrmwM-WCnuA_N9i7Z8JgaezKP91VHNrimt5alDa2kuNGvO62T4Hi6-ak970eeCRh3DN32EoXzm3d6BB5JqfQV6wC1NgA0w4Abu4tGvNVjRrxeOUz26so1yKvijJlhS01t_U13MlIBpLR2EzaBxko0_PzhxhecRHC9WcqlwagBlscZ0KoUbRW7LD4";
 
+// All figures come from our own data. TODO(client): add "years in business" once confirmed.
 const STATS = [
-  { value: "14+", label: "Years of Excellence" },
-  { value: "250+", label: "Luxury Fleet" },
-  { value: "15k+", label: "Happy Clients" },
-  { value: "50+", label: "Service Cities" },
+  { value: `${carModels.length}`, label: "Vehicles in Our Fleet" },
+  { value: `${cities.length}`, label: "Cities & Destinations" },
+  { value: "24/7", label: brand.hours },
+  { value: `${brand.rating.toFixed(1)}★`, label: `Google Rating (${brand.reviewCount} reviews)` },
 ];
 
 const VALUES = [
@@ -200,7 +201,7 @@ export default function AboutPage() {
           <AnimateIn delay={120} className="relative">
             <div className="absolute -inset-3 -z-10 rounded-2xl bg-accent/20 sm:-inset-4" />
             <div className="relative h-[360px] overflow-hidden rounded-xl shadow-2xl sm:h-[500px]">
-              <Image src={STORY} alt="Luxury SUV outside modern building" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <Image src={STORY} alt="Black sedan driving at sunset" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
           </AnimateIn>
         </Container>

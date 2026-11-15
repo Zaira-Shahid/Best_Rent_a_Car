@@ -22,9 +22,9 @@ export const metadata: Metadata = pageMeta({
 const HERO = "/images/contact-hero-v2.png";
 
 const RESPONSE_PROMISES = [
-  { icon: "bolt", value: "< 15 min", label: "WhatsApp Response" },
-  { icon: "request_quote", value: "< 60 min", label: "Quote Turnaround" },
-  { icon: "local_shipping", value: "45 min", label: "Avg. Delivery Time" },
+  { icon: "bolt", value: "Quick", label: "WhatsApp Response" },
+  { icon: "request_quote", value: "Fast", label: "Quotes" },
+  { icon: "local_shipping", value: "On Request", label: "Doorstep Delivery" },
 ];
 
 const WHATSAPP_TIPS = [

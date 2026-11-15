@@ -9,6 +9,8 @@ import { brand } from "@/lib/brand";
 import { GoogleRatingBadge } from "@/components/reviews/GoogleRatingBadge";
 import { GoogleReviewCard } from "@/components/reviews/GoogleReviewCard";
 import { SeeAllOnGoogleButton } from "@/components/reviews/SeeAllOnGoogleButton";
+import { carModels } from "@/data/cars";
+import { cities } from "@/data/cities";
 import { googleReviews } from "@/data/reviews";
 
 const HERO =
@@ -50,7 +52,7 @@ const CITY_CARDS = [
     badge: "4x4 Specialists",
     badgeAccent: true,
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBw0DCv15PoG1w9hfCNj2vf16txCJ15GHLj4HrhsBAunRkQVuBHQuR7sXb34I5mAtXZ-Vh9gehoAUT6HGjUVYJDagEztop-Cym8YErgaWQjtB8W0091zOFrq9jZjjWpwURtQKjtIlSwPKfznw9BvVd9hRj5Xe_ptc65Y4lIyjbDc-rVm20qhB7edCRrt5JoMK6fHQs2twGIaqKkMzg4gL1VoyE6O7lu8DDBef3HCAaPZDN62WXJPClH",
+      "/images/site/mountain-forest-peaks.webp",
   },
   {
     slug: "skardu",
@@ -64,21 +66,21 @@ const CITY_CARDS = [
     name: "Murree",
     text: "Elevated comfort. Premium SUV rentals for your perfect hillside retreat and mountain escapes.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDbcKDjND0qZPOzEu6BH6j38ppx1NhDSsowcK0WDSaHsKHu7uHk93RX5s7YaXVvt0QtcE8qzID1dq3cM-Sab7YzUvTvJhX1MQ9hdykrxtwlicMPIUZw4xSo3IMJyuaegBUWb3WXcTixky3BjzHS8j82x8Cj6U1FjYmd00kk0A9LaRTazW6zZcU2_oAH8r-g0PHA8-gQZN9dXOVROP-s3jMzDKjWhhTKdY3sqsev1-V7mNibVGOymCfG",
+      "/images/site/murree-hills-aerial.webp",
   },
   {
     slug: "naran",
     name: "Naran",
     text: "Explore the Kaghan valley with reliability. Premium crossovers for scenic mountain roads.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDTqVkNdV-owxjJjCBPTFmklAzduRiBbdF6yk6lST455UjKRJs_LLlN6Cn0-0X3jrXJ5LerZOOM7zYpj1H3Yu6Ooy5cmxin4qB5HIs385dcwGipLKWOpCKCpeIoXr4698VqHJNoG68tTCSESHwTTUSR4R_IRTgYYxMF4p968vc_aS5zysFTzAe1cRqFixfm9LcSZP8HBVZ75727AWDrRv1GD48gM95LiDAFk0IoJtO3sgD99IVDb9T1",
+      "/images/site/mountain-lake.webp",
   },
   {
     slug: "rawalpindi",
     name: "Rawalpindi",
     text: "Seamless connectivity. Reliable luxury transport for the twin city's vibrant business hubs.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCxtoridxoRYv-Wrfwj5dXtNfOEwI1q923go8nTqbUz1ZuoFPnKI41iarOXzOF4WDMOcZItfkFvKsJ4V_CmX2YurqXt43F1RVJS74hg4R8Hv_izfiiAd38KzNqKzei82dbe8YXyWdOs47CRxVZdQyXNoe6z51JPXiFfjPw2_pP2ZJZ62hjfVLRAnWh3uUtDzQ75cn6g4jZG29KSvgHpMPlGBcKgrmrRVVtHsZkA0z2zkE4SREzVQ3AJ",
+      "/images/site/islamabad-towers-aerial.webp",
   },
   {
     slug: "faisalabad",
@@ -145,9 +147,9 @@ const STEPS = [
 ];
 
 const STATS = [
-  { value: "12+", label: "Major Cities" },
-  { value: "150+", label: "Luxury Fleet" },
-  { value: "45min", label: "Avg Delivery" },
+  { value: `${cities.length}`, label: "Cities & Destinations" },
+  { value: `${carModels.length}`, label: "Vehicles in Our Fleet" },
+  { value: "On Request", label: "Doorstep Delivery" },
   { value: "24/7", label: "Support" },
 ];
 
