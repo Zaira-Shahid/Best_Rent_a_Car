@@ -1,5 +1,5 @@
 import type { ServiceDetail } from "@/types";
-import { formatPhoneDisplay } from "@/lib/brand";
+import { brand, formatPhone, telLink, whatsappLink } from "@/lib/brand";
 
 const hotelTransfer: ServiceDetail = {
   slug: "hotel-transfer",
@@ -486,7 +486,9 @@ const weddingCarRental: ServiceDetail = {
     description:
       "Fill out the form and our wedding concierge will get back to you within 2 hours with a customized quote and availability.",
     contact: [
-      { icon: "call", label: "Direct Line", value: formatPhoneDisplay() },
+      { icon: "call", label: "Call (Primary)", value: formatPhone(brand.phones[0].number), href: telLink(brand.phones[0].number) },
+      { icon: "call", label: "Call (Secondary)", value: formatPhone(brand.phones[1].number), href: telLink(brand.phones[1].number) },
+      { icon: "chat", label: "WhatsApp", value: formatPhone(brand.whatsapp), href: whatsappLink() },
       { icon: "mail", label: "Email Us", value: "info@example.com" },
     ],
   },
@@ -1328,7 +1330,9 @@ const corporateCarRental: ServiceDetail = {
       { icon: "check_circle", text: "24/7 roadside assistance & support" },
     ],
     contact: [
-      { icon: "call", label: "Direct Line", value: formatPhoneDisplay() },
+      { icon: "call", label: "Call (Primary)", value: formatPhone(brand.phones[0].number), href: telLink(brand.phones[0].number) },
+      { icon: "call", label: "Call (Secondary)", value: formatPhone(brand.phones[1].number), href: telLink(brand.phones[1].number) },
+      { icon: "chat", label: "WhatsApp", value: formatPhone(brand.whatsapp), href: whatsappLink() },
       { icon: "mail", label: "Email Us", value: "info@example.com" },
     ],
   },

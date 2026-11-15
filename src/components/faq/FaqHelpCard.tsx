@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { brand, formatPhoneDisplay, whatsappLink } from "@/lib/brand";
+import { ContactNumbers } from "@/components/shared/ContactNumbers";
+import { brand, telLink, whatsappLink } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 const AGENT_IMAGE =
@@ -46,7 +47,7 @@ export function FaqHelpCard({ className }: FaqHelpCardProps) {
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-stretch xl:flex-row xl:items-center">
           <a
-            href={`tel:${brand.phone}`}
+            href={telLink()}
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold !text-white transition hover:scale-[1.02] hover:brightness-95 active:scale-[0.98]"
           >
             <span className="material-symbols-outlined text-[18px]">support_agent</span>
@@ -62,7 +63,7 @@ export function FaqHelpCard({ className }: FaqHelpCardProps) {
             WhatsApp
           </a>
         </div>
-        <p className="mt-3 text-xs text-white/55">{formatPhoneDisplay()}</p>
+        <ContactNumbers className="mt-3 text-xs" />
       </div>
     </div>
   );

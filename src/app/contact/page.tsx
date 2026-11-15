@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactNumbers } from "@/components/shared/ContactNumbers";
+import { SocialLinks } from "@/components/shared/SocialLinks";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { Container } from "@/components/ui/Container";
 import { homeFaqs } from "@/data";
-import { brand, whatsappLink } from "@/lib/brand";
+import { brand, telLink, whatsappLink } from "@/lib/brand";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -55,8 +57,7 @@ const INFO_CARDS = [
     icon: "call",
     title: "Call Us",
     text: "Available for immediate booking & roadside support.",
-    href: `tel:${brand.phone}`,
-    linkLabel: brand.phone,
+    numbers: true,
   },
   {
     icon: "mail",
@@ -140,14 +141,18 @@ export default function ContactPage() {
                 ) : (
                   <>
                     <p className="mt-2 text-sm text-muted">{card.text}</p>
-                    <a
-                      href={card.href}
-                      target={card.href?.startsWith("http") ? "_blank" : undefined}
-                      rel={card.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="mt-4 block break-all text-sm font-semibold text-secondary hover:underline"
-                    >
-                      {card.linkLabel}
-                    </a>
+                    {card.numbers ? (
+                      <ContactNumbers tone="light" className="mt-4 text-base" />
+                    ) : (
+                      <a
+                        href={card.href}
+                        target={card.href?.startsWith("http") ? "_blank" : undefined}
+                        rel={card.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="mt-4 block break-all text-sm font-semibold text-secondary hover:underline"
+                      >
+                        {card.linkLabel}
+                      </a>
+                    )}
                   </>
                 )}
               </div>
@@ -299,13 +304,16 @@ export default function ContactPage() {
                       WhatsApp
                     </a>
                     <a
-                      href={`tel:${brand.phone}`}
+                      href={telLink()}
                       className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-accent hover:text-accent"
                     >
                       <span className="material-symbols-outlined text-[18px]">call</span>
                       Call Us
                     </a>
                   </div>
+                  <ContactNumbers className="mt-5" />
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-white/45">Follow us</p>
+                  <SocialLinks className="mt-3" />
                 </div>
                 <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-secondary/10 blur-3xl" />
               </div>

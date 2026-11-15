@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Sora } from "next/font/google";
 import { FirebaseAnalytics } from "@/components/FirebaseAnalytics";
 import { SiteShell } from "@/components/layout/SiteShell";
-import { brand } from "@/lib/brand";
+import { brand, internationalPhone } from "@/lib/brand";
 import { absoluteUrl, defaultKeywords, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
@@ -90,13 +90,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     name: brand.name,
     description: brand.tagline,
     url: siteUrl,
-    telephone: brand.phone,
+    telephone: internationalPhone(brand.phone),
     email: brand.email,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Islamabad",
       addressCountry: "PK",
     },
+    sameAs: [brand.social.facebook, brand.social.instagram],
     hasMap: brand.location.mapsUrl,
     areaServed: "Pakistan",
     priceRange: "$$",

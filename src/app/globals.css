@@ -443,4 +443,13 @@ header:not(.ride-header) .site-brand-logo, footer .site-brand-logo, [role="dialo
   background-color: #f3f4f5 !important;
   border-color: var(--color-brand-black) !important;
 }
+/* WhatsApp number shown as plain inline text (ContactNumbers) instead of a green button. */
+:root a.wa-text[href^="https://wa.me/"],
+:root a.wa-text[href^="https://wa.me/"]:hover {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+:root a.wa-text-dark[href^="https://wa.me/"] { color: rgba(255, 255, 255, 0.85) !important; }
+:root a.wa-text-light[href^="https://wa.me/"] { color: var(--color-brand-black) !important; }
+:root a.wa-text[href^="https://wa.me/"]:hover { color: #278a08 !important; }
 :root a[href^="https://wa.me/"] .mobile-whatsapp-label { color: #fff; }

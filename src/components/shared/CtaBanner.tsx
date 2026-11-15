@@ -3,6 +3,7 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
+import { ContactNumbers } from "@/components/shared/ContactNumbers";
 import { whatsappLink } from "@/lib/brand";
 
 type CtaBannerProps = {
@@ -21,6 +22,7 @@ export function CtaBanner({
           <div>
             <h2 className="text-xl font-semibold text-white sm:text-2xl lg:text-3xl">{title}</h2>
             <p className="mt-2 max-w-xl text-sm text-white/70 sm:text-base">{description}</p>
+            <ContactNumbers className="mt-4" />
           </div>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
             <ButtonLink href="/contact" variant="accent" size="lg" className="w-full sm:w-auto">

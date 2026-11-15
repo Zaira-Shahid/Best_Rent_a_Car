@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { CarModel, ServiceFleetItem } from "@/types";
 import { InquireModal } from "@/components/cars/InquireModal";
 import { Reveal } from "@/components/ui/Reveal";
-import { brand, formatPrice, whatsappLink } from "@/lib/brand";
+import { brand, formatPrice, telLink, whatsappLink } from "@/lib/brand";
 
 type ServiceFleetGridProps = {
   items: ServiceFleetItem[];
@@ -123,7 +123,7 @@ function FleetCard({ item }: { item: ServiceFleetItem }) {
               <span className="truncate">WhatsApp</span>
             </a>
             <a
-              href={`tel:${brand.phone}`}
+              href={telLink()}
               className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-[10px] bg-secondary px-2 text-xs font-semibold !text-white transition hover:brightness-95"
             >
               <PhoneIcon className="h-3.5 w-3.5 shrink-0" />
