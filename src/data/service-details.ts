@@ -1,4 +1,11 @@
-import type { ServiceDetail, ServiceTestimonial } from "@/types";
+import type {
+  ServiceDetail,
+  ServiceDetailSource,
+  ServiceFleetItem,
+  ServicePricingPackage,
+  ServiceTestimonial,
+} from "@/types";
+import { carModels } from "./cars";
 import { brand, formatPhone, telLink, whatsappLink } from "@/lib/brand";
 import { googleReviews, reviewMeta } from "./reviews";
 
@@ -13,7 +20,7 @@ const googleRatingSummary = {
   label: `Based on ${brand.reviewCount} Google reviews`,
 };
 
-const hotelTransfer: ServiceDetail = {
+const hotelTransfer: ServiceDetailSource = {
   slug: "hotel-transfer",
   name: "Hotel Transfer",
   metaDescription:
@@ -100,31 +107,16 @@ const hotelTransfer: ServiceDetail = {
     description: "Choose the vehicle that matches your itinerary and party size.",
     items: [
       {
-        name: "Executive Sedan",
         tag: "2024 Model",
-        seats: 3,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuBTJ4YCSAXfXW6Y-F7FvY_-_wMNDMe19tv0kTN4gf_1_OTG2I-rHZtuKg0WHVGh6hUBgcibDiFcbPKTZg1Bawg9Jcf3nbX1FF-VXH---fIRKEsn-O-r_Zyo8I1fyeK2TlfB0pSajCL6fEozPXAQCNg9zPh9Whx06E0f7znuiOYtiFlInuVFKrBxBmPVGtrih0lCiWc2qRS2k0leBI3QUeFU73NubDvicTLNla98M2RxdcIw57n1hxr9",
-        priceDay: 32000,
+        carSlug: "honda-civic-2025",
       },
       {
-        name: "Luxury SUV",
         tag: "Top Choice",
-        seats: 5,
-        transmission: "Automatic",
-        image:
-          "/images/fleet/lx-mockup.webp",
-        priceDay: 38000,
+        carSlug: "lexus-lx",
       },
       {
-        name: "Business Van",
         tag: "Large Group",
-        seats: 7,
-        transmission: "Automatic",
-        image:
-          "/images/fleet/grand-cabin-grey.webp",
-        priceDay: 28000,
+        carSlug: "grand-cabin",
       },
     ],
   },
@@ -183,7 +175,7 @@ const hotelTransfer: ServiceDetail = {
   },
 };
 
-const executiveCarRental: ServiceDetail = {
+const executiveCarRental: ServiceDetailSource = {
   slug: "executive-car-rental",
   name: "Executive Car Rental",
   metaDescription:
@@ -204,40 +196,20 @@ const executiveCarRental: ServiceDetail = {
       "Selected for comfort, safety, and executive presence. Choose the perfect statement for your arrival.",
     items: [
       {
-        name: "Mercedes-Benz S-Class",
         tag: "Ultimate Luxury",
-        seats: 4,
-        transmission: "Automatic",
-        image:
-          "/images/fleet/s500-white.webp",
-        priceDay: 65000,
+        carSlug: "mercedes-s500",
       },
       {
-        name: "BMW 7 Series",
         tag: "Innovation",
-        seats: 4,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuA1d8iVz2j2ubfPwx1GLKTeiZwGSZkK8352f6k8LiCV_f0TQDJGcp1qeMdsbdL3jQ2jEjSjKV4Uctpydz2J6d1Nf1dT7PpU8I1rz7YHN1fWUNatRoMCvJTXD44TmlVnQOUeAmCZrHXW0C7nDcrRsUTTbDHf31v-5bXUekZiMSC7JsBYuDEgFtgk4pxr1pyLchh21zOzWYUQKYQNuhpKJZeahvVBaDW75TLs3S9BgW3O5B4Z5TjzVcrG",
-        priceDay: 58000,
+        carSlug: "mercedes-s400",
       },
       {
-        name: "Toyota Prado",
         tag: "Versatile",
-        seats: 7,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuBpMGf94j8_5aLqXiiiORSGHteXiLtJq9hhYvBawIF1XYWySMy_9Hr3PeguFIZYmnajqVGJ2_cXRW68Ro9Pzbz6ofLnPCQEwz7wl0zCoql2RAH7gOKi7b8ByqdUgLHnWaCCExkMc1ZhnUMLhlwtAZJkEVmDVcbiYhvlg_8KKn43zlb-iSmKALvEZYiPW5_iYJj1oAVvYz_PORP971byOfFrj-Ff4qD1jJCa18TuHi0ZXnGIICuZ7vRA",
-        priceDay: 32000,
+        carSlug: "toyota-prado",
       },
       {
-        name: "Toyota Fortuner",
         tag: "Commanding",
-        seats: 7,
-        transmission: "Automatic",
-        image:
-          "/images/fleet/fortuner-white.webp",
-        priceDay: 25000,
+        carSlug: "toyota-fortuner",
       },
     ],
   },
@@ -370,7 +342,7 @@ const executiveCarRental: ServiceDetail = {
   },
 };
 
-const weddingCarRental: ServiceDetail = {
+const weddingCarRental: ServiceDetailSource = {
   slug: "wedding-car-rental",
   name: "Wedding Car Rental",
   metaDescription:
@@ -418,40 +390,20 @@ const weddingCarRental: ServiceDetail = {
     description: "Selected for elegance, comfort, and luxury.",
     items: [
       {
-        name: "Toyota Prado",
         tag: "SUV Luxury",
-        seats: 7,
-        transmission: "Automatic",
-        image:
-          "/images/fleet/prado-mockup.webp",
-        priceDay: 35000,
+        carSlug: "toyota-prado",
       },
       {
-        name: "Toyota Fortuner",
         tag: "Executive SUV",
-        seats: 7,
-        transmission: "Automatic",
-        image:
-          "/images/fleet/fortuner-mockup.webp",
-        priceDay: 28000,
+        carSlug: "toyota-fortuner",
       },
       {
-        name: "Mercedes S-Class",
         tag: "Luxury Sedan",
-        seats: 4,
-        transmission: "Automatic",
-        image:
-          "/images/fleet/s400-white.webp",
-        priceDay: 60000,
+        carSlug: "mercedes-s400",
       },
       {
-        name: "Rolls-Royce Ghost",
         tag: "Executive Elite",
-        seats: 4,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDXqik-wRX7WtXJLneIcUXCKNAqtBcIVXhktuJKQDZd-NIK6kKfttaGwp5FC0ZzUXfg6aCV7gjo0s6bkWDkJQg-t6goUYT5ih_c9_gueGD_Wnh_rwiDLaXOwueRDiFUDKJveYCAak_1wG0Yp91eQGuqyPeDcaOKwxsiRYL9Jj3UxGlSavJXVhhiZJr8FP292NNS5FK5PMejDKS5TsCCfVM0S-77Qx0kG47SXdwfyL5yFe6-pVXf_K40",
-        priceDay: 120000,
+        carSlug: "mercedes-s500",
       },
     ],
   },
@@ -546,7 +498,7 @@ const weddingCarRental: ServiceDetail = {
   },
 };
 
-const dailyCarRental: ServiceDetail = {
+const dailyCarRental: ServiceDetailSource = {
   slug: "daily-car-rental",
   name: "Daily Car Rental",
   metaDescription:
@@ -594,40 +546,20 @@ const dailyCarRental: ServiceDetail = {
     description: "Tailored collections for every destination.",
     items: [
       {
-        name: "Suzuki Alto",
         tag: "Economy",
-        seats: 5,
-        transmission: "Automatic",
-        image:
-          "/images/fleet/alto-mockup.webp",
-        priceDay: 6500,
+        carSlug: "suzuki-alto",
       },
       {
-        name: "BMW 5 Series",
         tag: "Sedan",
-        seats: 5,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAtxzNlP5pVA6EvQHoDD9CnAkJq6G3nmesEf8tCPcw16hP1LNFORPivhGg9uVxI2A8X6Ius8ho8oaz2mH_Cnhh7Vd3CVMpugJpLFB3Nv9QDlJryfE7ZjiNoKxs645N-RTxDY1rL8kp9ToUw8LTMuv7Z9aH7r61OhqV5epZNSBeJcYYg1ztryOPxTlLwy4Rb508RYiHzRscjdD8lQrvh-h3A1p8pIc0be6OclqK9-iRD7Odog995EcWu",
-        priceDay: 24000,
+        carSlug: "audi-a6",
       },
       {
-        name: "Range Rover Vogue",
         tag: "SUV",
-        seats: 7,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDEFTKKMfymY2CZ7clB2dJHOHP9XFyFzTHXI12j9rovLrZO43qd0kPqvJwN8vSj-jrozbaCfN2imZTTSQ6k999X5n3xYePdMXDhzBgSFnXLjcc1V2KE2FTwAPGSQt-CgfmrHcpX7i-1b2dhjib_OJbdtgv_4yQyj1s1PJUEp8cJM2MKyJQWIkzD2sglD78PLgSDSCz7scyUs51rJbB7fpqxJZgj4Co82sODxTN34IbiCdHSgy_20UT0",
-        priceDay: 45000,
+        carSlug: "toyota-land-cruiser-lc-300",
       },
       {
-        name: "Lamborghini Huracán",
         tag: "Luxury",
-        seats: 2,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuCrPHYvOd2RIsBxRB8ytIOJQah-HNwTrC7kTMcnZbiGmPxdCSCQCFPj8ML_RcCw9WmFS0hj3n5N3gauD6d7C-yjAXalrQI8uxG8s1hsIN35Q6gEty5dvt8fDgmFm_2vCc3-DXwZgk5wU49MXkVkBNuE2wrIjPMAfEb1vytVOcStfDzVw4mhsGWsleK2alMsRolGjKVgolEQCgkNjdDztaKV1npbciYt9agpbQsC7arqvQgmwHWLqQai",
-        priceDay: 85000,
+        carSlug: "mercedes-s500",
       },
     ],
   },
@@ -738,7 +670,7 @@ const dailyCarRental: ServiceDetail = {
   },
 };
 
-const monthlyCarRental: ServiceDetail = {
+const monthlyCarRental: ServiceDetailSource = {
   slug: "monthly-car-rental",
   name: "Monthly Car Rental",
   metaDescription:
@@ -786,40 +718,20 @@ const monthlyCarRental: ServiceDetail = {
     description: "Tailored fleets for every professional need — priced clearly per day.",
     items: [
       {
-        name: "Economy Elite",
         tag: "Best Value",
-        seats: 5,
-        transmission: "Automatic",
-        image: "/images/fleet/corolla-white.webp",
-        imageAlt: "/images/fleet/corolla-black.webp",
-        priceDay: 4500,
+        carSlug: "toyota-corolla",
       },
       {
-        name: "Corporate Sedan",
         tag: "Business",
-        seats: 5,
-        transmission: "Automatic",
-        image: "/images/fleet/civic-white.webp",
-        imageAlt: "/images/fleet/civic-black.webp",
-        priceDay: 7000,
+        carSlug: "honda-city",
       },
       {
-        name: "Family SUV",
         tag: "Family",
-        seats: 7,
-        transmission: "Automatic",
-        image: "/images/fleet/fortuner-white.webp",
-        imageAlt: "/images/fleet/fortuner-black.webp",
-        priceDay: 14000,
+        carSlug: "toyota-fortuner",
       },
       {
-        name: "Luxe Prestige",
         tag: "Premium Choice",
-        seats: 4,
-        transmission: "Automatic",
-        image: "/images/fleet/s400-white.webp",
-        imageAlt: "/images/fleet/s400-black.webp",
-        priceDay: 80000,
+        carSlug: "mercedes-s400",
       },
     ],
   },
@@ -830,7 +742,7 @@ const monthlyCarRental: ServiceDetail = {
     items: [
       {
         name: "Economy Elite",
-        priceDay: 4500,
+        carSlug: "toyota-corolla",
         unit: "/day",
         features: [
           { text: "Toyota Corolla or similar", included: true },
@@ -841,7 +753,7 @@ const monthlyCarRental: ServiceDetail = {
       },
       {
         name: "Corporate Sedan",
-        priceDay: 7000,
+        carSlug: "honda-city",
         unit: "/day",
         featured: true,
         features: [
@@ -853,7 +765,7 @@ const monthlyCarRental: ServiceDetail = {
       },
       {
         name: "Luxe Prestige",
-        priceDay: 80000,
+        carSlug: "mercedes-s400",
         unit: "/day",
         features: [
           { text: "Mercedes S-Class or similar", included: true },
@@ -928,7 +840,7 @@ const monthlyCarRental: ServiceDetail = {
   },
 };
 
-const weeklyCarRental: ServiceDetail = {
+const weeklyCarRental: ServiceDetailSource = {
   slug: "weekly-car-rental",
   name: "Weekly Car Rental",
   metaDescription:
@@ -976,40 +888,20 @@ const weeklyCarRental: ServiceDetail = {
     description: "Preview models available for weekly hire — priced per day.",
     items: [
       {
-        name: "Audi A6 Business Class",
         tag: "Available Now",
-        seats: 5,
-        transmission: "Automatic",
-        image: "/images/fleet/audi-a6-white.webp",
-        imageAlt: "/images/fleet/audi-a6-black.webp",
-        priceDay: 55000,
+        carSlug: "audi-a6",
       },
       {
-        name: "Range Rover / Fortuner",
         tag: "SUV",
-        seats: 7,
-        transmission: "Automatic",
-        image: "/images/fleet/fortuner-white.webp",
-        imageAlt: "/images/fleet/fortuner-black.webp",
-        priceDay: 14000,
+        carSlug: "toyota-fortuner",
       },
       {
-        name: "Mercedes-Benz S-Class",
         tag: "Elite Choice",
-        seats: 4,
-        transmission: "Automatic",
-        image: "/images/fleet/s500-white.webp",
-        imageAlt: "/images/fleet/s500-black.webp",
-        priceDay: 110000,
+        carSlug: "mercedes-s500",
       },
       {
-        name: "Honda Civic 2025",
         tag: "Sedan",
-        seats: 5,
-        transmission: "Automatic",
-        image: "/images/fleet/civic-white.webp",
-        imageAlt: "/images/fleet/civic-black.webp",
-        priceDay: 10000,
+        carSlug: "honda-civic-2025",
       },
     ],
   },
@@ -1020,7 +912,7 @@ const weeklyCarRental: ServiceDetail = {
     items: [
       {
         name: "Economy",
-        priceDay: 4000,
+        carSlug: "suzuki-alto",
         unit: "/day",
         features: [
           { text: "Compact hatchbacks", included: true },
@@ -1149,7 +1041,7 @@ const weeklyCarRental: ServiceDetail = {
   },
 };
 
-const corporateCarRental: ServiceDetail = {
+const corporateCarRental: ServiceDetailSource = {
   slug: "corporate-car-rental",
   name: "Corporate Car Rental",
   metaDescription:
@@ -1217,40 +1109,20 @@ const corporateCarRental: ServiceDetail = {
     description: "Modern, safe, and impeccably maintained vehicles — daily rates only.",
     items: [
       {
-        name: "Toyota Corolla",
         tag: "2024+",
-        seats: 5,
-        transmission: "Automatic",
-        image: "/images/fleet/corolla-white.webp",
-        imageAlt: "/images/fleet/corolla-black.webp",
-        priceDay: 6000,
+        carSlug: "toyota-corolla",
       },
       {
-        name: "Honda Civic",
         tag: "2024+",
-        seats: 5,
-        transmission: "Automatic",
-        image: "/images/fleet/civic-white.webp",
-        imageAlt: "/images/fleet/civic-black.webp",
-        priceDay: 7000,
+        carSlug: "honda-civic-2025",
       },
       {
-        name: "Toyota Camry / Grande",
         tag: "2024+",
-        seats: 5,
-        transmission: "Automatic",
-        image: "/images/fleet/corolla-white.webp",
-        imageAlt: "/images/fleet/corolla-black.webp",
-        priceDay: 7000,
+        carSlug: "toyota-corolla-grande",
       },
       {
-        name: "Fortuner SUV",
         tag: "2024+",
-        seats: 7,
-        transmission: "Automatic",
-        image: "/images/fleet/fortuner-white.webp",
-        imageAlt: "/images/fleet/fortuner-black.webp",
-        priceDay: 14000,
+        carSlug: "toyota-fortuner",
       },
     ],
   },
@@ -1343,7 +1215,7 @@ const corporateCarRental: ServiceDetail = {
   },
 };
 
-const airportPickDrop: ServiceDetail = {
+const airportPickDrop: ServiceDetailSource = {
   slug: "airport-pick-drop",
   name: "Airport Pick & Drop",
   metaDescription:
@@ -1401,40 +1273,20 @@ const airportPickDrop: ServiceDetail = {
     description: "Tailored fleet for every requirement — from solo executive travel to large groups. Daily / transfer rates shown clearly.",
     items: [
       {
-        name: "Executive Sedan",
         tag: "Executive",
-        seats: 3,
-        transmission: "Automatic",
-        image: "/images/fleet/corolla-white.webp",
-        imageAlt: "/images/fleet/corolla-black.webp",
-        priceDay: 4500,
+        carSlug: "toyota-corolla-grande",
       },
       {
-        name: "Luxury SUV",
         tag: "Premium",
-        seats: 5,
-        transmission: "Automatic",
-        image: "/images/fleet/fortuner-white.webp",
-        imageAlt: "/images/fleet/fortuner-black.webp",
-        priceDay: 8500,
+        carSlug: "toyota-fortuner",
       },
       {
-        name: "Best Carz Rent a Car Elite",
         tag: "Best Carz Rent a Car",
-        seats: 3,
-        transmission: "Automatic",
-        image: "/images/fleet/s400-white.webp",
-        imageAlt: "/images/fleet/s400-black.webp",
-        priceDay: 25000,
+        carSlug: "mercedes-s400",
       },
       {
-        name: "Executive Hiace",
         tag: "Group",
-        seats: 10,
-        transmission: "Automatic",
-        image: "/images/fleet/grand-cabin-white.webp",
-        imageAlt: "/images/fleet/grand-cabin-grey.webp",
-        priceDay: 12000,
+        carSlug: "grand-cabin",
       },
     ],
   },
@@ -1543,15 +1395,52 @@ const airportPickDrop: ServiceDetail = {
   },
 };
 
+function carFor(slug: string) {
+  const car = carModels.find((item) => item.slug === slug);
+  if (!car) throw new Error(`Service page references unknown car slug "${slug}"`);
+  return car;
+}
+
+/** Resolves `carSlug` references so price, seats, transmission and images always come from cars.ts. */
+function resolveCars(source: ServiceDetailSource): ServiceDetail {
+  return {
+    ...source,
+    fleet: {
+      ...source.fleet,
+      items: source.fleet.items.map((entry): ServiceFleetItem => {
+        if (!("carSlug" in entry)) return entry;
+        const car = carFor(entry.carSlug);
+        return {
+          name: car.name,
+          tag: entry.tag,
+          seats: car.seats,
+          transmission: car.transmission,
+          image: car.image,
+          imageAlt: car.imageAlt,
+          priceDay: car.priceDay,
+        };
+      }),
+    },
+    packages: source.packages && {
+      ...source.packages,
+      items: source.packages.items.map((entry): ServicePricingPackage => {
+        if (!("carSlug" in entry)) return entry;
+        const { carSlug, ...rest } = entry;
+        return { ...rest, priceDay: carFor(carSlug).priceDay };
+      }),
+    },
+  };
+}
+
 export const serviceDetails: Record<string, ServiceDetail> = {
-  "hotel-transfer": hotelTransfer,
-  "executive-car-rental": executiveCarRental,
-  "wedding-car-rental": weddingCarRental,
-  "daily-car-rental": dailyCarRental,
-  "monthly-car-rental": monthlyCarRental,
-  "weekly-car-rental": weeklyCarRental,
-  "corporate-car-rental": corporateCarRental,
-  "airport-pick-drop": airportPickDrop,
+  "hotel-transfer": resolveCars(hotelTransfer),
+  "executive-car-rental": resolveCars(executiveCarRental),
+  "wedding-car-rental": resolveCars(weddingCarRental),
+  "daily-car-rental": resolveCars(dailyCarRental),
+  "monthly-car-rental": resolveCars(monthlyCarRental),
+  "weekly-car-rental": resolveCars(weeklyCarRental),
+  "corporate-car-rental": resolveCars(corporateCarRental),
+  "airport-pick-drop": resolveCars(airportPickDrop),
 };
 
 export const serviceDetailSlugs = Object.keys(serviceDetails);

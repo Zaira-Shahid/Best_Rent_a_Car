@@ -66,6 +66,14 @@ export type ServiceFleetItem = {
   priceDay: number;
 };
 
+/**
+ * Fleet entry as written in the service data. With `carSlug`, price, seats, transmission and
+ * images come from cars.ts (the single source of truth); without it all fields are required.
+ */
+export type ServiceFleetEntry =
+  | ServiceFleetItem
+  | (Pick<ServiceFleetItem, "tag"> & { carSlug: string });
+
 export type ServiceCoverageCity = {
   name: string;
   tag: string;
@@ -92,6 +100,11 @@ export type ServicePricingPackage = {
   features: { text: string; included: boolean }[];
   featured?: boolean;
 };
+
+/** Package as written in the service data; `carSlug` takes the daily price from cars.ts. */
+export type ServicePricingPackageEntry =
+  | ServicePricingPackage
+  | (Omit<ServicePricingPackage, "priceDay"> & { carSlug: string });
 
 export type ServiceFaq = {
   question: string;
@@ -166,6 +179,8 @@ export type CarModel = {
   priceDay: number;
   /** Monthly price. Optional: not every car has a confirmed monthly rate, and the UI does not show it. */
   priceMonth?: number;
+  /** True only when priceMonth is a client-confirmed rate; the UI shows the monthly price just for these cars. */
+  monthlyConfirmed?: boolean;
   image: string;
   /** Second color/angle — shown on hover or touch */
   imageAlt?: string;
@@ -206,4 +221,10 @@ export type BlogPost = {
 export type FaqItem = {
   question: string;
   answer: string;
+};
+
+/** Service page data as authored (fleet/package entries may reference cars.ts by slug). */
+export type ServiceDetailSource = Omit<ServiceDetail, "fleet" | "packages"> & {
+  fleet: Omit<ServiceDetail["fleet"], "items"> & { items: ServiceFleetEntry[] };
+  packages?: Omit<NonNullable<ServiceDetail["packages"]>, "items"> & { items: ServicePricingPackageEntry[] };
 };

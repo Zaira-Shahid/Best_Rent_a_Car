@@ -75,6 +75,7 @@ export function CarCard({ car, sectionLabel, className }: CarCardProps) {
   const hasAlt = Boolean(car.imageAlt && car.imageAlt !== car.image);
   const href = `/cars/${car.slug}`;
   const isEntry = ENTRY_CATEGORIES.has(car.category);
+  const showMonthly = Boolean(car.monthlyConfirmed && car.priceMonth);
 
   useEffect(() => {
     if (!hasAlt || paused) return;
@@ -165,10 +166,20 @@ export function CarCard({ car, sectionLabel, className }: CarCardProps) {
           ) : null}
 
           {!isEntry ? (
-            <p className="absolute bottom-3 left-3 flex items-center overflow-hidden rounded-full bg-brand-black/90 py-1.5 pl-4 pr-5 text-sm font-bold text-white shadow-md">
+            <p
+              className={cn(
+                "absolute bottom-3 left-3 flex items-center overflow-hidden bg-brand-black/90 py-1.5 pl-4 pr-5 text-sm font-bold text-white shadow-md",
+                showMonthly ? "rounded-2xl" : "rounded-full",
+              )}
+            >
               <span>
                 {formatPrice(car.priceDay)}
                 <span className="font-medium text-white/80"> / day</span>
+                {showMonthly ? (
+                  <span className="block text-[11px] font-medium text-white/70">
+                    {formatPrice(car.priceMonth!)} / month
+                  </span>
+                ) : null}
               </span>
               <span className="absolute inset-y-0 right-0 w-1.5 bg-brand-red" aria-hidden="true" />
             </p>
@@ -210,6 +221,11 @@ export function CarCard({ car, sectionLabel, className }: CarCardProps) {
               <p className="font-heading text-xl font-bold text-brand-black sm:text-2xl">
                 {formatPrice(car.priceDay)}
                 <span className="text-sm font-medium text-brand-black/70"> / day</span>
+                {showMonthly ? (
+                  <span className="block font-sans text-xs font-medium text-brand-black/60">
+                    {formatPrice(car.priceMonth!)} / month
+                  </span>
+                ) : null}
               </p>
               <Link
                 href={href}
