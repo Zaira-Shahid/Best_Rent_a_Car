@@ -181,6 +181,8 @@ export type CarModel = {
   priceDay: number;
   /** Monthly price. Optional: not every car has a confirmed monthly rate, and the UI does not show it. */
   priceMonth?: number;
+  /** True only when priceMonth is a client-confirmed rate; the UI shows the monthly price just for these cars. */
+  monthlyConfirmed?: boolean;
   image: string;
   /** Second color/angle — shown on hover or touch */
   imageAlt?: string;

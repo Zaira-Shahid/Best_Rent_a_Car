@@ -93,6 +93,9 @@ export function CarDetailBody({ car, categoryName, related }: CarDetailBodyProps
                 <p className="font-heading text-2xl font-semibold text-primary">
                   {formatPrice(car.priceDay)} <span className="text-sm font-medium text-muted">/ day</span>
                 </p>
+                {car.monthlyConfirmed && car.priceMonth ? (
+                  <p className="mt-0.5 text-sm text-muted">{formatPrice(car.priceMonth)} / month</p>
+                ) : null}
               </div>
               <div className="flex flex-col gap-3">
                 <Link
