@@ -72,7 +72,7 @@ export type ServiceFleetItem = {
  */
 export type ServiceFleetEntry =
   | ServiceFleetItem
-  | (Pick<ServiceFleetItem, "name" | "tag"> & { carSlug: string });
+  | (Pick<ServiceFleetItem, "tag"> & { carSlug: string });
 
 export type ServiceCoverageCity = {
   name: string;
@@ -99,6 +99,8 @@ export type ServicePricingPackage = {
   unit?: string;
   features: { text: string; included: boolean }[];
   featured?: boolean;
+  /** Car the price is based on (filled from cars.ts via carSlug). */
+  carName?: string;
 };
 
 /** Package as written in the service data; `carSlug` takes the daily price from cars.ts. */

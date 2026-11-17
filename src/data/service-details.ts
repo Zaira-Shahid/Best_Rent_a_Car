@@ -107,21 +107,14 @@ const hotelTransfer: ServiceDetailSource = {
     description: "Choose the vehicle that matches your itinerary and party size.",
     items: [
       {
-        name: "Executive Sedan",
         tag: "2024 Model",
-        seats: 3,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuBTJ4YCSAXfXW6Y-F7FvY_-_wMNDMe19tv0kTN4gf_1_OTG2I-rHZtuKg0WHVGh6hUBgcibDiFcbPKTZg1Bawg9Jcf3nbX1FF-VXH---fIRKEsn-O-r_Zyo8I1fyeK2TlfB0pSajCL6fEozPXAQCNg9zPh9Whx06E0f7znuiOYtiFlInuVFKrBxBmPVGtrih0lCiWc2qRS2k0leBI3QUeFU73NubDvicTLNla98M2RxdcIw57n1hxr9",
-        priceDay: 32000,
+        carSlug: "honda-civic-2025",
       },
       {
-        name: "Luxury SUV",
         tag: "Top Choice",
         carSlug: "lexus-lx",
       },
       {
-        name: "Business Van",
         tag: "Large Group",
         carSlug: "grand-cabin",
       },
@@ -203,26 +196,18 @@ const executiveCarRental: ServiceDetailSource = {
       "Selected for comfort, safety, and executive presence. Choose the perfect statement for your arrival.",
     items: [
       {
-        name: "Mercedes-Benz S-Class",
         tag: "Ultimate Luxury",
         carSlug: "mercedes-s500",
       },
       {
-        name: "BMW 7 Series",
         tag: "Innovation",
-        seats: 4,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuA1d8iVz2j2ubfPwx1GLKTeiZwGSZkK8352f6k8LiCV_f0TQDJGcp1qeMdsbdL3jQ2jEjSjKV4Uctpydz2J6d1Nf1dT7PpU8I1rz7YHN1fWUNatRoMCvJTXD44TmlVnQOUeAmCZrHXW0C7nDcrRsUTTbDHf31v-5bXUekZiMSC7JsBYuDEgFtgk4pxr1pyLchh21zOzWYUQKYQNuhpKJZeahvVBaDW75TLs3S9BgW3O5B4Z5TjzVcrG",
-        priceDay: 58000,
+        carSlug: "mercedes-s400",
       },
       {
-        name: "Toyota Prado",
         tag: "Versatile",
         carSlug: "toyota-prado",
       },
       {
-        name: "Toyota Fortuner",
         tag: "Commanding",
         carSlug: "toyota-fortuner",
       },
@@ -405,28 +390,20 @@ const weddingCarRental: ServiceDetailSource = {
     description: "Selected for elegance, comfort, and luxury.",
     items: [
       {
-        name: "Toyota Prado",
         tag: "SUV Luxury",
         carSlug: "toyota-prado",
       },
       {
-        name: "Toyota Fortuner",
         tag: "Executive SUV",
         carSlug: "toyota-fortuner",
       },
       {
-        name: "Mercedes S-Class",
         tag: "Luxury Sedan",
         carSlug: "mercedes-s400",
       },
       {
-        name: "Rolls-Royce Ghost",
         tag: "Executive Elite",
-        seats: 4,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDXqik-wRX7WtXJLneIcUXCKNAqtBcIVXhktuJKQDZd-NIK6kKfttaGwp5FC0ZzUXfg6aCV7gjo0s6bkWDkJQg-t6goUYT5ih_c9_gueGD_Wnh_rwiDLaXOwueRDiFUDKJveYCAak_1wG0Yp91eQGuqyPeDcaOKwxsiRYL9Jj3UxGlSavJXVhhiZJr8FP292NNS5FK5PMejDKS5TsCCfVM0S-77Qx0kG47SXdwfyL5yFe6-pVXf_K40",
-        priceDay: 120000,
+        carSlug: "mercedes-s500",
       },
     ],
   },
@@ -569,36 +546,20 @@ const dailyCarRental: ServiceDetailSource = {
     description: "Tailored collections for every destination.",
     items: [
       {
-        name: "Suzuki Alto",
         tag: "Economy",
         carSlug: "suzuki-alto",
       },
       {
-        name: "BMW 5 Series",
         tag: "Sedan",
-        seats: 5,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAtxzNlP5pVA6EvQHoDD9CnAkJq6G3nmesEf8tCPcw16hP1LNFORPivhGg9uVxI2A8X6Ius8ho8oaz2mH_Cnhh7Vd3CVMpugJpLFB3Nv9QDlJryfE7ZjiNoKxs645N-RTxDY1rL8kp9ToUw8LTMuv7Z9aH7r61OhqV5epZNSBeJcYYg1ztryOPxTlLwy4Rb508RYiHzRscjdD8lQrvh-h3A1p8pIc0be6OclqK9-iRD7Odog995EcWu",
-        priceDay: 24000,
+        carSlug: "audi-a6",
       },
       {
-        name: "Range Rover Vogue",
         tag: "SUV",
-        seats: 7,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDEFTKKMfymY2CZ7clB2dJHOHP9XFyFzTHXI12j9rovLrZO43qd0kPqvJwN8vSj-jrozbaCfN2imZTTSQ6k999X5n3xYePdMXDhzBgSFnXLjcc1V2KE2FTwAPGSQt-CgfmrHcpX7i-1b2dhjib_OJbdtgv_4yQyj1s1PJUEp8cJM2MKyJQWIkzD2sglD78PLgSDSCz7scyUs51rJbB7fpqxJZgj4Co82sODxTN34IbiCdHSgy_20UT0",
-        priceDay: 45000,
+        carSlug: "toyota-land-cruiser-lc-300",
       },
       {
-        name: "Lamborghini Huracán",
         tag: "Luxury",
-        seats: 2,
-        transmission: "Automatic",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuCrPHYvOd2RIsBxRB8ytIOJQah-HNwTrC7kTMcnZbiGmPxdCSCQCFPj8ML_RcCw9WmFS0hj3n5N3gauD6d7C-yjAXalrQI8uxG8s1hsIN35Q6gEty5dvt8fDgmFm_2vCc3-DXwZgk5wU49MXkVkBNuE2wrIjPMAfEb1vytVOcStfDzVw4mhsGWsleK2alMsRolGjKVgolEQCgkNjdDztaKV1npbciYt9agpbQsC7arqvQgmwHWLqQai",
-        priceDay: 85000,
+        carSlug: "mercedes-s500",
       },
     ],
   },
@@ -609,7 +570,7 @@ const dailyCarRental: ServiceDetailSource = {
     items: [
       {
         name: "City Explorer",
-        priceDay: 12900,
+        carSlug: "honda-city",
         features: [
           { text: "150km Included", included: true },
           { text: "Basic Insurance", included: true },
@@ -619,7 +580,7 @@ const dailyCarRental: ServiceDetailSource = {
       },
       {
         name: "Business Executive",
-        priceDay: 24900,
+        carSlug: "honda-civic-2025",
         featured: true,
         features: [
           { text: "Unlimited km", included: true },
@@ -630,7 +591,7 @@ const dailyCarRental: ServiceDetailSource = {
       },
       {
         name: "Grand Touring",
-        priceDay: 59900,
+        carSlug: "toyota-fortuner",
         features: [
           { text: "Unlimited km", included: true },
           { text: "Platinum Coverage", included: true },
@@ -757,22 +718,18 @@ const monthlyCarRental: ServiceDetailSource = {
     description: "Tailored fleets for every professional need — priced clearly per day.",
     items: [
       {
-        name: "Economy Elite",
         tag: "Best Value",
         carSlug: "toyota-corolla",
       },
       {
-        name: "Corporate Sedan",
         tag: "Business",
         carSlug: "honda-city",
       },
       {
-        name: "Family SUV",
         tag: "Family",
         carSlug: "toyota-fortuner",
       },
       {
-        name: "Luxe Prestige",
         tag: "Premium Choice",
         carSlug: "mercedes-s400",
       },
@@ -887,7 +844,7 @@ const weeklyCarRental: ServiceDetailSource = {
   slug: "weekly-car-rental",
   name: "Weekly Car Rental",
   metaDescription:
-    "Flexible weekly car rental plans with Best Carz Rent a Car — save up to 30% vs daily rates, seamless extensions, and premium fleet across Pakistan.",
+    "Flexible weekly car rental plans with Best Carz Rent a Car — better rates for longer rentals, seamless extensions, and premium fleet across Pakistan.",
   hero: {
     badge: "Premium Weekly Plans",
     title: "Flexible Weekly Car Rental",
@@ -907,7 +864,7 @@ const weeklyCarRental: ServiceDetailSource = {
       {
         icon: "savings",
         title: "Save More",
-        text: "Reduce your daily rate by up to 30% compared to standard short-term bookings. Efficiency meets economy in our premium tier.",
+        text: "Enjoy better rates for longer rentals compared to standard short-term bookings. Efficiency meets economy in our premium tier.",
       },
       {
         icon: "airline_seat_recline_extra",
@@ -931,22 +888,18 @@ const weeklyCarRental: ServiceDetailSource = {
     description: "Preview models available for weekly hire — priced per day.",
     items: [
       {
-        name: "Audi A6 Business Class",
         tag: "Available Now",
         carSlug: "audi-a6",
       },
       {
-        name: "Range Rover / Fortuner",
         tag: "SUV",
         carSlug: "toyota-fortuner",
       },
       {
-        name: "Mercedes-Benz S-Class",
         tag: "Elite Choice",
         carSlug: "mercedes-s500",
       },
       {
-        name: "Honda Civic 2025",
         tag: "Sedan",
         carSlug: "honda-civic-2025",
       },
@@ -970,7 +923,7 @@ const weeklyCarRental: ServiceDetailSource = {
       },
       {
         name: "Sedan",
-        priceDay: 6500,
+        carSlug: "toyota-corolla",
         unit: "/day",
         features: [
           { text: "Full-size sedans", included: true },
@@ -981,7 +934,7 @@ const weeklyCarRental: ServiceDetailSource = {
       },
       {
         name: "SUV",
-        priceDay: 12000,
+        carSlug: "toyota-fortuner",
         unit: "/day",
         featured: true,
         features: [
@@ -993,7 +946,7 @@ const weeklyCarRental: ServiceDetailSource = {
       },
       {
         name: "Luxury",
-        priceDay: 55000,
+        carSlug: "mercedes-s400",
         unit: "/day",
         features: [
           { text: "High-end elite fleet", included: true },
@@ -1035,7 +988,7 @@ const weeklyCarRental: ServiceDetailSource = {
       {
         question: "How much do I save with a weekly plan?",
         answer:
-          "Weekly packages typically reduce the effective daily rate by up to 30% versus day-by-day bookings, depending on vehicle class and season.",
+          "Weekly rentals get better rates for longer rentals than day-by-day bookings. Ask us on WhatsApp for the rate on your vehicle and dates.",
       },
       {
         question: "Can I extend mid-week?",
@@ -1156,22 +1109,18 @@ const corporateCarRental: ServiceDetailSource = {
     description: "Modern, safe, and impeccably maintained vehicles — daily rates only.",
     items: [
       {
-        name: "Toyota Corolla",
         tag: "2024+",
         carSlug: "toyota-corolla",
       },
       {
-        name: "Honda Civic",
         tag: "2024+",
         carSlug: "honda-civic-2025",
       },
       {
-        name: "Toyota Camry / Grande",
         tag: "2024+",
         carSlug: "toyota-corolla-grande",
       },
       {
-        name: "Fortuner SUV",
         tag: "2024+",
         carSlug: "toyota-fortuner",
       },
@@ -1324,22 +1273,18 @@ const airportPickDrop: ServiceDetailSource = {
     description: "Tailored fleet for every requirement — from solo executive travel to large groups. Daily / transfer rates shown clearly.",
     items: [
       {
-        name: "Executive Sedan",
         tag: "Executive",
         carSlug: "toyota-corolla-grande",
       },
       {
-        name: "Luxury SUV",
         tag: "Premium",
         carSlug: "toyota-fortuner",
       },
       {
-        name: "Best Carz Rent a Car Elite",
         tag: "Best Carz Rent a Car",
         carSlug: "mercedes-s400",
       },
       {
-        name: "Executive Hiace",
         tag: "Group",
         carSlug: "grand-cabin",
       },
@@ -1466,7 +1411,7 @@ function resolveCars(source: ServiceDetailSource): ServiceDetail {
         if (!("carSlug" in entry)) return entry;
         const car = carFor(entry.carSlug);
         return {
-          name: entry.name,
+          name: car.name,
           tag: entry.tag,
           seats: car.seats,
           transmission: car.transmission,
@@ -1481,7 +1426,8 @@ function resolveCars(source: ServiceDetailSource): ServiceDetail {
       items: source.packages.items.map((entry): ServicePricingPackage => {
         if (!("carSlug" in entry)) return entry;
         const { carSlug, ...rest } = entry;
-        return { ...rest, priceDay: carFor(carSlug).priceDay };
+        const car = carFor(carSlug);
+        return { ...rest, priceDay: car.priceDay, carName: car.name };
       }),
     },
   };

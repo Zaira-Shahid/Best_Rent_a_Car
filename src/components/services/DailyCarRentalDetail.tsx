@@ -115,10 +115,15 @@ export function DailyCarRentalDetail({ data }: DailyCarRentalDetailProps) {
                   <span className="mb-4 text-xs font-semibold uppercase tracking-widest text-secondary">
                     {pkg.name}
                   </span>
+                  {pkg.carName ? (
+                    <p className={cn("-mt-2 mb-4 text-sm", pkg.featured ? "text-muted" : "text-white/60")}>
+                      {pkg.carName}
+                    </p>
+                  ) : null}
                   <div className="mb-6 font-heading text-4xl font-bold sm:text-5xl">
                     {formatPrice(pkg.priceDay)}
                     <span className={cn("text-base font-normal", pkg.featured ? "text-muted" : "text-white/60")}>
-                      {pkg.unit ?? "/24hr"}
+                      {pkg.unit ?? "/day"}
                     </span>
                   </div>
                   <ul className={cn("mb-10 space-y-4 text-sm", pkg.featured ? "text-muted" : "text-white/80")}>

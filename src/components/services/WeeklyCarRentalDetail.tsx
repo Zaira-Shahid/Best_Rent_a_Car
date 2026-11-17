@@ -63,6 +63,11 @@ export function WeeklyCarRentalDetail({ data }: WeeklyCarRentalDetailProps) {
                   <span className="mb-3 text-xs font-semibold uppercase tracking-widest text-secondary">
                     {pkg.name}
                   </span>
+                  {pkg.carName ? (
+                    <p className={cn("-mt-2 mb-4 text-sm", pkg.featured ? "text-muted" : "text-white/60")}>
+                      {pkg.carName}
+                    </p>
+                  ) : null}
                   <div className="mb-6 font-heading text-3xl font-bold sm:text-4xl">
                     {formatPrice(pkg.priceDay)}
                     <span className={cn("text-sm font-normal", pkg.featured ? "text-muted" : "text-white/60")}>
