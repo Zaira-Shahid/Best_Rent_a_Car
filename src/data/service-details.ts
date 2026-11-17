@@ -570,7 +570,7 @@ const dailyCarRental: ServiceDetailSource = {
     items: [
       {
         name: "City Explorer",
-        carSlug: "honda-city",
+        priceDay: 12900,
         features: [
           { text: "150km Included", included: true },
           { text: "Basic Insurance", included: true },
@@ -580,7 +580,7 @@ const dailyCarRental: ServiceDetailSource = {
       },
       {
         name: "Business Executive",
-        carSlug: "honda-civic-2025",
+        priceDay: 24900,
         featured: true,
         features: [
           { text: "Unlimited km", included: true },
@@ -591,7 +591,7 @@ const dailyCarRental: ServiceDetailSource = {
       },
       {
         name: "Grand Touring",
-        carSlug: "toyota-fortuner",
+        priceDay: 59900,
         features: [
           { text: "Unlimited km", included: true },
           { text: "Platinum Coverage", included: true },
@@ -844,7 +844,7 @@ const weeklyCarRental: ServiceDetailSource = {
   slug: "weekly-car-rental",
   name: "Weekly Car Rental",
   metaDescription:
-    "Flexible weekly car rental plans with Best Carz Rent a Car — better rates for longer rentals, seamless extensions, and premium fleet across Pakistan.",
+    "Flexible weekly car rental plans with Best Carz Rent a Car — save up to 30% vs daily rates, seamless extensions, and premium fleet across Pakistan.",
   hero: {
     badge: "Premium Weekly Plans",
     title: "Flexible Weekly Car Rental",
@@ -864,7 +864,7 @@ const weeklyCarRental: ServiceDetailSource = {
       {
         icon: "savings",
         title: "Save More",
-        text: "Enjoy better rates for longer rentals compared to standard short-term bookings. Efficiency meets economy in our premium tier.",
+        text: "Reduce your daily rate by up to 30% compared to standard short-term bookings. Efficiency meets economy in our premium tier.",
       },
       {
         icon: "airline_seat_recline_extra",
@@ -923,7 +923,7 @@ const weeklyCarRental: ServiceDetailSource = {
       },
       {
         name: "Sedan",
-        carSlug: "toyota-corolla",
+        priceDay: 6500,
         unit: "/day",
         features: [
           { text: "Full-size sedans", included: true },
@@ -934,7 +934,7 @@ const weeklyCarRental: ServiceDetailSource = {
       },
       {
         name: "SUV",
-        carSlug: "toyota-fortuner",
+        priceDay: 12000,
         unit: "/day",
         featured: true,
         features: [
@@ -946,7 +946,7 @@ const weeklyCarRental: ServiceDetailSource = {
       },
       {
         name: "Luxury",
-        carSlug: "mercedes-s400",
+        priceDay: 55000,
         unit: "/day",
         features: [
           { text: "High-end elite fleet", included: true },
@@ -988,7 +988,7 @@ const weeklyCarRental: ServiceDetailSource = {
       {
         question: "How much do I save with a weekly plan?",
         answer:
-          "Weekly rentals get better rates for longer rentals than day-by-day bookings. Ask us on WhatsApp for the rate on your vehicle and dates.",
+          "Weekly packages typically reduce the effective daily rate by up to 30% versus day-by-day bookings, depending on vehicle class and season.",
       },
       {
         question: "Can I extend mid-week?",
@@ -1426,8 +1426,7 @@ function resolveCars(source: ServiceDetailSource): ServiceDetail {
       items: source.packages.items.map((entry): ServicePricingPackage => {
         if (!("carSlug" in entry)) return entry;
         const { carSlug, ...rest } = entry;
-        const car = carFor(carSlug);
-        return { ...rest, priceDay: car.priceDay, carName: car.name };
+        return { ...rest, priceDay: carFor(carSlug).priceDay };
       }),
     },
   };
