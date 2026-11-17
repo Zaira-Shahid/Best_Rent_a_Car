@@ -88,9 +88,11 @@ export function Footer() {
                   arrow_outward
                 </span>
               </a>
-              <a href={`mailto:${brand.email}`} className="block !text-white/80 transition hover:!text-white">
-                {brand.email}
-              </a>
+              {brand.emails.map((email) => (
+                <a key={email} href={`mailto:${email}`} className="block !text-white/80 transition hover:!text-white">
+                  {email}
+                </a>
+              ))}
             </div>
           </div>
         </div>

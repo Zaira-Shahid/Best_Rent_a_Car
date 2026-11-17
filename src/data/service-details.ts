@@ -488,7 +488,7 @@ const weddingCarRental: ServiceDetail = {
       { icon: "call", label: "Call (Primary)", value: formatPhone(brand.phones[0].number), href: telLink(brand.phones[0].number) },
       { icon: "call", label: "Call (Secondary)", value: formatPhone(brand.phones[1].number), href: telLink(brand.phones[1].number) },
       { icon: "chat", label: "WhatsApp", value: formatPhone(brand.whatsapp), href: whatsappLink() },
-      { icon: "mail", label: "Email Us", value: "info@example.com" },
+      { icon: "mail", label: "Email Us", value: brand.email, href: `mailto:${brand.email}` },
     ],
   },
   included: {
@@ -1287,7 +1287,7 @@ const corporateCarRental: ServiceDetail = {
       { icon: "call", label: "Call (Primary)", value: formatPhone(brand.phones[0].number), href: telLink(brand.phones[0].number) },
       { icon: "call", label: "Call (Secondary)", value: formatPhone(brand.phones[1].number), href: telLink(brand.phones[1].number) },
       { icon: "chat", label: "WhatsApp", value: formatPhone(brand.whatsapp), href: whatsappLink() },
-      { icon: "mail", label: "Email Us", value: "info@example.com" },
+      { icon: "mail", label: "Email Us", value: brand.email, href: `mailto:${brand.email}` },
     ],
   },
   testimonials: {
