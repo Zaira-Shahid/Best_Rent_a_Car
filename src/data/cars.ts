@@ -101,7 +101,11 @@ export const carCategories: CarCategory[] = fleetSections.map(({ slug, name, des
   description,
 }));
 
-// TODO(client): confirm monthly rates. For the fleet-mockup cars priceMonth = priceDay x 22 (not shown in the UI).
+// Client-confirmed rates: Alto, Swift, Yaris, City, Civic 11th Gen, Sportage.
+// Pending specs/photos from the client (do not add yet):
+//   - Daihatsu Mira: PKR 5,000/day, PKR 100,000/month
+//   - Toyota Passo: PKR 6,000/day, PKR 115,000/month
+// Other cars: priceMonth = priceDay x 22 (not shown in the UI), still to be confirmed with the client.
 export const carModels: CarModel[] = [
   {
     slug: "suzuki-alto",
@@ -111,8 +115,8 @@ export const carModels: CarModel[] = [
     seats: 4,
     transmission: "Automatic",
     fuel: "Petrol",
-    priceDay: 4000,
-    priceMonth: 88000,
+    priceDay: 5000,
+    priceMonth: 90000,
     image: carImage("alto-mockup.webp"),
     colors: ["White"],
     featured: true,
@@ -127,7 +131,7 @@ export const carModels: CarModel[] = [
     transmission: "Automatic",
     fuel: "Petrol",
     priceDay: 6000,
-    priceMonth: 132000,
+    priceMonth: 120000,
     image: carImage("swift-mockup.webp"),
     colors: ["White", "Black"],
   },
@@ -167,8 +171,8 @@ export const carModels: CarModel[] = [
     seats: 5,
     transmission: "Automatic",
     fuel: "Petrol",
-    priceDay: 6000,
-    priceMonth: 132000,
+    priceDay: 7000,
+    priceMonth: 160000,
     image: carImage("yaris-mockup.webp"),
     colors: ["White", "Black"],
     featured: true,
@@ -182,8 +186,8 @@ export const carModels: CarModel[] = [
     seats: 5,
     transmission: "Automatic",
     fuel: "Petrol",
-    priceDay: 6000,
-    priceMonth: 132000,
+    priceDay: 7000,
+    priceMonth: 160000,
     image: carImage("civic-white.webp"),
     imageAlt: carImage("civic-black.webp"),
     colors: ["White", "Black"],
@@ -242,8 +246,8 @@ export const carModels: CarModel[] = [
     seats: 5,
     transmission: "Automatic",
     fuel: "Petrol",
-    priceDay: 10000,
-    priceMonth: 220000,
+    priceDay: 12000,
+    priceMonth: 275000,
     image: carImage("civic-11-mockup.webp"),
     colors: ["White", "Black"],
     badge: "New",
@@ -328,8 +332,8 @@ export const carModels: CarModel[] = [
     seats: 5,
     transmission: "Automatic",
     fuel: "Petrol",
-    priceDay: 15000,
-    priceMonth: 330000,
+    priceDay: 13000,
+    priceMonth: 275000,
     image: carImage("sportage-mockup.webp"),
     colors: ["White", "Black"],
     family: true,

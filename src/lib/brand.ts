@@ -6,6 +6,9 @@ const PHONES = [
   { label: "Secondary", number: "03350300292" },
 ] as const;
 
+/** Public email addresses. The first one is the primary email used in structured data. */
+const EMAILS = ["bestcarz2010@gmail.com", "bestcarz55@gmail.com"] as const;
+
 export const brand = {
   name: BRAND_NAME,
   shortName: "Best Carz",
@@ -15,8 +18,10 @@ export const brand = {
   phone: PHONES[0].number,
   /** WhatsApp number in international format, no "+" or spaces. */
   whatsapp: "923345414155",
-  // TODO(client): placeholder email. Replace with the real Best Carz Rent a Car email.
-  email: "info@example.com", // TODO: real email
+  /** Primary email (same as emails[0]). */
+  email: EMAILS[0],
+  /** All public email addresses. */
+  emails: EMAILS,
   currency: "PKR",
   /** Opening hours, as shown on the Google Business profile. */
   hours: "Open 24 hours",

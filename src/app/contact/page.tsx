@@ -45,8 +45,7 @@ const INFO_CARDS = [
     icon: "mail",
     title: "Email Us",
     text: "For corporate inquiries and long-term lease quotes.",
-    href: `mailto:${brand.email}`,
-    linkLabel: brand.email,
+    emails: brand.emails,
   },
   {
     icon: "location_on",
@@ -122,6 +121,18 @@ export default function ContactPage() {
                     <p className="mt-2 text-sm text-muted">{card.text}</p>
                     {card.numbers ? (
                       <ContactNumbers tone="light" className="mt-4 text-base" />
+                    ) : card.emails ? (
+                      <div className="mt-4 space-y-1">
+                        {card.emails.map((email) => (
+                          <a
+                            key={email}
+                            href={`mailto:${email}`}
+                            className="block break-all text-sm font-semibold text-secondary hover:underline"
+                          >
+                            {email}
+                          </a>
+                        ))}
+                      </div>
                     ) : (
                       <a
                         href={card.href}
